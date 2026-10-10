@@ -1,0 +1,17 @@
+\begin{table}[htbp]
+\centering
+\small
+\caption{Scheduler stages E--F in the feasibility diagnostic (three seeds).}
+\label{tab:ef}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llrrrrrrrrrr}
+\toprule
+Data & Stage & kbit & Top-K & Cos. & Coverage & Recall & Prec. & False int. & Abstain & Jain & eps \\
+\midrule
+OPSD & E MAP-XAI-only & 36.85 & 0.284 & 0.003 & 0.034 & 0.012 & 0.249 & 0.010 & 0.966 & 0.988 & 3.703 \\
+OPSD & F PRISM-XAI & 34.90 & 0.246 & 0.000 & 0.034 & 0.020 & 0.466 & 0.008 & 0.966 & 0.988 & 3.703 \\
+UCI & E MAP-XAI-only & 115.8 & 0.260 & 0.023 & 0.018 & 0.008 & 0.269 & 0.017 & 0.982 & 0.943 & 3.703 \\
+UCI & F PRISM-XAI & 114.0 & 0.222 & 0.030 & 0.018 & 0.009 & 0.291 & 0.016 & 0.982 & 0.943 & 3.703 \\
+\bottomrule
+\end{tabular}}
+\end{table}

@@ -1,0 +1,6 @@
+PDF: /mnt/data/PRISM_XAI_ICC2027_V19_READER_REPORT_FINAL/SUPPLEMENTARY_REPORT/PRISM_XAI_ICC2027_EXTENDED_SUPPLEMENT_V19.pdf
+Pages: 41
+Encrypted: False
+Openable (PyMuPDF): True
+Likely scanned: False
+XFA present: False

@@ -1,0 +1,22 @@
+name                                 type              encoding         emb sub uni object ID
+------------------------------------ ----------------- ---------------- --- --- --- ---------
+SNOHEC+NimbusRomNo9L-Regu            Type 1            Custom           yes yes yes     81  0
+EIPDCN+NimbusRomNo9L-MediItal        Type 1            Custom           yes yes yes     83  0
+NOHJHY+NimbusRomNo9L-Medi            Type 1            Custom           yes yes yes     84  0
+WKXEYO+CMMI9                         Type 1            Builtin          yes yes yes     85  0
+TIOPWF+NimbusRomNo9L-ReguItal        Type 1            Custom           yes yes yes     86  0
+TVWBZG+CMSY7                         Type 1            Builtin          yes yes yes     87  0
+VTXOGD+CMMI10                        Type 1            Builtin          yes yes yes     88  0
+XUUBIX+CMMI7                         Type 1            Builtin          yes yes yes    110  0
+ARWQLO+CMSY10                        Type 1            Builtin          yes yes yes    112  0
+TVOFKJ+CMR10                         Type 1            Builtin          yes yes yes    113  0
+GANQME+CMMIB10                       Type 1            Builtin          yes yes yes    114  0
+QDTWCG+MSBM10                        Type 1            Builtin          yes yes yes    115  0
+HMPEFZ+CMSY5                         Type 1            Builtin          yes yes yes    116  0
+RVPZIX+CMMI5                         Type 1            Builtin          yes yes yes    117  0
+QZSFPB+CMR7                          Type 1            Builtin          yes yes yes    118  0
+LWMMOX+CMEX10                        Type 1            Builtin          yes yes yes    121  0
+YWFTKG+CMMI8                         Type 1            Builtin          yes yes yes    180  0
+FSCSLE+CMR6                          Type 1            Builtin          yes yes yes    181  0
+PUDXGP+CMSY8                         Type 1            Builtin          yes yes yes    182  0
+GQKJQS+CMR8                          Type 1            Builtin          yes yes yes    183  0

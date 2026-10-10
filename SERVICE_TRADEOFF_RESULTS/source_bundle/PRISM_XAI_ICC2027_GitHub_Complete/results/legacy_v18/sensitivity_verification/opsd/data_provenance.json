@@ -1,0 +1,26 @@
+{
+  "dataset": "opsd",
+  "source_name": "Open Power System Data Household Data 2020-04-15",
+  "source_url": "https://data.open-power-system-data.org/household_data/2020-04-15/household_data_60min_singleindex.csv",
+  "source_file_sha256": "15956440b27465686eae2abf5895cbc3dab80f934a891bcb2f4f944428e97d60",
+  "n_endpoints_used": 9,
+  "endpoint_ids": [
+    "DE_KN_residential5_grid_import",
+    "DE_KN_residential6_grid_import",
+    "DE_KN_residential4_grid_import",
+    "DE_KN_industrial1_grid_import",
+    "DE_KN_residential1_grid_import",
+    "DE_KN_residential2_grid_import",
+    "DE_KN_residential3_grid_import",
+    "DE_KN_industrial3_grid_import",
+    "DE_KN_industrial2_grid_import"
+  ],
+  "n_zones": 3,
+  "n_calibration_steps": 24,
+  "n_evaluation_steps": 48,
+  "source_window_start": "2016-02-28 12:00:00+00:00",
+  "source_window_end": "2017-02-01 20:00:00+00:00",
+  "evaluation_window_start": "2017-01-30 21:00:00+00:00",
+  "evaluation_window_end": "2017-02-01 20:00:00+00:00",
+  "synthetic_hierarchy": true
+}

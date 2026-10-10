@@ -1,0 +1,44 @@
+% Paired PRISM-XAI minus baseline differences; negative kbit is better.
+\begin{table*}[t]
+\caption{Paired differences for PRISM-XAI minus each baseline at $\epsilon_{\max}=4$ with the tree model.}
+\label{tab:paired-differences}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{llcccc}
+\toprule
+Dataset & Baseline & Delta kbit & Delta Top-$K$ & Delta recall & Delta fairness \\
+\midrule
+UCI & AoX-aware fixed-DP & -4974.382 $\pm$ 1.091 & -0.043 $\pm$ 0.084 & -0.411 $\pm$ 0.033 & -0.007 $\pm$ 0.002 \\
+UCI & AoX-aware fixed-DP & -4649.381 $\pm$ 1.226 & 0.034 $\pm$ 0.071 & -0.370 $\pm$ 0.032 & -0.003 $\pm$ 0.001 \\
+UCI & AoX-aware fixed-DP & -4650.353 $\pm$ 1.443 & 0.069 $\pm$ 0.077 & -0.372 $\pm$ 0.035 & -0.004 $\pm$ 0.002 \\
+UCI & AoX-aware fixed-DP & -4977.700 $\pm$ 0.793 & -0.043 $\pm$ 0.042 & -0.411 $\pm$ 0.047 & -0.008 $\pm$ 0.004 \\
+UCI & AoX-aware fixed-DP & -4656.089 $\pm$ 1.590 & -0.009 $\pm$ 0.054 & -0.370 $\pm$ 0.044 & -0.004 $\pm$ 0.001 \\
+UCI & AoX-aware fixed-DP & -4656.222 $\pm$ 1.573 & 0.050 $\pm$ 0.050 & -0.371 $\pm$ 0.047 & -0.003 $\pm$ 0.001 \\
+UCI & Channel-aware fixed-DP & -4969.336 $\pm$ 3.532 & -0.028 $\pm$ 0.075 & 0.045 $\pm$ 0.006 & 0.001 $\pm$ 0.002 \\
+UCI & Channel-aware fixed-DP & -4649.381 $\pm$ 1.226 & 0.030 $\pm$ 0.079 & 0.087 $\pm$ 0.009 & 0.665 $\pm$ 0.001 \\
+UCI & Channel-aware fixed-DP & -4650.353 $\pm$ 1.443 & 0.064 $\pm$ 0.076 & 0.084 $\pm$ 0.007 & 0.740 $\pm$ 0.002 \\
+UCI & Channel-aware fixed-DP & -4972.653 $\pm$ 4.225 & -0.022 $\pm$ 0.057 & 0.044 $\pm$ 0.008 & 0.000 $\pm$ 0.004 \\
+UCI & Channel-aware fixed-DP & -4656.089 $\pm$ 1.590 & -0.009 $\pm$ 0.072 & 0.084 $\pm$ 0.009 & 0.665 $\pm$ 0.002 \\
+UCI & Channel-aware fixed-DP & -4656.222 $\pm$ 1.573 & 0.051 $\pm$ 0.058 & 0.083 $\pm$ 0.012 & 0.741 $\pm$ 0.002 \\
+UCI & Joint, no compression & -346.458 $\pm$ 1.330 & -0.065 $\pm$ 0.094 & -0.007 $\pm$ 0.008 & -0.002 $\pm$ 0.002 \\
+UCI & Joint, no compression & -981.307 $\pm$ 1.189 & 0.081 $\pm$ 0.077 & -0.007 $\pm$ 0.007 & -0.002 $\pm$ 0.001 \\
+UCI & Joint, no compression & -3384.679 $\pm$ 5.661 & 0.086 $\pm$ 0.072 & -0.143 $\pm$ 0.011 & -0.004 $\pm$ 0.001 \\
+UCI & Joint, no compression & -349.776 $\pm$ 1.051 & -0.012 $\pm$ 0.075 & -0.012 $\pm$ 0.009 & -0.003 $\pm$ 0.004 \\
+UCI & Joint, no compression & -988.465 $\pm$ 1.244 & 0.048 $\pm$ 0.054 & -0.015 $\pm$ 0.021 & -0.002 $\pm$ 0.001 \\
+UCI & Joint, no compression & -3390.548 $\pm$ 4.834 & 0.069 $\pm$ 0.071 & -0.144 $\pm$ 0.034 & -0.003 $\pm$ 0.001 \\
+UCI & Periodic fixed-DP & -4973.477 $\pm$ 1.902 & -0.039 $\pm$ 0.091 & 0.039 $\pm$ 0.007 & -0.007 $\pm$ 0.002 \\
+UCI & Periodic fixed-DP & -4648.475 $\pm$ 2.065 & 0.038 $\pm$ 0.074 & 0.081 $\pm$ 0.009 & -0.004 $\pm$ 0.001 \\
+UCI & Periodic fixed-DP & -4649.447 $\pm$ 2.451 & 0.073 $\pm$ 0.052 & 0.079 $\pm$ 0.007 & -0.004 $\pm$ 0.001 \\
+UCI & Periodic fixed-DP & -4976.794 $\pm$ 1.677 & -0.043 $\pm$ 0.067 & 0.039 $\pm$ 0.006 & -0.009 $\pm$ 0.004 \\
+UCI & Periodic fixed-DP & -4655.183 $\pm$ 2.320 & -0.009 $\pm$ 0.059 & 0.079 $\pm$ 0.009 & -0.004 $\pm$ 0.001 \\
+UCI & Periodic fixed-DP & -4655.316 $\pm$ 2.411 & 0.050 $\pm$ 0.049 & 0.078 $\pm$ 0.011 & -0.004 $\pm$ 0.001 \\
+UCI & MAP-XAI fallback & -55.904 $\pm$ 0.864 & 0.065 $\pm$ 0.067 & -0.002 $\pm$ 0.005 & 0.000 $\pm$ 0.000 \\
+UCI & MAP-XAI fallback & -114.499 $\pm$ 1.474 & 0.053 $\pm$ 0.062 & 0.001 $\pm$ 0.009 & -0.000 $\pm$ 0.000 \\
+UCI & MAP-XAI fallback & -115.399 $\pm$ 1.659 & 0.042 $\pm$ 0.048 & -0.007 $\pm$ 0.007 & -0.000 $\pm$ 0.001 \\
+UCI & MAP-XAI fallback & -58.759 $\pm$ 0.856 & -0.003 $\pm$ 0.033 & -0.001 $\pm$ 0.006 & 0.000 $\pm$ 0.001 \\
+UCI & MAP-XAI fallback & -120.762 $\pm$ 1.805 & 0.010 $\pm$ 0.056 & -0.006 $\pm$ 0.013 & 0.000 $\pm$ 0.001 \\
+UCI & MAP-XAI fallback & -120.556 $\pm$ 1.752 & 0.001 $\pm$ 0.070 & -0.003 $\pm$ 0.007 & 0.000 $\pm$ 0.000 \\
+\bottomrule
+\end{tabular}
+\end{table*}

@@ -1,0 +1,121 @@
+
+% In the preamble:
+% \usepackage{adjustbox}
+% \usepackage{booktabs}
+
+\begin{table*}[t]
+\centering
+\caption{Macro-average communication, latency, AoX, and energy metrics over all v19 M8 conditions.}
+\label{tab:macronet}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.08}
+
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lrrrrrrrrrrrr}
+\toprule
+Method
+& kbit
+& bit/correct
+& Sched.
+& Deliv.
+& Deliv. ratio
+& Miss rate
+& Mean ms
+& P95 ms
+& Mean AoX
+& P95 AoX
+& Energy mJ
+& Updates/EP \\
+\midrule
+
+Periodic fixed-DP
+& 4,645.2
+& 706,998
+& 3,589.8
+& 3,413.5
+& 0.950
+& 0.050
+& 2.265
+& 4.836
+& 27.11
+& 33.84
+& 697.9
+& 223.7 \\
+
+Channel fixed-DP
+& 4,573.8
+& 1,146,614
+& 3,534.7
+& 3,358.8
+& 0.950
+& 0.050
+& 2.264
+& 4.659
+& 100.3
+& 151.7
+& 685.2
+& 218.0 \\
+
+AoX fixed-DP
+& 4,643.6
+& 23,572
+& 3,588.5
+& 3,391.8
+& 0.945
+& 0.055
+& 2.293
+& 6.129
+& 23.38
+& 25.23
+& 697.6
+& 222.9 \\
+
+Joint full packet
+& 1,655.4
+& 25,498
+& 1,103.6
+& 1,045.2
+& 0.948
+& 0.052
+& 2.425
+& 5.647
+& 157.5
+& 170.7
+& 248.7
+& 57.49 \\
+
+\midrule
+
+MAP-XAI-only (ours)
+& 243.7
+& \textbf{9,960.1}
+& 164.0
+& 155.1
+& 0.944
+& 0.056
+& 2.424
+& 5.038
+& 226.3
+& 237.8
+& 36.57
+& 7.555 \\
+
+PRISM-XAI (ours)
+& \textbf{242.5}
+& 9,987.0
+& \textbf{164.0}
+& \textbf{155.1}
+& 0.945
+& 0.055
+& 2.418
+& 5.047
+& 226.3
+& 237.8
+& \textbf{36.40}
+& 7.557 \\
+
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table*}

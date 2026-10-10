@@ -1,0 +1,3 @@
+dataset,model,xai_method,oracle_topk,clipped_topk,private_full_topk,private_compressed_topk,mapxai_topk,prism_topk,random_topk,diagnosis
+opsd,tree,default,1.0,0.989945023148148,0.2408130787037037,0.25180844907407407,0.2838541666666667,0.24609375000000003,0.25,DP noise is likely the main signal-collapse bottleneck.
+uci,tree,default,1.0,0.99267578125,0.28179253472222215,0.29513888888888884,0.2596028645833333,0.22162543402777776,0.25,DP noise is likely the main signal-collapse bottleneck.

@@ -1,0 +1,29 @@
+# LaTeX build products
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.xdv
+
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Notebook checkpoints and operating-system metadata
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+
+# Local editor configuration
+.idea/
+.vscode/
+
+# Reproducibility execution logs are intentional evidence files.
+!SERVICE_TRADEOFF_RESULTS/runs/*.log

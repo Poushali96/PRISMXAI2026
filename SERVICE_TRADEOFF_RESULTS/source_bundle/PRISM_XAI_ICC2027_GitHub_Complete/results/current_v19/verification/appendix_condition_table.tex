@@ -1,0 +1,20 @@
+% Appendix table: all dataset/model/privacy condition means.
+\begin{table*}[t]
+\caption{Appendix summary across all dataset/model/privacy conditions.}
+\label{tab:appendix-conditions}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{llllccccccccccc}
+\toprule
+Dataset & Model & $\epsilon_{\max}$ & Method & kbit & Top-$K$ & Random Top-$K$ & Cosine & Decision & Recall & Precision & Coverage & Abstain & False int. & Spent $\epsilon$ \\
+\midrule
+OPSD & Tree & 4 & Joint, no compression & 178.500 $\pm$ 0.000 & 0.225 $\pm$ 0.000 & 0.250 $\pm$ 0.000 & -0.121 $\pm$ 0.000 & 0.302 $\pm$ 0.000 & 0.302 $\pm$ 0.000 & 0.444 $\pm$ 0.000 & 0.358 $\pm$ 0.000 & 0.642 $\pm$ 0.000 & 0.220 $\pm$ 0.000 & 3.994 $\pm$ 0.000 \\
+OPSD & Tree & 4 & Periodic fixed-DP & 442.548 $\pm$ 0.000 & 0.255 $\pm$ 0.000 & 0.250 $\pm$ 0.000 & -0.008 $\pm$ 0.000 & 0.377 $\pm$ 0.000 & 0.377 $\pm$ 0.000 & 0.290 $\pm$ 0.000 & 1.000 $\pm$ 0.000 & 0.000 $\pm$ 0.000 & 0.538 $\pm$ 0.000 & 3.994 $\pm$ 0.000 \\
+OPSD & Tree & 4 & PRISM-XAI & 24.952 $\pm$ 0.000 & 0.384 $\pm$ 0.000 & 0.250 $\pm$ 0.000 & 0.047 $\pm$ 0.000 & 0.226 $\pm$ 0.000 & 0.226 $\pm$ 0.000 & 0.600 $\pm$ 0.000 & 0.283 $\pm$ 0.000 & 0.717 $\pm$ 0.000 & 0.088 $\pm$ 0.000 & 3.643 $\pm$ 0.000 \\
+UCI & Tree & 4 & Joint, no compression & 403.500 $\pm$ 0.000 & 0.135 $\pm$ 0.000 & 0.250 $\pm$ 0.000 & -0.013 $\pm$ 0.000 & 0.116 $\pm$ 0.000 & 0.116 $\pm$ 0.000 & 0.159 $\pm$ 0.000 & 0.684 $\pm$ 0.000 & 0.316 $\pm$ 0.000 & 0.598 $\pm$ 0.000 & 3.994 $\pm$ 0.000 \\
+UCI & Tree & 4 & Periodic fixed-DP & 496.896 $\pm$ 0.000 & 0.201 $\pm$ 0.000 & 0.250 $\pm$ 0.000 & -0.016 $\pm$ 0.000 & 0.053 $\pm$ 0.000 & 0.053 $\pm$ 0.000 & 0.278 $\pm$ 0.000 & 0.158 $\pm$ 0.000 & 0.842 $\pm$ 0.000 & 0.134 $\pm$ 0.000 & 2.524 $\pm$ 0.000 \\
+UCI & Tree & 4 & PRISM-XAI & 93.439 $\pm$ 0.000 & 0.380 $\pm$ 0.000 & 0.250 $\pm$ 0.000 & 0.074 $\pm$ 0.000 & 0.095 $\pm$ 0.000 & 0.095 $\pm$ 0.000 & 0.500 $\pm$ 0.000 & 0.284 $\pm$ 0.000 & 0.716 $\pm$ 0.000 & 0.093 $\pm$ 0.000 & 3.643 $\pm$ 0.000 \\
+\bottomrule
+\end{tabular}
+\end{table*}

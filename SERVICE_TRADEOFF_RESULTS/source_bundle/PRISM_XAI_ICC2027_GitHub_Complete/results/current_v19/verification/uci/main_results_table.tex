@@ -1,0 +1,13 @@
+% Values are means with 95% Student-t confidence intervals across seeds.
+\begin{tabular}{lccccccccccccccc}
+\toprule
+Dataset & Model & $\epsilon_{\max}$ & Method & Top-$K$ & Cosine & Decision & Recall & Prec. & Abst. & P95 ms & kbit & Spent $\epsilon$ & False int. & bit/correct & Fairness \\
+\midrule
+UCI & Tree & 4 & AoX-aware fixed-DP & 0.271 $\pm$ 0.000 & 0.077 $\pm$ 0.000 & 0.326 $\pm$ 0.000 & 0.326 $\pm$ 0.000 & 0.337 $\pm$ 0.000 & 0.000 $\pm$ 0.000 & 2.656 $\pm$ 0.000 & 496.896 $\pm$ 0.000 & 2.354 $\pm$ 0.000 & 0.629 $\pm$ 0.000 & 16028.903 $\pm$ 0.000 & 0.998 $\pm$ 0.000 \\
+UCI & Tree & 4 & Channel-aware fixed-DP & 0.177 $\pm$ 0.000 & 0.064 $\pm$ 0.000 & 0.000 $\pm$ 0.000 & 0.000 $\pm$ 0.000 & 0.000 $\pm$ 0.000 & 0.958 $\pm$ 0.000 & 2.667 $\pm$ 0.000 & 496.896 $\pm$ 0.000 & 3.994 $\pm$ 0.000 & 0.062 $\pm$ 0.000 & -- & 0.371 $\pm$ 0.000 \\
+UCI & Tree & 4 & Joint, no compression & 0.135 $\pm$ 0.000 & -0.013 $\pm$ 0.000 & 0.116 $\pm$ 0.000 & 0.116 $\pm$ 0.000 & 0.159 $\pm$ 0.000 & 0.316 $\pm$ 0.000 & 7.500 $\pm$ 0.000 & 403.500 $\pm$ 0.000 & 3.994 $\pm$ 0.000 & 0.598 $\pm$ 0.000 & 36681.818 $\pm$ 0.000 & 0.991 $\pm$ 0.000 \\
+UCI & Tree & 4 & Periodic fixed-DP & 0.201 $\pm$ 0.000 & -0.016 $\pm$ 0.000 & 0.053 $\pm$ 0.000 & 0.053 $\pm$ 0.000 & 0.278 $\pm$ 0.000 & 0.842 $\pm$ 0.000 & 2.485 $\pm$ 0.000 & 496.896 $\pm$ 0.000 & 2.524 $\pm$ 0.000 & 0.134 $\pm$ 0.000 & 99379.200 $\pm$ 0.000 & 0.929 $\pm$ 0.000 \\
+UCI & Tree & 4 & PRISM-XAI & 0.380 $\pm$ 0.000 & 0.074 $\pm$ 0.000 & 0.095 $\pm$ 0.000 & 0.095 $\pm$ 0.000 & 0.500 $\pm$ 0.000 & 0.716 $\pm$ 0.000 & 2.636 $\pm$ 0.000 & 93.439 $\pm$ 0.000 & 3.643 $\pm$ 0.000 & 0.093 $\pm$ 0.000 & 10382.111 $\pm$ 0.000 & 0.961 $\pm$ 0.000 \\
+UCI & Tree & 4 & MAP-XAI fallback & 0.335 $\pm$ 0.000 & 0.129 $\pm$ 0.000 & 0.074 $\pm$ 0.000 & 0.074 $\pm$ 0.000 & 0.467 $\pm$ 0.000 & 0.737 $\pm$ 0.000 & 6.758 $\pm$ 0.000 & 93.439 $\pm$ 0.000 & 3.643 $\pm$ 0.000 & 0.082 $\pm$ 0.000 & 13348.429 $\pm$ 0.000 & 0.953 $\pm$ 0.000 \\
+\bottomrule
+\end{tabular}

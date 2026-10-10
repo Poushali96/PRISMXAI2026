@@ -1,0 +1,114 @@
+
+% In the preamble:
+% \usepackage{adjustbox}
+% \usepackage{booktabs}
+
+\begin{table*}[t]
+\centering
+\caption{Macro-average privacy, fairness, and selective-release metrics over all v19 M8 conditions.}
+\label{tab:macroprivacy}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.08}
+
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lrrrrrrrrrrr}
+\toprule
+Method
+& $\epsilon$ mean
+& $\epsilon$ max
+& Exhaust frac.
+& Jain
+& Mean priv. rel.
+& Max priv. rel.
+& Priv. cap
+& Min updates
+& False int.
+& False act.
+& Attack AUC \\
+\midrule
+
+Periodic fixed-DP
+& 10.62
+& 10.62
+& 0.333
+& 1.000
+& 235.3
+& 235.5
+& 8.0
+& 216.4
+& 0.221
+& 1.000
+& 0.690 \\
+
+Channel fixed-DP
+& 9.457
+& 13.85
+& 0.485
+& 0.737
+& 229.2
+& 361.5
+& 8.0
+& 60.02
+& 0.186
+& 1.000
+& 0.670 \\
+
+AoX fixed-DP
+& 10.61
+& 10.82
+& 0.333
+& 0.999
+& 235.2
+& 242.2
+& 8.0
+& 212.9
+& 0.501
+& 1.000
+& 0.664 \\
+
+Joint full packet
+& 18.66
+& 18.67
+& 1.000
+& 0.965
+& 60.64
+& 79.18
+& 8.0
+& 46.77
+& 0.136
+& 1.000
+& 0.661 \\
+
+\midrule
+
+MAP-XAI-only (ours)
+& 18.21
+& 18.21
+& \textbf{0.000}
+& \textbf{0.991}
+& \textbf{8.000}
+& \textbf{8.000}
+& 8.0
+& 5.8
+& \textbf{0.019}
+& \textbf{0.797}
+& 0.712 \\
+
+PRISM-XAI (ours)
+& 18.21
+& 18.21
+& \textbf{0.000}
+& \textbf{0.991}
+& \textbf{8.000}
+& \textbf{8.000}
+& 8.0
+& 5.8
+& 0.020
+& 0.847
+& 0.711 \\
+
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table*}

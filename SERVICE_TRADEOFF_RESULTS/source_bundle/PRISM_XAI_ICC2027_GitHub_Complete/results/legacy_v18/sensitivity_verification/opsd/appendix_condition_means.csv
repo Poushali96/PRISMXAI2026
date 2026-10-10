@@ -1,0 +1,4 @@
+Dataset,Model,$\epsilon_{\max}$,Method,kbit,Top-$K$,Random Top-$K$,Cosine,Decision,Recall,Precision,Coverage,Abstain,False int.,Spent $\epsilon$
+OPSD,Tree,4,"Joint, no compression",178.500 $\pm$ 0.000,0.225 $\pm$ 0.000,0.250 $\pm$ 0.000,-0.121 $\pm$ 0.000,0.302 $\pm$ 0.000,0.302 $\pm$ 0.000,0.444 $\pm$ 0.000,0.358 $\pm$ 0.000,0.642 $\pm$ 0.000,0.220 $\pm$ 0.000,3.994 $\pm$ 0.000
+OPSD,Tree,4,Periodic fixed-DP,442.548 $\pm$ 0.000,0.255 $\pm$ 0.000,0.250 $\pm$ 0.000,-0.008 $\pm$ 0.000,0.377 $\pm$ 0.000,0.377 $\pm$ 0.000,0.290 $\pm$ 0.000,1.000 $\pm$ 0.000,0.000 $\pm$ 0.000,0.538 $\pm$ 0.000,3.994 $\pm$ 0.000
+OPSD,Tree,4,PRISM-XAI,35.619 $\pm$ 0.000,0.343 $\pm$ 0.000,0.250 $\pm$ 0.000,0.151 $\pm$ 0.000,0.075 $\pm$ 0.000,0.075 $\pm$ 0.000,0.211 $\pm$ 0.000,0.151 $\pm$ 0.000,0.849 $\pm$ 0.000,0.165 $\pm$ 0.000,3.703 $\pm$ 0.000

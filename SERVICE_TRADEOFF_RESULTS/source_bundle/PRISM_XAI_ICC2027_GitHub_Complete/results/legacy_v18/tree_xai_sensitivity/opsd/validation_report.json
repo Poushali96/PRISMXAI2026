@@ -1,0 +1,274 @@
+{
+  "expected_run_count": 360,
+  "actual_run_count": 360,
+  "run_matrix_complete": true,
+  "unique_run_keys": true,
+  "all_schedulers_present": true,
+  "privacy_never_exceeded": true,
+  "bounded_metrics_valid": true,
+  "attribute_attack_auc_orientation_valid": true,
+  "nonnegative_costs_valid": true,
+  "core_metrics_finite": true,
+  "conditional_missingness_valid": true,
+  "paired_seed_counts_valid": true,
+  "paired_seed_counts": [
+    {
+      "model_family": "tree",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 2.0,
+      "scheduler": "aox_fixed_dp",
+      "n_seeds": 10
+    },
+    {
+      "model_family": "tree",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 2.0,
+      "scheduler": "channel_fixed_dp",
+      "n_seeds": 10
+    },
+    {
+      "model_family": "tree",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 2.0,
+      "scheduler": "joint_no_compression",
+      "n_seeds": 10
+    },
+    {
+      "model_family": "tree",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 2.0,
+      "scheduler": "periodic_fixed_dp",
+      "n_seeds": 10
+    },
+    {
+      "model_family": "tree",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 2.0,
+      "scheduler": "prism_xai",
+      "n_seeds": 10
+    },
+    {
+      "model_family": "tree",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 2.0,
+      "scheduler": "repaired_mapxai",
+      "n_seeds": 10
+    },
+    {
+      "model_family": "tree",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 4.0,
+      "scheduler": "aox_fixed_dp",
+      "n_seeds": 10
+    },
+    {
+      "model_family": "tree",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 4.0,
+      "scheduler": "channel_fixed_dp",
+      "n_seeds": 10
+    },
+    {
+      "model_family": "tree",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 4.0,
+      "scheduler": "joint_no_compression",
+      "n_seeds": 10
+    },
+    {
+      "model_family": "tree",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 4.0,
+      "scheduler": "periodic_fixed_dp",
+      "n_seeds": 10
+    },
+    {
+      "model_family": "tree",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 4.0,
+      "scheduler": "prism_xai",
+      "n_seeds": 10
+    },
+    {
+      "model_family": "tree",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 4.0,
+      "scheduler": "repaired_mapxai",
+      "n_seeds": 10
+    },
+    {
+      "model_family": "tree",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "aox_fixed_dp",
+      "n_seeds": 10
+    },
+    {
+      "model_family": "tree",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "channel_fixed_dp",
+      "n_seeds": 10
+    },
+    {
+      "model_family": "tree",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "joint_no_compression",
+      "n_seeds": 10
+    },
+    {
+      "model_family": "tree",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "periodic_fixed_dp",
+      "n_seeds": 10
+    },
+    {
+      "model_family": "tree",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "prism_xai",
+      "n_seeds": 10
+    },
+    {
+      "model_family": "tree",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "repaired_mapxai",
+      "n_seeds": 10
+    },
+    {
+      "model_family": "tree",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 2.0,
+      "scheduler": "aox_fixed_dp",
+      "n_seeds": 10
+    },
+    {
+      "model_family": "tree",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 2.0,
+      "scheduler": "channel_fixed_dp",
+      "n_seeds": 10
+    },
+    {
+      "model_family": "tree",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 2.0,
+      "scheduler": "joint_no_compression",
+      "n_seeds": 10
+    },
+    {
+      "model_family": "tree",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 2.0,
+      "scheduler": "periodic_fixed_dp",
+      "n_seeds": 10
+    },
+    {
+      "model_family": "tree",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 2.0,
+      "scheduler": "prism_xai",
+      "n_seeds": 10
+    },
+    {
+      "model_family": "tree",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 2.0,
+      "scheduler": "repaired_mapxai",
+      "n_seeds": 10
+    },
+    {
+      "model_family": "tree",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 4.0,
+      "scheduler": "aox_fixed_dp",
+      "n_seeds": 10
+    },
+    {
+      "model_family": "tree",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 4.0,
+      "scheduler": "channel_fixed_dp",
+      "n_seeds": 10
+    },
+    {
+      "model_family": "tree",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 4.0,
+      "scheduler": "joint_no_compression",
+      "n_seeds": 10
+    },
+    {
+      "model_family": "tree",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 4.0,
+      "scheduler": "periodic_fixed_dp",
+      "n_seeds": 10
+    },
+    {
+      "model_family": "tree",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 4.0,
+      "scheduler": "prism_xai",
+      "n_seeds": 10
+    },
+    {
+      "model_family": "tree",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 4.0,
+      "scheduler": "repaired_mapxai",
+      "n_seeds": 10
+    },
+    {
+      "model_family": "tree",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "aox_fixed_dp",
+      "n_seeds": 10
+    },
+    {
+      "model_family": "tree",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "channel_fixed_dp",
+      "n_seeds": 10
+    },
+    {
+      "model_family": "tree",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "joint_no_compression",
+      "n_seeds": 10
+    },
+    {
+      "model_family": "tree",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "periodic_fixed_dp",
+      "n_seeds": 10
+    },
+    {
+      "model_family": "tree",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "prism_xai",
+      "n_seeds": 10
+    },
+    {
+      "model_family": "tree",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "repaired_mapxai",
+      "n_seeds": 10
+    }
+  ],
+  "summary_effective_sample_sizes_present": true,
+  "summary_run_counts_valid": true,
+  "trace_provenance_complete": true,
+  "trace_keys_unique": true,
+  "ablation_control_present": true,
+  "passed": true
+}

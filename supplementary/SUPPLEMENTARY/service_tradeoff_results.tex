@@ -1,0 +1,2639 @@
+\section{Service--Communication Trade-off Sweep}
+
+\label{sec:service-sweep}
+
+This section reports the complete public-score sensitivity sweep supplied with the reproducibility package. Nine completed threshold/cap combinations are evaluated; every combination contains 120 runs per method (60 OPSD and 60 UCI), or 720 policy runs across the six methods and 6,480 policy runs over the full sweep. The coverage, recall, fidelity, fairness, traffic, and privacy-accounting definitions are unchanged. The threshold controls the public release score and $M$ bounds private releases per endpoint. These are operating controls rather than coverage guarantees.
+
+\subsection{The sweep exposes a continuous service--traffic frontier}
+
+Increasing the release cap moves PRISM-XAI toward higher-traffic, higher-service operating points. Across the observed settings, mean PRISM-XAI traffic increases from 205.41--208.83~kbit at $M=8$ to 342.50--345.42~kbit at $M=16$ and 574.63--584.33~kbit at $M=32$. Coverage rises from 0.044--0.078 to 0.086--0.131 and then 0.140--0.206. Critical-event recall follows the same broad pattern, rising from 0.021--0.037 to 0.040--0.059 and then 0.064--0.085. Thus, the low-traffic result is not a claim of uniformly superior monitoring service; the cap selects a point on the communication--service frontier.
+
+\begin{table*}[htbp]
+
+\caption{Observed PRISM-XAI operating points in the public-score service sweep. Savings are the ratio of aggregate mean traffic relative to MAP-XAI-only; paired confidence intervals are reported in Table~\ref{tab:sweep-paired}.}
+
+\label{tab:sweep-means}
+
+\centering\scriptsize
+
+\begin{tabular}{rrrrrrrr}
+
+\toprule
+
+$\tau$ & $M$ & PRISM kbit & MAP kbit & Saving & Coverage & Recall & $\epsilon_{\max}$\\
+
+\midrule
+
+0.5 & 8 & 208.83 & 243.80 & 14.35\% & 0.0444 & 0.0209 & 18.206\\
+
+1 & 8 & 206.42 & 243.80 & 15.33\% & 0.0510 & 0.0230 & 18.206\\
+
+2 & 8 & 205.41 & 243.37 & 15.60\% & 0.0737 & 0.0367 & 18.206\\
+
+3 & 8 & 207.31 & 243.71 & 14.94\% & 0.0779 & 0.0366 & 18.206\\
+
+1 & 16 & 342.50 & 407.81 & 16.01\% & 0.0856 & 0.0401 & 17.727\\
+
+2 & 16 & 343.07 & 407.50 & 15.81\% & 0.1248 & 0.0594 & 17.745\\
+
+3 & 16 & 345.42 & 407.78 & 15.29\% & 0.1312 & 0.0594 & 17.777\\
+
+1 & 32 & 574.63 & 688.64 & 16.56\% & 0.1402 & 0.0638 & 17.196\\
+
+3 & 32 & 584.33 & 688.42 & 15.12\% & 0.2064 & 0.0852 & 17.301\\
+
+\bottomrule
+
+\end{tabular}
+
+\end{table*}
+
+\begin{table*}[htbp]
+
+\caption{Paired PRISM-XAI minus MAP-XAI-only results for the nine sweep settings ($n=120$ pairs per row). Coverage and recall are proportions; CI is the 95\% half-width.}
+
+\label{tab:sweep-paired}
+
+\centering\scriptsize
+
+\begin{tabular}{rrrrrrrr}
+
+\toprule
+
+$\tau$ & $M$ & $\Delta$ kbit & CI & $\Delta$ coverage & CI & $\Delta$ recall & CI\\
+
+\midrule
+
+0.5 & 8 & -34.97 & 3.06 & -0.00026 & 0.00046 & -0.00049 & 0.00107\\
+
+1 & 8 & -37.38 & 3.49 & -0.00082 & 0.00060 & -0.00086 & 0.00107\\
+
+2 & 8 & -37.96 & 3.63 & -0.00053 & 0.00046 & -0.00061 & 0.00143\\
+
+3 & 8 & -36.40 & 3.32 & -0.00010 & 0.00043 & -0.00083 & 0.00156\\
+
+1 & 16 & -65.31 & 7.13 & -0.00075 & 0.00093 & 0.00082 & 0.00162\\
+
+2 & 16 & -64.43 & 7.17 & -0.00024 & 0.00023 & 0.00076 & 0.00208\\
+
+3 & 16 & -62.36 & 6.82 & -0.00010 & 0.00034 & 0.00244 & 0.00227\\
+
+1 & 32 & -114.01 & 15.13 & -0.00060 & 0.00111 & 0.00153 & 0.00178\\
+
+3 & 32 & -104.09 & 13.56 & -0.00010 & 0.00026 & 0.00124 & 0.00307\\
+
+\bottomrule
+
+\end{tabular}
+
+\end{table*}
+
+The paired comparisons show traffic reductions at every tested setting, while the service changes are small in absolute terms. However, the declared descriptive-overlap rule is satisfied by MAP-XAI-only in all 12 dataset/explainer/privacy cells only for the four $M=8$ settings. It is satisfied in 8 of 12 cells at $M=16$, and in 4 of 12 cells for $(\tau,M)=(1,32)$ and 5 of 12 for $(3,32)$. The larger-cap points therefore describe the broader service frontier and are not additional matched-service confirmations of the headline claim.
+
+\begin{figure*}[htbp]
+
+\centering
+
+\includegraphics[width=.32\textwidth]{../../SERVICE_TRADEOFF_RESULTS/paper_evidence/traffic_vs_recall_prism.pdf}\hfill
+
+\includegraphics[width=.32\textwidth]{../../SERVICE_TRADEOFF_RESULTS/paper_evidence/traffic_vs_coverage_prism_xai.pdf}\hfill
+
+\includegraphics[width=.32\textwidth]{../../SERVICE_TRADEOFF_RESULTS/paper_evidence/traffic_vs_coverage_repaired_mapxai.pdf}
+
+\caption{Service--communication frontier from all completed sweep settings. Left: PRISM-XAI traffic versus critical-event recall. Center: PRISM-XAI traffic versus intervention coverage. Right: MAP-XAI-only traffic versus coverage at the corresponding cap/threshold configurations. Moving to larger release caps increases both communication and the measured service proxies; the figures therefore support operating-point selection, not a traffic-only ranking.}
+
+\label{fig:sweep-frontier}
+
+\end{figure*}
+
+\FloatBarrier
+
+\subsection{Complete generated sweep evidence}
+
+The following archive reproduces every generated vector figure and every generated LaTeX table for the nine settings at aggregate, OPSD, and UCI scope. Raster PNG counterparts, raw CSV files, JSON manifests, source hashes, and execution logs remain in the accompanying package. Each five-figure block is interpreted jointly: the trace shows temporal release behavior; fairness--reliability checks whether service is concentrated; privacy--fidelity relates recorded expenditure to attribution agreement; the Pareto plane displays communication cost against the fidelity proxy; and the ablation panel attributes changes to individual design elements. Tables preserve the complete method means, condition-level breakdowns, and paired contrasts.
+
+\subsubsection{Public-score threshold $\tau=0.5$, release cap $M=8$}
+
+At this operating point, PRISM-XAI transmits 208.83~kbit versus 243.80~kbit for MAP-XAI-only (aggregate-mean ratio saving 14.35\%). The paired difference is -34.97$\pm$3.06~kbit. PRISM coverage is 0.0444, critical-event recall is 0.0209, and maximum recorded expenditure is 18.206. Relative to MAP-XAI-only, the paired coverage change is -0.00026$\pm$0.00046 and recall change is -0.00049$\pm$0.00107. The descriptive overlap rule holds in 12 of 12 cells. Accordingly, this point is read as a matched-service scheduler comparison.
+
+\paragraph{Combined datasets.} The three generated tables below report the full method means, all condition-level values, and paired differences. The five figures that follow provide the corresponding temporal, fairness, privacy, Pareto, and ablation views. Aggregate panels support the setting-level summary above; dataset panels reveal whether that summary is shared by OPSD and UCI rather than being driven by their different endpoint counts.
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=0.5$, release cap $M=8$, Combined datasets: complete generated method table.}
+
+\label{tab:thr_0.5_cap_8:combined:main}
+
+\resizebox{\linewidth}{!}{\input{../../SERVICE_TRADEOFF_RESULTS/runs/thr_0.5_cap_8/main_results_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=0.5$, release cap $M=8$, Combined datasets: complete condition-level generated table.}
+
+\label{tab:thr_0.5_cap_8:combined:conditions}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_0.5_cap_8_combined_appendix_condition_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=0.5$, release cap $M=8$, Combined datasets: complete generated paired comparisons.}
+
+\label{tab:thr_0.5_cap_8:combined:paired}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_0.5_cap_8_combined_paired_prism_minus_baselines_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_0.5_cap_8/regime_trace.pdf}
+
+\caption{Public-score threshold $\tau=0.5$, release cap $M=8$, Combined datasets: representative regime trace. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_0.5_cap_8/fairness_reliability.pdf}
+
+\caption{Public-score threshold $\tau=0.5$, release cap $M=8$, Combined datasets: fairness--reliability plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_0.5_cap_8/privacy_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=0.5$, release cap $M=8$, Combined datasets: privacy--fidelity plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_0.5_cap_8/pareto_bits_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=0.5$, release cap $M=8$, Combined datasets: traffic--fidelity Pareto plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_0.5_cap_8/ablation_results.pdf}
+
+\caption{Public-score threshold $\tau=0.5$, release cap $M=8$, Combined datasets: component ablation. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\paragraph{OPSD.} The three generated tables below report the full method means, all condition-level values, and paired differences. The five figures that follow provide the corresponding temporal, fairness, privacy, Pareto, and ablation views. Aggregate panels support the setting-level summary above; dataset panels reveal whether that summary is shared by OPSD and UCI rather than being driven by their different endpoint counts.
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=0.5$, release cap $M=8$, OPSD: complete generated method table.}
+
+\label{tab:thr_0.5_cap_8:opsd:main}
+
+\resizebox{\linewidth}{!}{\input{../../SERVICE_TRADEOFF_RESULTS/runs/thr_0.5_cap_8/opsd/main_results_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=0.5$, release cap $M=8$, OPSD: complete condition-level generated table.}
+
+\label{tab:thr_0.5_cap_8:opsd:conditions}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_0.5_cap_8_opsd_appendix_condition_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=0.5$, release cap $M=8$, OPSD: complete generated paired comparisons.}
+
+\label{tab:thr_0.5_cap_8:opsd:paired}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_0.5_cap_8_opsd_paired_prism_minus_baselines_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_0.5_cap_8/opsd/regime_trace.pdf}
+
+\caption{Public-score threshold $\tau=0.5$, release cap $M=8$, OPSD: representative regime trace. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_0.5_cap_8/opsd/fairness_reliability.pdf}
+
+\caption{Public-score threshold $\tau=0.5$, release cap $M=8$, OPSD: fairness--reliability plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_0.5_cap_8/opsd/privacy_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=0.5$, release cap $M=8$, OPSD: privacy--fidelity plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_0.5_cap_8/opsd/pareto_bits_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=0.5$, release cap $M=8$, OPSD: traffic--fidelity Pareto plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_0.5_cap_8/opsd/ablation_results.pdf}
+
+\caption{Public-score threshold $\tau=0.5$, release cap $M=8$, OPSD: component ablation. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\paragraph{UCI.} The three generated tables below report the full method means, all condition-level values, and paired differences. The five figures that follow provide the corresponding temporal, fairness, privacy, Pareto, and ablation views. Aggregate panels support the setting-level summary above; dataset panels reveal whether that summary is shared by OPSD and UCI rather than being driven by their different endpoint counts.
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=0.5$, release cap $M=8$, UCI: complete generated method table.}
+
+\label{tab:thr_0.5_cap_8:uci:main}
+
+\resizebox{\linewidth}{!}{\input{../../SERVICE_TRADEOFF_RESULTS/runs/thr_0.5_cap_8/uci/main_results_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=0.5$, release cap $M=8$, UCI: complete condition-level generated table.}
+
+\label{tab:thr_0.5_cap_8:uci:conditions}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_0.5_cap_8_uci_appendix_condition_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=0.5$, release cap $M=8$, UCI: complete generated paired comparisons.}
+
+\label{tab:thr_0.5_cap_8:uci:paired}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_0.5_cap_8_uci_paired_prism_minus_baselines_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_0.5_cap_8/uci/regime_trace.pdf}
+
+\caption{Public-score threshold $\tau=0.5$, release cap $M=8$, UCI: representative regime trace. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_0.5_cap_8/uci/fairness_reliability.pdf}
+
+\caption{Public-score threshold $\tau=0.5$, release cap $M=8$, UCI: fairness--reliability plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_0.5_cap_8/uci/privacy_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=0.5$, release cap $M=8$, UCI: privacy--fidelity plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_0.5_cap_8/uci/pareto_bits_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=0.5$, release cap $M=8$, UCI: traffic--fidelity Pareto plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_0.5_cap_8/uci/ablation_results.pdf}
+
+\caption{Public-score threshold $\tau=0.5$, release cap $M=8$, UCI: component ablation. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\subsubsection{Public-score threshold $\tau=1$, release cap $M=8$}
+
+At this operating point, PRISM-XAI transmits 206.42~kbit versus 243.80~kbit for MAP-XAI-only (aggregate-mean ratio saving 15.33\%). The paired difference is -37.38$\pm$3.49~kbit. PRISM coverage is 0.0510, critical-event recall is 0.0230, and maximum recorded expenditure is 18.206. Relative to MAP-XAI-only, the paired coverage change is -0.00082$\pm$0.00060 and recall change is -0.00086$\pm$0.00107. The descriptive overlap rule holds in 12 of 12 cells. Accordingly, this point is read as a matched-service scheduler comparison.
+
+\paragraph{Combined datasets.} The three generated tables below report the full method means, all condition-level values, and paired differences. The five figures that follow provide the corresponding temporal, fairness, privacy, Pareto, and ablation views. Aggregate panels support the setting-level summary above; dataset panels reveal whether that summary is shared by OPSD and UCI rather than being driven by their different endpoint counts.
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=1$, release cap $M=8$, Combined datasets: complete generated method table.}
+
+\label{tab:thr_1_cap_8:combined:main}
+
+\resizebox{\linewidth}{!}{\input{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_8/main_results_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=1$, release cap $M=8$, Combined datasets: complete condition-level generated table.}
+
+\label{tab:thr_1_cap_8:combined:conditions}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_1_cap_8_combined_appendix_condition_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=1$, release cap $M=8$, Combined datasets: complete generated paired comparisons.}
+
+\label{tab:thr_1_cap_8:combined:paired}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_1_cap_8_combined_paired_prism_minus_baselines_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_8/regime_trace.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=8$, Combined datasets: representative regime trace. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_8/fairness_reliability.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=8$, Combined datasets: fairness--reliability plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_8/privacy_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=8$, Combined datasets: privacy--fidelity plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_8/pareto_bits_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=8$, Combined datasets: traffic--fidelity Pareto plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_8/ablation_results.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=8$, Combined datasets: component ablation. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\paragraph{OPSD.} The three generated tables below report the full method means, all condition-level values, and paired differences. The five figures that follow provide the corresponding temporal, fairness, privacy, Pareto, and ablation views. Aggregate panels support the setting-level summary above; dataset panels reveal whether that summary is shared by OPSD and UCI rather than being driven by their different endpoint counts.
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=1$, release cap $M=8$, OPSD: complete generated method table.}
+
+\label{tab:thr_1_cap_8:opsd:main}
+
+\resizebox{\linewidth}{!}{\input{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_8/opsd/main_results_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=1$, release cap $M=8$, OPSD: complete condition-level generated table.}
+
+\label{tab:thr_1_cap_8:opsd:conditions}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_1_cap_8_opsd_appendix_condition_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=1$, release cap $M=8$, OPSD: complete generated paired comparisons.}
+
+\label{tab:thr_1_cap_8:opsd:paired}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_1_cap_8_opsd_paired_prism_minus_baselines_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_8/opsd/regime_trace.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=8$, OPSD: representative regime trace. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_8/opsd/fairness_reliability.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=8$, OPSD: fairness--reliability plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_8/opsd/privacy_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=8$, OPSD: privacy--fidelity plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_8/opsd/pareto_bits_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=8$, OPSD: traffic--fidelity Pareto plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_8/opsd/ablation_results.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=8$, OPSD: component ablation. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\paragraph{UCI.} The three generated tables below report the full method means, all condition-level values, and paired differences. The five figures that follow provide the corresponding temporal, fairness, privacy, Pareto, and ablation views. Aggregate panels support the setting-level summary above; dataset panels reveal whether that summary is shared by OPSD and UCI rather than being driven by their different endpoint counts.
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=1$, release cap $M=8$, UCI: complete generated method table.}
+
+\label{tab:thr_1_cap_8:uci:main}
+
+\resizebox{\linewidth}{!}{\input{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_8/uci/main_results_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=1$, release cap $M=8$, UCI: complete condition-level generated table.}
+
+\label{tab:thr_1_cap_8:uci:conditions}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_1_cap_8_uci_appendix_condition_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=1$, release cap $M=8$, UCI: complete generated paired comparisons.}
+
+\label{tab:thr_1_cap_8:uci:paired}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_1_cap_8_uci_paired_prism_minus_baselines_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_8/uci/regime_trace.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=8$, UCI: representative regime trace. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_8/uci/fairness_reliability.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=8$, UCI: fairness--reliability plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_8/uci/privacy_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=8$, UCI: privacy--fidelity plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_8/uci/pareto_bits_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=8$, UCI: traffic--fidelity Pareto plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_8/uci/ablation_results.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=8$, UCI: component ablation. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\subsubsection{Public-score threshold $\tau=2$, release cap $M=8$}
+
+At this operating point, PRISM-XAI transmits 205.41~kbit versus 243.37~kbit for MAP-XAI-only (aggregate-mean ratio saving 15.60\%). The paired difference is -37.96$\pm$3.63~kbit. PRISM coverage is 0.0737, critical-event recall is 0.0367, and maximum recorded expenditure is 18.206. Relative to MAP-XAI-only, the paired coverage change is -0.00053$\pm$0.00046 and recall change is -0.00061$\pm$0.00143. The descriptive overlap rule holds in 12 of 12 cells. Accordingly, this point is read as a matched-service scheduler comparison.
+
+\paragraph{Combined datasets.} The three generated tables below report the full method means, all condition-level values, and paired differences. The five figures that follow provide the corresponding temporal, fairness, privacy, Pareto, and ablation views. Aggregate panels support the setting-level summary above; dataset panels reveal whether that summary is shared by OPSD and UCI rather than being driven by their different endpoint counts.
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=2$, release cap $M=8$, Combined datasets: complete generated method table.}
+
+\label{tab:thr_2_cap_8:combined:main}
+
+\resizebox{\linewidth}{!}{\input{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_8/main_results_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=2$, release cap $M=8$, Combined datasets: complete condition-level generated table.}
+
+\label{tab:thr_2_cap_8:combined:conditions}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_2_cap_8_combined_appendix_condition_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=2$, release cap $M=8$, Combined datasets: complete generated paired comparisons.}
+
+\label{tab:thr_2_cap_8:combined:paired}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_2_cap_8_combined_paired_prism_minus_baselines_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_8/regime_trace.pdf}
+
+\caption{Public-score threshold $\tau=2$, release cap $M=8$, Combined datasets: representative regime trace. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_8/fairness_reliability.pdf}
+
+\caption{Public-score threshold $\tau=2$, release cap $M=8$, Combined datasets: fairness--reliability plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_8/privacy_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=2$, release cap $M=8$, Combined datasets: privacy--fidelity plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_8/pareto_bits_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=2$, release cap $M=8$, Combined datasets: traffic--fidelity Pareto plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_8/ablation_results.pdf}
+
+\caption{Public-score threshold $\tau=2$, release cap $M=8$, Combined datasets: component ablation. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\paragraph{OPSD.} The three generated tables below report the full method means, all condition-level values, and paired differences. The five figures that follow provide the corresponding temporal, fairness, privacy, Pareto, and ablation views. Aggregate panels support the setting-level summary above; dataset panels reveal whether that summary is shared by OPSD and UCI rather than being driven by their different endpoint counts.
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=2$, release cap $M=8$, OPSD: complete generated method table.}
+
+\label{tab:thr_2_cap_8:opsd:main}
+
+\resizebox{\linewidth}{!}{\input{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_8/opsd/main_results_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=2$, release cap $M=8$, OPSD: complete condition-level generated table.}
+
+\label{tab:thr_2_cap_8:opsd:conditions}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_2_cap_8_opsd_appendix_condition_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=2$, release cap $M=8$, OPSD: complete generated paired comparisons.}
+
+\label{tab:thr_2_cap_8:opsd:paired}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_2_cap_8_opsd_paired_prism_minus_baselines_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_8/opsd/regime_trace.pdf}
+
+\caption{Public-score threshold $\tau=2$, release cap $M=8$, OPSD: representative regime trace. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_8/opsd/fairness_reliability.pdf}
+
+\caption{Public-score threshold $\tau=2$, release cap $M=8$, OPSD: fairness--reliability plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_8/opsd/privacy_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=2$, release cap $M=8$, OPSD: privacy--fidelity plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_8/opsd/pareto_bits_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=2$, release cap $M=8$, OPSD: traffic--fidelity Pareto plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_8/opsd/ablation_results.pdf}
+
+\caption{Public-score threshold $\tau=2$, release cap $M=8$, OPSD: component ablation. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\paragraph{UCI.} The three generated tables below report the full method means, all condition-level values, and paired differences. The five figures that follow provide the corresponding temporal, fairness, privacy, Pareto, and ablation views. Aggregate panels support the setting-level summary above; dataset panels reveal whether that summary is shared by OPSD and UCI rather than being driven by their different endpoint counts.
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=2$, release cap $M=8$, UCI: complete generated method table.}
+
+\label{tab:thr_2_cap_8:uci:main}
+
+\resizebox{\linewidth}{!}{\input{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_8/uci/main_results_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=2$, release cap $M=8$, UCI: complete condition-level generated table.}
+
+\label{tab:thr_2_cap_8:uci:conditions}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_2_cap_8_uci_appendix_condition_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=2$, release cap $M=8$, UCI: complete generated paired comparisons.}
+
+\label{tab:thr_2_cap_8:uci:paired}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_2_cap_8_uci_paired_prism_minus_baselines_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_8/uci/regime_trace.pdf}
+
+\caption{Public-score threshold $\tau=2$, release cap $M=8$, UCI: representative regime trace. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_8/uci/fairness_reliability.pdf}
+
+\caption{Public-score threshold $\tau=2$, release cap $M=8$, UCI: fairness--reliability plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_8/uci/privacy_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=2$, release cap $M=8$, UCI: privacy--fidelity plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_8/uci/pareto_bits_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=2$, release cap $M=8$, UCI: traffic--fidelity Pareto plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_8/uci/ablation_results.pdf}
+
+\caption{Public-score threshold $\tau=2$, release cap $M=8$, UCI: component ablation. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\subsubsection{Public-score threshold $\tau=3$, release cap $M=8$}
+
+At this operating point, PRISM-XAI transmits 207.31~kbit versus 243.71~kbit for MAP-XAI-only (aggregate-mean ratio saving 14.94\%). The paired difference is -36.40$\pm$3.32~kbit. PRISM coverage is 0.0779, critical-event recall is 0.0366, and maximum recorded expenditure is 18.206. Relative to MAP-XAI-only, the paired coverage change is -0.00010$\pm$0.00043 and recall change is -0.00083$\pm$0.00156. The descriptive overlap rule holds in 12 of 12 cells. Accordingly, this point is read as a matched-service scheduler comparison.
+
+\paragraph{Combined datasets.} The three generated tables below report the full method means, all condition-level values, and paired differences. The five figures that follow provide the corresponding temporal, fairness, privacy, Pareto, and ablation views. Aggregate panels support the setting-level summary above; dataset panels reveal whether that summary is shared by OPSD and UCI rather than being driven by their different endpoint counts.
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=3$, release cap $M=8$, Combined datasets: complete generated method table.}
+
+\label{tab:thr_3_cap_8:combined:main}
+
+\resizebox{\linewidth}{!}{\input{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_8/main_results_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=3$, release cap $M=8$, Combined datasets: complete condition-level generated table.}
+
+\label{tab:thr_3_cap_8:combined:conditions}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_3_cap_8_combined_appendix_condition_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=3$, release cap $M=8$, Combined datasets: complete generated paired comparisons.}
+
+\label{tab:thr_3_cap_8:combined:paired}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_3_cap_8_combined_paired_prism_minus_baselines_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_8/regime_trace.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=8$, Combined datasets: representative regime trace. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_8/fairness_reliability.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=8$, Combined datasets: fairness--reliability plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_8/privacy_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=8$, Combined datasets: privacy--fidelity plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_8/pareto_bits_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=8$, Combined datasets: traffic--fidelity Pareto plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_8/ablation_results.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=8$, Combined datasets: component ablation. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\paragraph{OPSD.} The three generated tables below report the full method means, all condition-level values, and paired differences. The five figures that follow provide the corresponding temporal, fairness, privacy, Pareto, and ablation views. Aggregate panels support the setting-level summary above; dataset panels reveal whether that summary is shared by OPSD and UCI rather than being driven by their different endpoint counts.
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=3$, release cap $M=8$, OPSD: complete generated method table.}
+
+\label{tab:thr_3_cap_8:opsd:main}
+
+\resizebox{\linewidth}{!}{\input{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_8/opsd/main_results_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=3$, release cap $M=8$, OPSD: complete condition-level generated table.}
+
+\label{tab:thr_3_cap_8:opsd:conditions}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_3_cap_8_opsd_appendix_condition_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=3$, release cap $M=8$, OPSD: complete generated paired comparisons.}
+
+\label{tab:thr_3_cap_8:opsd:paired}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_3_cap_8_opsd_paired_prism_minus_baselines_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_8/opsd/regime_trace.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=8$, OPSD: representative regime trace. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_8/opsd/fairness_reliability.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=8$, OPSD: fairness--reliability plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_8/opsd/privacy_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=8$, OPSD: privacy--fidelity plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_8/opsd/pareto_bits_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=8$, OPSD: traffic--fidelity Pareto plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_8/opsd/ablation_results.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=8$, OPSD: component ablation. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\paragraph{UCI.} The three generated tables below report the full method means, all condition-level values, and paired differences. The five figures that follow provide the corresponding temporal, fairness, privacy, Pareto, and ablation views. Aggregate panels support the setting-level summary above; dataset panels reveal whether that summary is shared by OPSD and UCI rather than being driven by their different endpoint counts.
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=3$, release cap $M=8$, UCI: complete generated method table.}
+
+\label{tab:thr_3_cap_8:uci:main}
+
+\resizebox{\linewidth}{!}{\input{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_8/uci/main_results_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=3$, release cap $M=8$, UCI: complete condition-level generated table.}
+
+\label{tab:thr_3_cap_8:uci:conditions}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_3_cap_8_uci_appendix_condition_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=3$, release cap $M=8$, UCI: complete generated paired comparisons.}
+
+\label{tab:thr_3_cap_8:uci:paired}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_3_cap_8_uci_paired_prism_minus_baselines_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_8/uci/regime_trace.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=8$, UCI: representative regime trace. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_8/uci/fairness_reliability.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=8$, UCI: fairness--reliability plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_8/uci/privacy_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=8$, UCI: privacy--fidelity plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_8/uci/pareto_bits_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=8$, UCI: traffic--fidelity Pareto plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_8/uci/ablation_results.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=8$, UCI: component ablation. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\subsubsection{Public-score threshold $\tau=1$, release cap $M=16$}
+
+At this operating point, PRISM-XAI transmits 342.50~kbit versus 407.81~kbit for MAP-XAI-only (aggregate-mean ratio saving 16.01\%). The paired difference is -65.31$\pm$7.13~kbit. PRISM coverage is 0.0856, critical-event recall is 0.0401, and maximum recorded expenditure is 17.727. Relative to MAP-XAI-only, the paired coverage change is -0.00075$\pm$0.00093 and recall change is +0.00082$\pm$0.00162. The descriptive overlap rule holds in 8 of 12 cells. Accordingly, this point is read as a sensitivity point on the service frontier, not a complete matched-service confirmation.
+
+\paragraph{Combined datasets.} The three generated tables below report the full method means, all condition-level values, and paired differences. The five figures that follow provide the corresponding temporal, fairness, privacy, Pareto, and ablation views. Aggregate panels support the setting-level summary above; dataset panels reveal whether that summary is shared by OPSD and UCI rather than being driven by their different endpoint counts.
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=1$, release cap $M=16$, Combined datasets: complete generated method table.}
+
+\label{tab:thr_1_cap_16:combined:main}
+
+\resizebox{\linewidth}{!}{\input{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_16/main_results_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=1$, release cap $M=16$, Combined datasets: complete condition-level generated table.}
+
+\label{tab:thr_1_cap_16:combined:conditions}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_1_cap_16_combined_appendix_condition_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=1$, release cap $M=16$, Combined datasets: complete generated paired comparisons.}
+
+\label{tab:thr_1_cap_16:combined:paired}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_1_cap_16_combined_paired_prism_minus_baselines_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_16/regime_trace.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=16$, Combined datasets: representative regime trace. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_16/fairness_reliability.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=16$, Combined datasets: fairness--reliability plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_16/privacy_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=16$, Combined datasets: privacy--fidelity plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_16/pareto_bits_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=16$, Combined datasets: traffic--fidelity Pareto plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_16/ablation_results.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=16$, Combined datasets: component ablation. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\paragraph{OPSD.} The three generated tables below report the full method means, all condition-level values, and paired differences. The five figures that follow provide the corresponding temporal, fairness, privacy, Pareto, and ablation views. Aggregate panels support the setting-level summary above; dataset panels reveal whether that summary is shared by OPSD and UCI rather than being driven by their different endpoint counts.
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=1$, release cap $M=16$, OPSD: complete generated method table.}
+
+\label{tab:thr_1_cap_16:opsd:main}
+
+\resizebox{\linewidth}{!}{\input{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_16/opsd/main_results_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=1$, release cap $M=16$, OPSD: complete condition-level generated table.}
+
+\label{tab:thr_1_cap_16:opsd:conditions}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_1_cap_16_opsd_appendix_condition_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=1$, release cap $M=16$, OPSD: complete generated paired comparisons.}
+
+\label{tab:thr_1_cap_16:opsd:paired}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_1_cap_16_opsd_paired_prism_minus_baselines_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_16/opsd/regime_trace.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=16$, OPSD: representative regime trace. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_16/opsd/fairness_reliability.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=16$, OPSD: fairness--reliability plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_16/opsd/privacy_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=16$, OPSD: privacy--fidelity plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_16/opsd/pareto_bits_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=16$, OPSD: traffic--fidelity Pareto plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_16/opsd/ablation_results.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=16$, OPSD: component ablation. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\paragraph{UCI.} The three generated tables below report the full method means, all condition-level values, and paired differences. The five figures that follow provide the corresponding temporal, fairness, privacy, Pareto, and ablation views. Aggregate panels support the setting-level summary above; dataset panels reveal whether that summary is shared by OPSD and UCI rather than being driven by their different endpoint counts.
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=1$, release cap $M=16$, UCI: complete generated method table.}
+
+\label{tab:thr_1_cap_16:uci:main}
+
+\resizebox{\linewidth}{!}{\input{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_16/uci/main_results_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=1$, release cap $M=16$, UCI: complete condition-level generated table.}
+
+\label{tab:thr_1_cap_16:uci:conditions}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_1_cap_16_uci_appendix_condition_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=1$, release cap $M=16$, UCI: complete generated paired comparisons.}
+
+\label{tab:thr_1_cap_16:uci:paired}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_1_cap_16_uci_paired_prism_minus_baselines_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_16/uci/regime_trace.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=16$, UCI: representative regime trace. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_16/uci/fairness_reliability.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=16$, UCI: fairness--reliability plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_16/uci/privacy_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=16$, UCI: privacy--fidelity plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_16/uci/pareto_bits_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=16$, UCI: traffic--fidelity Pareto plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_16/uci/ablation_results.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=16$, UCI: component ablation. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\subsubsection{Public-score threshold $\tau=2$, release cap $M=16$}
+
+At this operating point, PRISM-XAI transmits 343.07~kbit versus 407.50~kbit for MAP-XAI-only (aggregate-mean ratio saving 15.81\%). The paired difference is -64.43$\pm$7.17~kbit. PRISM coverage is 0.1248, critical-event recall is 0.0594, and maximum recorded expenditure is 17.745. Relative to MAP-XAI-only, the paired coverage change is -0.00024$\pm$0.00023 and recall change is +0.00076$\pm$0.00208. The descriptive overlap rule holds in 8 of 12 cells. Accordingly, this point is read as a sensitivity point on the service frontier, not a complete matched-service confirmation.
+
+\paragraph{Combined datasets.} The three generated tables below report the full method means, all condition-level values, and paired differences. The five figures that follow provide the corresponding temporal, fairness, privacy, Pareto, and ablation views. Aggregate panels support the setting-level summary above; dataset panels reveal whether that summary is shared by OPSD and UCI rather than being driven by their different endpoint counts.
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=2$, release cap $M=16$, Combined datasets: complete generated method table.}
+
+\label{tab:thr_2_cap_16:combined:main}
+
+\resizebox{\linewidth}{!}{\input{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_16/main_results_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=2$, release cap $M=16$, Combined datasets: complete condition-level generated table.}
+
+\label{tab:thr_2_cap_16:combined:conditions}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_2_cap_16_combined_appendix_condition_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=2$, release cap $M=16$, Combined datasets: complete generated paired comparisons.}
+
+\label{tab:thr_2_cap_16:combined:paired}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_2_cap_16_combined_paired_prism_minus_baselines_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_16/regime_trace.pdf}
+
+\caption{Public-score threshold $\tau=2$, release cap $M=16$, Combined datasets: representative regime trace. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_16/fairness_reliability.pdf}
+
+\caption{Public-score threshold $\tau=2$, release cap $M=16$, Combined datasets: fairness--reliability plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_16/privacy_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=2$, release cap $M=16$, Combined datasets: privacy--fidelity plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_16/pareto_bits_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=2$, release cap $M=16$, Combined datasets: traffic--fidelity Pareto plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_16/ablation_results.pdf}
+
+\caption{Public-score threshold $\tau=2$, release cap $M=16$, Combined datasets: component ablation. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\paragraph{OPSD.} The three generated tables below report the full method means, all condition-level values, and paired differences. The five figures that follow provide the corresponding temporal, fairness, privacy, Pareto, and ablation views. Aggregate panels support the setting-level summary above; dataset panels reveal whether that summary is shared by OPSD and UCI rather than being driven by their different endpoint counts.
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=2$, release cap $M=16$, OPSD: complete generated method table.}
+
+\label{tab:thr_2_cap_16:opsd:main}
+
+\resizebox{\linewidth}{!}{\input{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_16/opsd/main_results_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=2$, release cap $M=16$, OPSD: complete condition-level generated table.}
+
+\label{tab:thr_2_cap_16:opsd:conditions}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_2_cap_16_opsd_appendix_condition_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=2$, release cap $M=16$, OPSD: complete generated paired comparisons.}
+
+\label{tab:thr_2_cap_16:opsd:paired}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_2_cap_16_opsd_paired_prism_minus_baselines_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_16/opsd/regime_trace.pdf}
+
+\caption{Public-score threshold $\tau=2$, release cap $M=16$, OPSD: representative regime trace. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_16/opsd/fairness_reliability.pdf}
+
+\caption{Public-score threshold $\tau=2$, release cap $M=16$, OPSD: fairness--reliability plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_16/opsd/privacy_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=2$, release cap $M=16$, OPSD: privacy--fidelity plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_16/opsd/pareto_bits_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=2$, release cap $M=16$, OPSD: traffic--fidelity Pareto plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_16/opsd/ablation_results.pdf}
+
+\caption{Public-score threshold $\tau=2$, release cap $M=16$, OPSD: component ablation. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\paragraph{UCI.} The three generated tables below report the full method means, all condition-level values, and paired differences. The five figures that follow provide the corresponding temporal, fairness, privacy, Pareto, and ablation views. Aggregate panels support the setting-level summary above; dataset panels reveal whether that summary is shared by OPSD and UCI rather than being driven by their different endpoint counts.
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=2$, release cap $M=16$, UCI: complete generated method table.}
+
+\label{tab:thr_2_cap_16:uci:main}
+
+\resizebox{\linewidth}{!}{\input{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_16/uci/main_results_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=2$, release cap $M=16$, UCI: complete condition-level generated table.}
+
+\label{tab:thr_2_cap_16:uci:conditions}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_2_cap_16_uci_appendix_condition_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=2$, release cap $M=16$, UCI: complete generated paired comparisons.}
+
+\label{tab:thr_2_cap_16:uci:paired}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_2_cap_16_uci_paired_prism_minus_baselines_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_16/uci/regime_trace.pdf}
+
+\caption{Public-score threshold $\tau=2$, release cap $M=16$, UCI: representative regime trace. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_16/uci/fairness_reliability.pdf}
+
+\caption{Public-score threshold $\tau=2$, release cap $M=16$, UCI: fairness--reliability plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_16/uci/privacy_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=2$, release cap $M=16$, UCI: privacy--fidelity plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_16/uci/pareto_bits_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=2$, release cap $M=16$, UCI: traffic--fidelity Pareto plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_2_cap_16/uci/ablation_results.pdf}
+
+\caption{Public-score threshold $\tau=2$, release cap $M=16$, UCI: component ablation. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\subsubsection{Public-score threshold $\tau=3$, release cap $M=16$}
+
+At this operating point, PRISM-XAI transmits 345.42~kbit versus 407.78~kbit for MAP-XAI-only (aggregate-mean ratio saving 15.29\%). The paired difference is -62.36$\pm$6.82~kbit. PRISM coverage is 0.1312, critical-event recall is 0.0594, and maximum recorded expenditure is 17.777. Relative to MAP-XAI-only, the paired coverage change is -0.00010$\pm$0.00034 and recall change is +0.00244$\pm$0.00227. The descriptive overlap rule holds in 8 of 12 cells. Accordingly, this point is read as a sensitivity point on the service frontier, not a complete matched-service confirmation.
+
+\paragraph{Combined datasets.} The three generated tables below report the full method means, all condition-level values, and paired differences. The five figures that follow provide the corresponding temporal, fairness, privacy, Pareto, and ablation views. Aggregate panels support the setting-level summary above; dataset panels reveal whether that summary is shared by OPSD and UCI rather than being driven by their different endpoint counts.
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=3$, release cap $M=16$, Combined datasets: complete generated method table.}
+
+\label{tab:thr_3_cap_16:combined:main}
+
+\resizebox{\linewidth}{!}{\input{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_16/main_results_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=3$, release cap $M=16$, Combined datasets: complete condition-level generated table.}
+
+\label{tab:thr_3_cap_16:combined:conditions}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_3_cap_16_combined_appendix_condition_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=3$, release cap $M=16$, Combined datasets: complete generated paired comparisons.}
+
+\label{tab:thr_3_cap_16:combined:paired}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_3_cap_16_combined_paired_prism_minus_baselines_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_16/regime_trace.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=16$, Combined datasets: representative regime trace. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_16/fairness_reliability.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=16$, Combined datasets: fairness--reliability plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_16/privacy_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=16$, Combined datasets: privacy--fidelity plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_16/pareto_bits_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=16$, Combined datasets: traffic--fidelity Pareto plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_16/ablation_results.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=16$, Combined datasets: component ablation. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\paragraph{OPSD.} The three generated tables below report the full method means, all condition-level values, and paired differences. The five figures that follow provide the corresponding temporal, fairness, privacy, Pareto, and ablation views. Aggregate panels support the setting-level summary above; dataset panels reveal whether that summary is shared by OPSD and UCI rather than being driven by their different endpoint counts.
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=3$, release cap $M=16$, OPSD: complete generated method table.}
+
+\label{tab:thr_3_cap_16:opsd:main}
+
+\resizebox{\linewidth}{!}{\input{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_16/opsd/main_results_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=3$, release cap $M=16$, OPSD: complete condition-level generated table.}
+
+\label{tab:thr_3_cap_16:opsd:conditions}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_3_cap_16_opsd_appendix_condition_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=3$, release cap $M=16$, OPSD: complete generated paired comparisons.}
+
+\label{tab:thr_3_cap_16:opsd:paired}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_3_cap_16_opsd_paired_prism_minus_baselines_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_16/opsd/regime_trace.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=16$, OPSD: representative regime trace. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_16/opsd/fairness_reliability.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=16$, OPSD: fairness--reliability plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_16/opsd/privacy_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=16$, OPSD: privacy--fidelity plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_16/opsd/pareto_bits_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=16$, OPSD: traffic--fidelity Pareto plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_16/opsd/ablation_results.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=16$, OPSD: component ablation. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\paragraph{UCI.} The three generated tables below report the full method means, all condition-level values, and paired differences. The five figures that follow provide the corresponding temporal, fairness, privacy, Pareto, and ablation views. Aggregate panels support the setting-level summary above; dataset panels reveal whether that summary is shared by OPSD and UCI rather than being driven by their different endpoint counts.
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=3$, release cap $M=16$, UCI: complete generated method table.}
+
+\label{tab:thr_3_cap_16:uci:main}
+
+\resizebox{\linewidth}{!}{\input{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_16/uci/main_results_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=3$, release cap $M=16$, UCI: complete condition-level generated table.}
+
+\label{tab:thr_3_cap_16:uci:conditions}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_3_cap_16_uci_appendix_condition_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=3$, release cap $M=16$, UCI: complete generated paired comparisons.}
+
+\label{tab:thr_3_cap_16:uci:paired}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_3_cap_16_uci_paired_prism_minus_baselines_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_16/uci/regime_trace.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=16$, UCI: representative regime trace. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_16/uci/fairness_reliability.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=16$, UCI: fairness--reliability plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_16/uci/privacy_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=16$, UCI: privacy--fidelity plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_16/uci/pareto_bits_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=16$, UCI: traffic--fidelity Pareto plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_16/uci/ablation_results.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=16$, UCI: component ablation. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\subsubsection{Public-score threshold $\tau=1$, release cap $M=32$}
+
+At this operating point, PRISM-XAI transmits 574.63~kbit versus 688.64~kbit for MAP-XAI-only (aggregate-mean ratio saving 16.56\%). The paired difference is -114.01$\pm$15.13~kbit. PRISM coverage is 0.1402, critical-event recall is 0.0638, and maximum recorded expenditure is 17.196. Relative to MAP-XAI-only, the paired coverage change is -0.00060$\pm$0.00111 and recall change is +0.00153$\pm$0.00178. The descriptive overlap rule holds in 4 of 12 cells. Accordingly, this point is read as a sensitivity point on the service frontier, not a complete matched-service confirmation.
+
+\paragraph{Combined datasets.} The three generated tables below report the full method means, all condition-level values, and paired differences. The five figures that follow provide the corresponding temporal, fairness, privacy, Pareto, and ablation views. Aggregate panels support the setting-level summary above; dataset panels reveal whether that summary is shared by OPSD and UCI rather than being driven by their different endpoint counts.
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=1$, release cap $M=32$, Combined datasets: complete generated method table.}
+
+\label{tab:thr_1_cap_32:combined:main}
+
+\resizebox{\linewidth}{!}{\input{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_32/main_results_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=1$, release cap $M=32$, Combined datasets: complete condition-level generated table.}
+
+\label{tab:thr_1_cap_32:combined:conditions}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_1_cap_32_combined_appendix_condition_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=1$, release cap $M=32$, Combined datasets: complete generated paired comparisons.}
+
+\label{tab:thr_1_cap_32:combined:paired}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_1_cap_32_combined_paired_prism_minus_baselines_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_32/regime_trace.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=32$, Combined datasets: representative regime trace. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_32/fairness_reliability.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=32$, Combined datasets: fairness--reliability plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_32/privacy_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=32$, Combined datasets: privacy--fidelity plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_32/pareto_bits_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=32$, Combined datasets: traffic--fidelity Pareto plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_32/ablation_results.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=32$, Combined datasets: component ablation. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\paragraph{OPSD.} The three generated tables below report the full method means, all condition-level values, and paired differences. The five figures that follow provide the corresponding temporal, fairness, privacy, Pareto, and ablation views. Aggregate panels support the setting-level summary above; dataset panels reveal whether that summary is shared by OPSD and UCI rather than being driven by their different endpoint counts.
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=1$, release cap $M=32$, OPSD: complete generated method table.}
+
+\label{tab:thr_1_cap_32:opsd:main}
+
+\resizebox{\linewidth}{!}{\input{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_32/opsd/main_results_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=1$, release cap $M=32$, OPSD: complete condition-level generated table.}
+
+\label{tab:thr_1_cap_32:opsd:conditions}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_1_cap_32_opsd_appendix_condition_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=1$, release cap $M=32$, OPSD: complete generated paired comparisons.}
+
+\label{tab:thr_1_cap_32:opsd:paired}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_1_cap_32_opsd_paired_prism_minus_baselines_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_32/opsd/regime_trace.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=32$, OPSD: representative regime trace. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_32/opsd/fairness_reliability.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=32$, OPSD: fairness--reliability plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_32/opsd/privacy_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=32$, OPSD: privacy--fidelity plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_32/opsd/pareto_bits_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=32$, OPSD: traffic--fidelity Pareto plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_32/opsd/ablation_results.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=32$, OPSD: component ablation. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\paragraph{UCI.} The three generated tables below report the full method means, all condition-level values, and paired differences. The five figures that follow provide the corresponding temporal, fairness, privacy, Pareto, and ablation views. Aggregate panels support the setting-level summary above; dataset panels reveal whether that summary is shared by OPSD and UCI rather than being driven by their different endpoint counts.
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=1$, release cap $M=32$, UCI: complete generated method table.}
+
+\label{tab:thr_1_cap_32:uci:main}
+
+\resizebox{\linewidth}{!}{\input{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_32/uci/main_results_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=1$, release cap $M=32$, UCI: complete condition-level generated table.}
+
+\label{tab:thr_1_cap_32:uci:conditions}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_1_cap_32_uci_appendix_condition_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=1$, release cap $M=32$, UCI: complete generated paired comparisons.}
+
+\label{tab:thr_1_cap_32:uci:paired}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_1_cap_32_uci_paired_prism_minus_baselines_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_32/uci/regime_trace.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=32$, UCI: representative regime trace. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_32/uci/fairness_reliability.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=32$, UCI: fairness--reliability plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_32/uci/privacy_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=32$, UCI: privacy--fidelity plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_32/uci/pareto_bits_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=32$, UCI: traffic--fidelity Pareto plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_1_cap_32/uci/ablation_results.pdf}
+
+\caption{Public-score threshold $\tau=1$, release cap $M=32$, UCI: component ablation. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\subsubsection{Public-score threshold $\tau=3$, release cap $M=32$}
+
+At this operating point, PRISM-XAI transmits 584.33~kbit versus 688.42~kbit for MAP-XAI-only (aggregate-mean ratio saving 15.12\%). The paired difference is -104.09$\pm$13.56~kbit. PRISM coverage is 0.2064, critical-event recall is 0.0852, and maximum recorded expenditure is 17.301. Relative to MAP-XAI-only, the paired coverage change is -0.00010$\pm$0.00026 and recall change is +0.00124$\pm$0.00307. The descriptive overlap rule holds in 5 of 12 cells. Accordingly, this point is read as a sensitivity point on the service frontier, not a complete matched-service confirmation.
+
+\paragraph{Combined datasets.} The three generated tables below report the full method means, all condition-level values, and paired differences. The five figures that follow provide the corresponding temporal, fairness, privacy, Pareto, and ablation views. Aggregate panels support the setting-level summary above; dataset panels reveal whether that summary is shared by OPSD and UCI rather than being driven by their different endpoint counts.
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=3$, release cap $M=32$, Combined datasets: complete generated method table.}
+
+\label{tab:thr_3_cap_32:combined:main}
+
+\resizebox{\linewidth}{!}{\input{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_32/main_results_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=3$, release cap $M=32$, Combined datasets: complete condition-level generated table.}
+
+\label{tab:thr_3_cap_32:combined:conditions}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_3_cap_32_combined_appendix_condition_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=3$, release cap $M=32$, Combined datasets: complete generated paired comparisons.}
+
+\label{tab:thr_3_cap_32:combined:paired}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_3_cap_32_combined_paired_prism_minus_baselines_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_32/regime_trace.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=32$, Combined datasets: representative regime trace. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_32/fairness_reliability.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=32$, Combined datasets: fairness--reliability plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_32/privacy_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=32$, Combined datasets: privacy--fidelity plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_32/pareto_bits_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=32$, Combined datasets: traffic--fidelity Pareto plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_32/ablation_results.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=32$, Combined datasets: component ablation. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\paragraph{OPSD.} The three generated tables below report the full method means, all condition-level values, and paired differences. The five figures that follow provide the corresponding temporal, fairness, privacy, Pareto, and ablation views. Aggregate panels support the setting-level summary above; dataset panels reveal whether that summary is shared by OPSD and UCI rather than being driven by their different endpoint counts.
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=3$, release cap $M=32$, OPSD: complete generated method table.}
+
+\label{tab:thr_3_cap_32:opsd:main}
+
+\resizebox{\linewidth}{!}{\input{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_32/opsd/main_results_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=3$, release cap $M=32$, OPSD: complete condition-level generated table.}
+
+\label{tab:thr_3_cap_32:opsd:conditions}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_3_cap_32_opsd_appendix_condition_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=3$, release cap $M=32$, OPSD: complete generated paired comparisons.}
+
+\label{tab:thr_3_cap_32:opsd:paired}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_3_cap_32_opsd_paired_prism_minus_baselines_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_32/opsd/regime_trace.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=32$, OPSD: representative regime trace. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_32/opsd/fairness_reliability.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=32$, OPSD: fairness--reliability plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_32/opsd/privacy_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=32$, OPSD: privacy--fidelity plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_32/opsd/pareto_bits_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=32$, OPSD: traffic--fidelity Pareto plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_32/opsd/ablation_results.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=32$, OPSD: component ablation. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\paragraph{UCI.} The three generated tables below report the full method means, all condition-level values, and paired differences. The five figures that follow provide the corresponding temporal, fairness, privacy, Pareto, and ablation views. Aggregate panels support the setting-level summary above; dataset panels reveal whether that summary is shared by OPSD and UCI rather than being driven by their different endpoint counts.
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=3$, release cap $M=32$, UCI: complete generated method table.}
+
+\label{tab:thr_3_cap_32:uci:main}
+
+\resizebox{\linewidth}{!}{\input{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_32/uci/main_results_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=3$, release cap $M=32$, UCI: complete condition-level generated table.}
+
+\label{tab:thr_3_cap_32:uci:conditions}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_3_cap_32_uci_appendix_condition_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{table*}[p]\centering\tiny
+
+\caption{Public-score threshold $\tau=3$, release cap $M=32$, UCI: complete generated paired comparisons.}
+
+\label{tab:thr_3_cap_32:uci:paired}
+
+\resizebox{\textwidth}{!}{\input{generated_tables/thr_3_cap_32_uci_paired_prism_minus_baselines_table.tex}}
+
+\end{table*}\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_32/uci/regime_trace.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=32$, UCI: representative regime trace. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_32/uci/fairness_reliability.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=32$, UCI: fairness--reliability plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_32/uci/privacy_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=32$, UCI: privacy--fidelity plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_32/uci/pareto_bits_fidelity.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=32$, UCI: traffic--fidelity Pareto plane. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\begin{figure*}[p]
+
+\centering
+
+\includegraphics[width=.96\textwidth,height=.82\textheight,keepaspectratio]{../../SERVICE_TRADEOFF_RESULTS/runs/thr_3_cap_32/uci/ablation_results.pdf}
+
+\caption{Public-score threshold $\tau=3$, release cap $M=32$, UCI: component ablation. This panel should be read with the setting-level quantitative interpretation and the complete tables immediately preceding the figure block.}
+
+\end{figure*}
+
+\clearpage
+
+\FloatBarrier
+
+\subsection{What the complete sweep establishes}
+
+The threshold and release cap have different roles. At fixed $M=8$, raising $\tau$ primarily moves coverage and recall while traffic remains near 205--209~kbit. Raising $M$ changes the available service region more strongly and increases traffic. PRISM-XAI remains below MAP-XAI-only traffic throughout the observed grid, with aggregate-mean ratio savings between 14.35\% and 16.56\%. The complete matched-region condition, however, is preserved across all cells only at $M=8$; conclusions at larger caps are therefore descriptive trade-off results. The fidelity and fairness panels add diagnostic context but do not convert the service proxies into evidence of operational grid benefit. Together, the sweep supports a configurable communication scheduler whose operating point must be chosen from an explicit traffic--service requirement rather than from traffic alone.

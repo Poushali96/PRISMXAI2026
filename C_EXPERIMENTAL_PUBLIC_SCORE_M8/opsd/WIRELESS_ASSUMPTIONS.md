@@ -1,0 +1,5 @@
+# Wireless Assumptions and 3GPP Trace Abstraction
+
+The simulator uses a trace-driven uplink abstraction inspired by 3GPP TR 38.901 urban microcell modeling. Each run samples endpoint distances, correlated log-normal shadowing, exponential small-scale fading, 3.5 GHz carrier frequency, 180 kHz resource-block bandwidth, transmit power, noise figure, edge-processing delay, and bursty packet failures. The resulting spectral-efficiency traces drive packet feasibility, latency, energy, deadline misses, and delivery fairness.
+
+This abstraction is not a full ns-3 or link-level 3GPP implementation. It is used to test scheduler behavior under repeatable time-varying wireless capacity. The v1.4 stress suite adds two controlled robustness cases: burst_loss increases bad-channel persistence and failure probability, while weak_channel reduces spectral efficiency for the farthest quartile of endpoints and adds extra packet failures. These tests should be reported as wireless stress tests rather than as physical network deployment validation.

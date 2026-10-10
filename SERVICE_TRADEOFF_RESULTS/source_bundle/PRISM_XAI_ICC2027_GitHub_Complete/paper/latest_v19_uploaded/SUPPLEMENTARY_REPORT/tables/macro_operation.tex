@@ -1,0 +1,67 @@
+
+
+% In the preamble:
+
+
+\begin{table*}[t]
+\centering
+\caption{Macro-average operational metrics over all v19 M8 conditions.}
+\label{tab:macroop}
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.08}
+
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lrrrrrrrrrrrrrr}
+\toprule
+Method
+& Op. all
+& Op. cov.
+& Crit. rec.
+& Crit. cov.
+& Prec.
+& Int. cov.
+& Abstain
+& Cond. err.
+& Miss crit.
+& False int.
+& False act.
+& Driver mis.
+& Crit. events
+& Correct crit. \\
+\midrule
+
+Periodic fixed-DP
+& 0.178 & 0.485 & 0.178 & 0.383 & 0.226
+& 0.383 & 0.617 & 90.18 & 0.822 & 0.221
+& 1.000 & 0.564 & 626.5 & 75.26 \\
+
+Channel fixed-DP
+& 0.161 & 0.443 & 0.161 & 0.334 & 0.189
+& 0.334 & 0.666 & 124.5 & 0.839 & 0.186
+& 1.000 & 0.569 & 626.5 & 66.97 \\
+
+AoX fixed-DP
+& 0.386 & 0.440 & 0.386 & 0.875 & 0.285
+& 0.875 & 0.125 & 263.3 & 0.614 & 0.501
+& 1.000 & 0.585 & 626.5 & 256.1 \\
+
+Joint full packet
+& 0.117 & 0.475 & 0.117 & 0.248 & 0.314
+& 0.248 & 0.752 & 69.47 & 0.883 & 0.136
+& 1.000 & 0.535 & 626.5 & 81.83 \\
+
+\midrule
+MAP-XAI-only (ours)
+& 0.037 & 0.481 & 0.037 & 0.078 & \textbf{0.538}
+& 0.078 & 0.922 & \textbf{10.67} & 0.963 & \textbf{0.019}
+& \textbf{0.797} & 0.548 & 626.5 & 24.30 \\
+
+PRISM-XAI (ours)
+& 0.037 & 0.475 & 0.037 & 0.078 & 0.510
+& 0.078 & 0.922 & 11.41 & 0.963 & 0.020
+& 0.847 & 0.550 & 626.5 & 24.19 \\
+
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table*}

@@ -1,0 +1,24 @@
+% Paired PRISM-XAI minus baseline differences; negative kbit is better.
+\begin{table*}[t]
+\caption{Paired differences for PRISM-XAI minus each baseline at $\epsilon_{\max}=4$ with the tree model.}
+\label{tab:paired-differences}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{llcccc}
+\toprule
+Dataset & Baseline & Delta kbit & Delta Top-$K$ & Delta recall & Delta fairness \\
+\midrule
+UCI & AoX-aware fixed-DP & -1459.488 $\pm$ 0.331 & -0.016 $\pm$ 0.091 & -0.129 $\pm$ 0.008 & -0.050 $\pm$ 0.007 \\
+UCI & AoX-aware fixed-DP & -1465.171 $\pm$ 2.507 & -0.017 $\pm$ 0.043 & -0.135 $\pm$ 0.013 & -0.067 $\pm$ 0.022 \\
+UCI & Channel-aware fixed-DP & -1459.488 $\pm$ 0.331 & -0.023 $\pm$ 0.081 & 0.007 $\pm$ 0.002 & -0.051 $\pm$ 0.007 \\
+UCI & Channel-aware fixed-DP & -1465.171 $\pm$ 2.507 & -0.016 $\pm$ 0.065 & 0.007 $\pm$ 0.003 & -0.067 $\pm$ 0.022 \\
+UCI & Joint, no compression & -319.784 $\pm$ 7.764 & -0.034 $\pm$ 0.087 & -0.028 $\pm$ 0.005 & -0.019 $\pm$ 0.035 \\
+UCI & Joint, no compression & -325.317 $\pm$ 15.548 & -0.006 $\pm$ 0.051 & -0.029 $\pm$ 0.004 & -0.025 $\pm$ 0.065 \\
+UCI & Periodic fixed-DP & -1459.488 $\pm$ 0.331 & -0.048 $\pm$ 0.089 & -0.005 $\pm$ 0.004 & -0.051 $\pm$ 0.007 \\
+UCI & Periodic fixed-DP & -1465.171 $\pm$ 2.507 & 0.004 $\pm$ 0.063 & -0.003 $\pm$ 0.004 & -0.067 $\pm$ 0.022 \\
+UCI & MAP-XAI fallback & -1.689 $\pm$ 0.315 & -0.031 $\pm$ 0.067 & 0.000 $\pm$ 0.001 & 0.000 $\pm$ 0.000 \\
+UCI & MAP-XAI fallback & -1.965 $\pm$ 0.861 & 0.010 $\pm$ 0.020 & -0.001 $\pm$ 0.001 & 0.000 $\pm$ 0.000 \\
+\bottomrule
+\end{tabular}
+\end{table*}

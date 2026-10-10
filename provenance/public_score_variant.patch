@@ -1,0 +1,20 @@
+--- prism_xai_icc2027_v1_9_selective_release.py
++++ prism_xai_icc2027_v2_0_public_score_experimental.py
+@@ -1715,7 +1715,16 @@
+         else:
+             residual_buffer = outputs.phi_eval[t] - recon
+         previous_oracle_phi = outputs.phi_eval[t].copy()
+-        residual_norm = np.linalg.norm(residual_buffer, axis=1)
++        # EXPERIMENTAL PUBLIC-SCORE VARIANT.
++        # Candidate selection does not inspect the raw attribution residual norm.
++        # This assumes forecast_novelty, calibration clip norms, criticality, AoX,
++        # and channel state are public. That assumption must be stated and proved
++        # separately; this edit is not a full-transcript DP certificate.
++        residual_norm = np.maximum(forecast_novelty, 0.0) * np.array(
++            [PACKET_MODES[0].sigma * sensitivity_multiplier(config)
++             * float(calibration["clip_norms"][j]) * math.sqrt(d)
++             for j in range(n)]
++        ) * 2.0
+         noise_floor = np.array(
+             [
+                 PACKET_MODES[0].sigma

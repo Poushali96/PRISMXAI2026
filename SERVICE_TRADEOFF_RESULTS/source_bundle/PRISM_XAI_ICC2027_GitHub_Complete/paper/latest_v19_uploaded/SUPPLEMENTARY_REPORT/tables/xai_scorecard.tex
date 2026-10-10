@@ -1,0 +1,14 @@
+\begin{table}[htbp]\centering\small
+\caption{XAI-method sensitivity for the proposed stack, averaged over both datasets, three privacy budgets, and ten seeds.}
+\label{tab:xai-scorecard}
+\begin{tabular}{llrrrrrrrr}
+\toprule
+XAI & Method & kbit & Top-K & Cos. & Crit. cov. & Recall & Prec. & bit/corr. & Jain \\
+\midrule
+TreeSHAP & MAP-XAI-only (ours) & 243.9 & 0.267 & 0.090 & 0.080 & 0.037 & 0.537 & 9,975 & 0.991 \\
+TreeSHAP & PRISM-XAI (ours) & 243.2 & 0.271 & 0.092 & 0.080 & 0.037 & 0.509 & 9,885 & 0.991 \\
+feature\_ablation & MAP-XAI-only (ours) & 243.5 & 0.264 & 0.148 & 0.076 & 0.038 & 0.539 & 9,945 & 0.991 \\
+feature\_ablation & PRISM-XAI (ours) & 241.8 & 0.286 & 0.118 & 0.077 & 0.037 & 0.511 & 10,089 & 0.991 \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,14 @@
+{
+  "mode": "full",
+  "datasets": [
+    "opsd",
+    "uci"
+  ],
+  "all_dataset_validations_passed": true,
+  "combined_run_keys_unique": true,
+  "combined_trace_provenance_complete": true,
+  "combined_trace_keys_unique": true,
+  "combined_ablation_control_present": true,
+  "note": "Full paired real-data experiment matrix.",
+  "passed": true
+}

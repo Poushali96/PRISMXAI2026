@@ -1,0 +1,372 @@
+{
+  "created_utc": "2026-08-28T15:48:17.367384+00:00",
+  "elapsed_seconds": 1030.1173396110535,
+  "validation": {
+    "expected_run_count": 360,
+    "actual_run_count": 360,
+    "run_matrix_complete": true,
+    "unique_run_keys": true,
+    "all_schedulers_present": true,
+    "privacy_never_exceeded": true,
+    "bounded_metrics_valid": true,
+    "attribute_attack_auc_orientation_valid": true,
+    "nonnegative_costs_valid": true,
+    "core_metrics_finite": true,
+    "conditional_missingness_valid": true,
+    "paired_seed_counts_valid": true,
+    "paired_seed_counts": [
+      {
+        "model_family": "tree",
+        "xai_method": "TreeSHAP",
+        "epsilon_budget": 2.0,
+        "scheduler": "aox_fixed_dp",
+        "n_seeds": 10
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "TreeSHAP",
+        "epsilon_budget": 2.0,
+        "scheduler": "channel_fixed_dp",
+        "n_seeds": 10
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "TreeSHAP",
+        "epsilon_budget": 2.0,
+        "scheduler": "joint_no_compression",
+        "n_seeds": 10
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "TreeSHAP",
+        "epsilon_budget": 2.0,
+        "scheduler": "periodic_fixed_dp",
+        "n_seeds": 10
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "TreeSHAP",
+        "epsilon_budget": 2.0,
+        "scheduler": "prism_xai",
+        "n_seeds": 10
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "TreeSHAP",
+        "epsilon_budget": 2.0,
+        "scheduler": "repaired_mapxai",
+        "n_seeds": 10
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "TreeSHAP",
+        "epsilon_budget": 4.0,
+        "scheduler": "aox_fixed_dp",
+        "n_seeds": 10
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "TreeSHAP",
+        "epsilon_budget": 4.0,
+        "scheduler": "channel_fixed_dp",
+        "n_seeds": 10
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "TreeSHAP",
+        "epsilon_budget": 4.0,
+        "scheduler": "joint_no_compression",
+        "n_seeds": 10
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "TreeSHAP",
+        "epsilon_budget": 4.0,
+        "scheduler": "periodic_fixed_dp",
+        "n_seeds": 10
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "TreeSHAP",
+        "epsilon_budget": 4.0,
+        "scheduler": "prism_xai",
+        "n_seeds": 10
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "TreeSHAP",
+        "epsilon_budget": 4.0,
+        "scheduler": "repaired_mapxai",
+        "n_seeds": 10
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "TreeSHAP",
+        "epsilon_budget": 8.0,
+        "scheduler": "aox_fixed_dp",
+        "n_seeds": 10
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "TreeSHAP",
+        "epsilon_budget": 8.0,
+        "scheduler": "channel_fixed_dp",
+        "n_seeds": 10
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "TreeSHAP",
+        "epsilon_budget": 8.0,
+        "scheduler": "joint_no_compression",
+        "n_seeds": 10
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "TreeSHAP",
+        "epsilon_budget": 8.0,
+        "scheduler": "periodic_fixed_dp",
+        "n_seeds": 10
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "TreeSHAP",
+        "epsilon_budget": 8.0,
+        "scheduler": "prism_xai",
+        "n_seeds": 10
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "TreeSHAP",
+        "epsilon_budget": 8.0,
+        "scheduler": "repaired_mapxai",
+        "n_seeds": 10
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "feature_ablation",
+        "epsilon_budget": 2.0,
+        "scheduler": "aox_fixed_dp",
+        "n_seeds": 10
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "feature_ablation",
+        "epsilon_budget": 2.0,
+        "scheduler": "channel_fixed_dp",
+        "n_seeds": 10
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "feature_ablation",
+        "epsilon_budget": 2.0,
+        "scheduler": "joint_no_compression",
+        "n_seeds": 10
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "feature_ablation",
+        "epsilon_budget": 2.0,
+        "scheduler": "periodic_fixed_dp",
+        "n_seeds": 10
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "feature_ablation",
+        "epsilon_budget": 2.0,
+        "scheduler": "prism_xai",
+        "n_seeds": 10
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "feature_ablation",
+        "epsilon_budget": 2.0,
+        "scheduler": "repaired_mapxai",
+        "n_seeds": 10
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "feature_ablation",
+        "epsilon_budget": 4.0,
+        "scheduler": "aox_fixed_dp",
+        "n_seeds": 10
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "feature_ablation",
+        "epsilon_budget": 4.0,
+        "scheduler": "channel_fixed_dp",
+        "n_seeds": 10
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "feature_ablation",
+        "epsilon_budget": 4.0,
+        "scheduler": "joint_no_compression",
+        "n_seeds": 10
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "feature_ablation",
+        "epsilon_budget": 4.0,
+        "scheduler": "periodic_fixed_dp",
+        "n_seeds": 10
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "feature_ablation",
+        "epsilon_budget": 4.0,
+        "scheduler": "prism_xai",
+        "n_seeds": 10
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "feature_ablation",
+        "epsilon_budget": 4.0,
+        "scheduler": "repaired_mapxai",
+        "n_seeds": 10
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "feature_ablation",
+        "epsilon_budget": 8.0,
+        "scheduler": "aox_fixed_dp",
+        "n_seeds": 10
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "feature_ablation",
+        "epsilon_budget": 8.0,
+        "scheduler": "channel_fixed_dp",
+        "n_seeds": 10
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "feature_ablation",
+        "epsilon_budget": 8.0,
+        "scheduler": "joint_no_compression",
+        "n_seeds": 10
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "feature_ablation",
+        "epsilon_budget": 8.0,
+        "scheduler": "periodic_fixed_dp",
+        "n_seeds": 10
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "feature_ablation",
+        "epsilon_budget": 8.0,
+        "scheduler": "prism_xai",
+        "n_seeds": 10
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "feature_ablation",
+        "epsilon_budget": 8.0,
+        "scheduler": "repaired_mapxai",
+        "n_seeds": 10
+      }
+    ],
+    "summary_effective_sample_sizes_present": true,
+    "summary_run_counts_valid": true,
+    "trace_provenance_complete": true,
+    "trace_keys_unique": true,
+    "ablation_control_present": true,
+    "passed": true
+  },
+  "files": {
+    "WIRELESS_ASSUMPTIONS.md": {
+      "bytes": 1043,
+      "sha256": "8166813a72fa632ed7174ba3d2fa9ae75fbdaa4b11434680bd60470fdc2cb871"
+    },
+    "ablation_metrics.csv": {
+      "bytes": 101247,
+      "sha256": "0a49602038cdd54320d2f320bcc55d5ae8d274ee92b498620a0b55fe6b4848ea"
+    },
+    "ablation_results.pdf": {
+      "bytes": 19904,
+      "sha256": "8c1567a7e822ba062311d6c01d8e997f59e7f581daaed590e4115de2322e1be5"
+    },
+    "ablation_results.png": {
+      "bytes": 179557,
+      "sha256": "60ab4be92e4d9f8778f2e03f396a927821152148e879c13d5b84498d968a6578"
+    },
+    "appendix_condition_means.csv": {
+      "bytes": 4287,
+      "sha256": "f5fddf36be87f40a84a1487a34badee40bd37ec45f02ef1583c6095586f7299b"
+    },
+    "appendix_condition_table.tex": {
+      "bytes": 5190,
+      "sha256": "fce647073e427a181f010dd7bfdc179d784f962294e0121872e8142bd5d87ee5"
+    },
+    "data_provenance.json": {
+      "bytes": 1019,
+      "sha256": "094837096a67715d3526e9f443fc00e7ddc13e31c271930dd71116599ef60fb5"
+    },
+    "fairness_reliability.pdf": {
+      "bytes": 21374,
+      "sha256": "8c045f711706f4715bbec3544d198445061cd0d9c908db51d29bcb7c150be0e5"
+    },
+    "fairness_reliability.png": {
+      "bytes": 171676,
+      "sha256": "e088397a679f0694bbdb6715da30f6e2b1b5d44387e4840a73afb540d9b27fb3"
+    },
+    "main_results_table.tex": {
+      "bytes": 3790,
+      "sha256": "3757b483c8223fa6de3140b8663b13fd9924787db92b7d27240ef34d6c63b21d"
+    },
+    "paired_prism_minus_baselines.csv": {
+      "bytes": 14807,
+      "sha256": "fe4ff48699b01b926718fb91e2c8536219e703fee56c788a53c736cca002ad3d"
+    },
+    "paired_prism_minus_baselines_table.tex": {
+      "bytes": 1590,
+      "sha256": "4db5b351733a174006d6b54ba1a6f1cb09e9bd282525164f26b153ba1bc0a6f5"
+    },
+    "pareto_bits_fidelity.pdf": {
+      "bytes": 21400,
+      "sha256": "fd3aba8dd9722b86eaae62df2b9b0129c478b045a605e35f5cceaa4c43a3e965"
+    },
+    "pareto_bits_fidelity.png": {
+      "bytes": 199027,
+      "sha256": "8ed7057e83d788fb8f48e48ec57bb552aabb4c1a8723074f3085ebda705bc979"
+    },
+    "privacy_fidelity.pdf": {
+      "bytes": 23707,
+      "sha256": "a5b5eed537bcb47f95bf3152879b91c3357b3d40b2ec2ced3b32d66c3b453deb"
+    },
+    "privacy_fidelity.png": {
+      "bytes": 185095,
+      "sha256": "4511ccffcec11e087ce58c392363b8e623a768d99a430ca23b19ce64221101e5"
+    },
+    "raw_run_metrics.csv": {
+      "bytes": 259524,
+      "sha256": "14169551ce9e128ea293fedd419b3c6edd585cd2108597a4dd4195c2c0245156"
+    },
+    "regime_trace.pdf": {
+      "bytes": 52474,
+      "sha256": "4cf3d0b89ba37ea093e55939b209a4a8aabe4b8c7765d2c14b7d83af73bf0b9d"
+    },
+    "regime_trace.png": {
+      "bytes": 459473,
+      "sha256": "a51ce7bf4d3cb5bc35f45490a24dbb511ceca598eeae99887874879123357c23"
+    },
+    "representative_trace.csv": {
+      "bytes": 671384,
+      "sha256": "7528131b7d0156f94b4f03364059b0cfe130e5e4e315c1a0399a037e6a1aa038"
+    },
+    "run_config.json": {
+      "bytes": 2114,
+      "sha256": "c7725097fda305d1a3eecd723b0375be7fbc328ba23c1200280b01ed67206d60"
+    },
+    "summary_ci.csv": {
+      "bytes": 97661,
+      "sha256": "627c197b8a2164f4a129382e80814ed14fcf1db1da0a8adecbe8346e8b25b1a1"
+    },
+    "validation_report.json": {
+      "bytes": 6616,
+      "sha256": "430e91b91a18f66884f6eefb9241436ba051da29977378abd84774b6f4b2cd05"
+    }
+  }
+}

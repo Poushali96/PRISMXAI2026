@@ -1,0 +1,51 @@
+{
+  "archive_name": "PRISM_XAI_ICC2027_GitHub_Complete.zip",
+  "archive_sha256": "dcf40d5819f4ce09884049bdef0744bce3e4beba7794eb2259437cd69c37c071",
+  "source": "source_bundle/PRISM_XAI_ICC2027_GitHub_Complete/code/prism_xai_public_score_tradeoff_variant.py",
+  "source_sha256": "3593e3a5afdf610e1ef2999b087adab611929ebcf378f140aa601f519bb0c7ea",
+  "full_rerun": true,
+  "settings": [
+    [
+      3.0,
+      8
+    ],
+    [
+      2.0,
+      8
+    ],
+    [
+      1.0,
+      8
+    ],
+    [
+      0.5,
+      8
+    ],
+    [
+      3.0,
+      16
+    ],
+    [
+      2.0,
+      16
+    ],
+    [
+      1.0,
+      16
+    ],
+    [
+      3.0,
+      32
+    ],
+    [
+      1.0,
+      32
+    ]
+  ],
+  "use_public_score_variant": true,
+  "epsilon_budgets": [
+    8,
+    16,
+    32
+  ]
+}

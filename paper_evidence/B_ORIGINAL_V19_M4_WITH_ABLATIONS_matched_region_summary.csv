@@ -1,0 +1,6 @@
+comparator,conditions,eligible,eligible_fraction
+aox_fixed_dp,12,0,0.0
+channel_fixed_dp,12,0,0.0
+joint_no_compression,12,0,0.0
+periodic_fixed_dp,12,0,0.0
+repaired_mapxai,12,12,1.0

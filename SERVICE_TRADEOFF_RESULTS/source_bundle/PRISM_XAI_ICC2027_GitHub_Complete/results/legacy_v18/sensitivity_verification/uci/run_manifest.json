@@ -1,0 +1,154 @@
+{
+  "created_utc": "2026-08-28T14:50:05.255235+00:00",
+  "elapsed_seconds": 93.81469678878784,
+  "validation": {
+    "expected_run_count": 6,
+    "actual_run_count": 6,
+    "run_matrix_complete": true,
+    "unique_run_keys": true,
+    "all_schedulers_present": true,
+    "privacy_never_exceeded": true,
+    "bounded_metrics_valid": true,
+    "attribute_attack_auc_orientation_valid": true,
+    "nonnegative_costs_valid": true,
+    "core_metrics_finite": true,
+    "conditional_missingness_valid": true,
+    "paired_seed_counts_valid": true,
+    "paired_seed_counts": [
+      {
+        "model_family": "tree",
+        "xai_method": "feature_ablation",
+        "epsilon_budget": 4.0,
+        "scheduler": "aox_fixed_dp",
+        "n_seeds": 1
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "feature_ablation",
+        "epsilon_budget": 4.0,
+        "scheduler": "channel_fixed_dp",
+        "n_seeds": 1
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "feature_ablation",
+        "epsilon_budget": 4.0,
+        "scheduler": "joint_no_compression",
+        "n_seeds": 1
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "feature_ablation",
+        "epsilon_budget": 4.0,
+        "scheduler": "periodic_fixed_dp",
+        "n_seeds": 1
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "feature_ablation",
+        "epsilon_budget": 4.0,
+        "scheduler": "prism_xai",
+        "n_seeds": 1
+      },
+      {
+        "model_family": "tree",
+        "xai_method": "feature_ablation",
+        "epsilon_budget": 4.0,
+        "scheduler": "repaired_mapxai",
+        "n_seeds": 1
+      }
+    ],
+    "summary_effective_sample_sizes_present": true,
+    "summary_run_counts_valid": true,
+    "trace_provenance_complete": true,
+    "trace_keys_unique": true,
+    "ablation_control_present": true,
+    "passed": true
+  },
+  "files": {
+    "WIRELESS_ASSUMPTIONS.md": {
+      "bytes": 1043,
+      "sha256": "8166813a72fa632ed7174ba3d2fa9ae75fbdaa4b11434680bd60470fdc2cb871"
+    },
+    "ablation_metrics.csv": {
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    "appendix_condition_means.csv": {
+      "bytes": 832,
+      "sha256": "55424c8df65a25b6ece9824547168c8fb41bea5e693906b9d182d98450c0a25b"
+    },
+    "appendix_condition_table.tex": {
+      "bytes": 1280,
+      "sha256": "5e271fb221b5cf4e89e9553b2ce3d0d17b10a152e9a5b2667945b3960fd49703"
+    },
+    "data_provenance.json": {
+      "bytes": 1059,
+      "sha256": "3ae2b7a5e3be1efbdb63898811730a24e0aaeb4f24f5739ac386229b47e18fc2"
+    },
+    "fairness_reliability.pdf": {
+      "bytes": 20044,
+      "sha256": "63c826bf4850f110eab92241a01d95c540eeae425627ee9064e17689392b5c00"
+    },
+    "fairness_reliability.png": {
+      "bytes": 116697,
+      "sha256": "2ea6855a9740fbd0e44475b6e1b555853c4af6f3c218ad6ab83fd93c8a49325f"
+    },
+    "main_results_table.tex": {
+      "bytes": 2015,
+      "sha256": "a72a6f3479a735bec3f1215843d578ff3818054641c24b85cd038791fec8d930"
+    },
+    "paired_prism_minus_baselines.csv": {
+      "bytes": 2440,
+      "sha256": "d7d1cb083bcd4a84c6adadac704b70d5638bfe9bfe05a3daf630c15731284ecf"
+    },
+    "paired_prism_minus_baselines_table.tex": {
+      "bytes": 1006,
+      "sha256": "048b6418a508572b4cbc11af5be96c7b541be911b3dc8b5197aefbb8ebcd9323"
+    },
+    "pareto_bits_fidelity.pdf": {
+      "bytes": 19982,
+      "sha256": "fe346ac4778d3f60dbbc02e6db7654c504eb9032c074adee4c6c7d97522742e1"
+    },
+    "pareto_bits_fidelity.png": {
+      "bytes": 134843,
+      "sha256": "b9f9be570e2800d9ec802a872d3b2b589932726518d1fd9160b8e44bf729cbbe"
+    },
+    "privacy_fidelity.pdf": {
+      "bytes": 21174,
+      "sha256": "6db49bbdceabd4b4699a070096cb3bbbac645b26267ad4af063fb7a7d4a47abe"
+    },
+    "privacy_fidelity.png": {
+      "bytes": 113301,
+      "sha256": "1dbfe1ff9898e01055ece5763fcad597ce2240106465a5719020f5ec5c6a1676"
+    },
+    "raw_run_metrics.csv": {
+      "bytes": 5258,
+      "sha256": "e87cd029bba740e69e6e068f0c373ab1247abc4653089854471658eb19c4120c"
+    },
+    "regime_trace.pdf": {
+      "bytes": 21488,
+      "sha256": "c1870208995d98b400f004a6328ea5b06d52370274995aec425b7306a08c12ec"
+    },
+    "regime_trace.png": {
+      "bytes": 311705,
+      "sha256": "39590455494f69aa161975e9dee53234c2ed8b323b8ea43fd702af9fa0279daf"
+    },
+    "representative_trace.csv": {
+      "bytes": 28929,
+      "sha256": "fdf319c6e3f0814a75d45dd91b1740587761ba8279026594a08d13c96b08b36d"
+    },
+    "run_config.json": {
+      "bytes": 1954,
+      "sha256": "e5a022d57a5bb25bf00abf0e0297e7dba38c01da240734c716f620c1924652e8"
+    },
+    "summary_ci.csv": {
+      "bytes": 11819,
+      "sha256": "5e22a9c9058637bf523b2847e5e4e5e4c34722e686c0076d180ea57a09e19c78"
+    },
+    "validation_report.json": {
+      "bytes": 1655,
+      "sha256": "9201d65098f8049952f6f076d9550c3230ff33b0b8bea2f217b7cf3de1d43a48"
+    }
+  }
+}

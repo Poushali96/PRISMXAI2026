@@ -1,0 +1,22 @@
+
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{longtable}{lrrrrrrrrrrrr}
+\caption{v19 selective-release-cap sensitivity. M8 is used in the main paper because it satisfies the 5\% critical-coverage guardrail in every PRISM run.}\label{tab:m4m8}\\
+\toprule
+Cap & n & kbit & Mean cov. & Min cov. & Recall & Prec. & Top-K & Cos. & Jain & bit/corr. & Runs cov.<5\% & Priv. viol. \\
+\midrule
+\endfirsthead
+\toprule
+Cap & n & kbit & Mean cov. & Min cov. & Recall & Prec. & Top-K & Cos. & Jain & bit/corr. & Runs cov.<5\% & Priv. viol. \\
+\midrule
+\endhead
+\midrule
+\multicolumn{13}{r}{Continued on next page} \\
+\endfoot
+\bottomrule
+\endlastfoot
+M4 & 120 & 120.5 & 0.042 & 0.030 & 0.022 & 0.712 & 0.310 & 0.116 & 0.984 & 8,810.0 & 100 & 0 \\
+M8 & 120 & 242.5 & 0.078 & 0.060 & 0.037 & 0.510 & 0.279 & 0.105 & 0.991 & 9,987.0 & 0 & 0 \\
+\end{longtable}

@@ -1,0 +1,36 @@
+\begin{tabular}{llcccc}
+\toprule
+Dataset & Baseline & Delta kbit & Delta Top-$K$ & Delta recall & Delta fairness \\
+\midrule
+UCI & AoX-aware fixed-DP & -4976.761 $\pm$ 1.280 & -0.036 $\pm$ 0.068 & -0.426 $\pm$ 0.033 & -0.008 $\pm$ 0.002 \\
+UCI & AoX-aware fixed-DP & -4976.915 $\pm$ 1.557 & -0.047 $\pm$ 0.088 & -0.425 $\pm$ 0.031 & -0.007 $\pm$ 0.003 \\
+UCI & AoX-aware fixed-DP & -4972.218 $\pm$ 2.663 & 0.018 $\pm$ 0.072 & -0.431 $\pm$ 0.033 & -0.008 $\pm$ 0.004 \\
+UCI & AoX-aware fixed-DP & -4977.922 $\pm$ 1.580 & -0.041 $\pm$ 0.037 & -0.430 $\pm$ 0.047 & -0.009 $\pm$ 0.005 \\
+UCI & AoX-aware fixed-DP & -4973.624 $\pm$ 1.887 & -0.002 $\pm$ 0.064 & -0.430 $\pm$ 0.047 & -0.008 $\pm$ 0.002 \\
+UCI & AoX-aware fixed-DP & -4971.291 $\pm$ 1.490 & 0.054 $\pm$ 0.058 & -0.431 $\pm$ 0.047 & -0.007 $\pm$ 0.002 \\
+UCI & Channel-aware fixed-DP & -4971.715 $\pm$ 4.160 & -0.020 $\pm$ 0.068 & 0.031 $\pm$ 0.005 & 0.001 $\pm$ 0.002 \\
+UCI & Channel-aware fixed-DP & -4976.915 $\pm$ 1.557 & -0.051 $\pm$ 0.075 & 0.031 $\pm$ 0.005 & 0.662 $\pm$ 0.003 \\
+UCI & Channel-aware fixed-DP & -4972.218 $\pm$ 2.663 & 0.013 $\pm$ 0.098 & 0.025 $\pm$ 0.005 & 0.736 $\pm$ 0.004 \\
+UCI & Channel-aware fixed-DP & -4972.875 $\pm$ 4.681 & -0.020 $\pm$ 0.051 & 0.025 $\pm$ 0.003 & -0.001 $\pm$ 0.005 \\
+UCI & Channel-aware fixed-DP & -4973.624 $\pm$ 1.887 & -0.002 $\pm$ 0.063 & 0.024 $\pm$ 0.003 & 0.661 $\pm$ 0.002 \\
+UCI & Channel-aware fixed-DP & -4971.291 $\pm$ 1.490 & 0.055 $\pm$ 0.057 & 0.023 $\pm$ 0.002 & 0.737 $\pm$ 0.003 \\
+UCI & Joint, no compression & -348.837 $\pm$ 1.583 & -0.058 $\pm$ 0.074 & -0.021 $\pm$ 0.005 & -0.002 $\pm$ 0.004 \\
+UCI & Joint, no compression & -1308.841 $\pm$ 1.426 & 0.000 $\pm$ 0.093 & -0.062 $\pm$ 0.006 & -0.005 $\pm$ 0.003 \\
+UCI & Joint, no compression & -3706.543 $\pm$ 6.544 & 0.035 $\pm$ 0.097 & -0.202 $\pm$ 0.016 & -0.008 $\pm$ 0.004 \\
+UCI & Joint, no compression & -349.998 $\pm$ 1.687 & -0.010 $\pm$ 0.045 & -0.031 $\pm$ 0.008 & -0.004 $\pm$ 0.005 \\
+UCI & Joint, no compression & -1306.000 $\pm$ 2.008 & 0.054 $\pm$ 0.052 & -0.075 $\pm$ 0.017 & -0.006 $\pm$ 0.002 \\
+UCI & Joint, no compression & -3705.617 $\pm$ 4.600 & 0.073 $\pm$ 0.055 & -0.204 $\pm$ 0.029 & -0.007 $\pm$ 0.002 \\
+UCI & Periodic fixed-DP & -4975.855 $\pm$ 1.998 & -0.032 $\pm$ 0.088 & 0.025 $\pm$ 0.005 & -0.008 $\pm$ 0.002 \\
+UCI & Periodic fixed-DP & -4976.009 $\pm$ 2.472 & -0.043 $\pm$ 0.092 & 0.026 $\pm$ 0.005 & -0.007 $\pm$ 0.003 \\
+UCI & Periodic fixed-DP & -4971.312 $\pm$ 3.350 & 0.022 $\pm$ 0.066 & 0.020 $\pm$ 0.005 & -0.008 $\pm$ 0.004 \\
+UCI & Periodic fixed-DP & -4977.016 $\pm$ 2.100 & -0.041 $\pm$ 0.062 & 0.020 $\pm$ 0.004 & -0.009 $\pm$ 0.005 \\
+UCI & Periodic fixed-DP & -4972.718 $\pm$ 2.453 & -0.002 $\pm$ 0.064 & 0.019 $\pm$ 0.005 & -0.008 $\pm$ 0.002 \\
+UCI & Periodic fixed-DP & -4970.385 $\pm$ 1.709 & 0.054 $\pm$ 0.055 & 0.018 $\pm$ 0.002 & -0.008 $\pm$ 0.002 \\
+UCI & MAP-XAI fallback & -58.636 $\pm$ 1.168 & 0.008 $\pm$ 0.063 & -0.001 $\pm$ 0.003 & -0.000 $\pm$ 0.001 \\
+UCI & MAP-XAI fallback & -58.851 $\pm$ 1.541 & 0.016 $\pm$ 0.083 & 0.000 $\pm$ 0.005 & 0.001 $\pm$ 0.001 \\
+UCI & MAP-XAI fallback & -54.154 $\pm$ 2.660 & -0.011 $\pm$ 0.130 & -0.000 $\pm$ 0.003 & 0.000 $\pm$ 0.002 \\
+UCI & MAP-XAI fallback & -59.343 $\pm$ 1.639 & -0.031 $\pm$ 0.059 & -0.005 $\pm$ 0.004 & -0.000 $\pm$ 0.003 \\
+UCI & MAP-XAI fallback & -55.045 $\pm$ 1.932 & 0.026 $\pm$ 0.053 & -0.000 $\pm$ 0.005 & 0.002 $\pm$ 0.003 \\
+UCI & MAP-XAI fallback & -52.609 $\pm$ 1.452 & -0.000 $\pm$ 0.070 & -0.003 $\pm$ 0.003 & 0.001 $\pm$ 0.001 \\
+\bottomrule
+\end{tabular}

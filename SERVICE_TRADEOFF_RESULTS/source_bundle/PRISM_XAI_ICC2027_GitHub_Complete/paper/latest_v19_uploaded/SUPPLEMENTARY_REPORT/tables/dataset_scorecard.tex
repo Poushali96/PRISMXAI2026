@@ -1,0 +1,24 @@
+\begin{table}[htbp]\centering\small
+\caption{Dataset-level v19 M8 scorecard, averaged over two XAI methods, three privacy budgets, and ten seeds per condition.}
+\label{tab:dataset-scorecard}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llrrrrrrrr}
+\toprule
+Data & Method & kbit & Top-K & Cosine & Crit. cov. & Recall & Precision & bit/correct & Jain \\
+\midrule
+OPSD & Periodic fixed-DP & 3991.0 & 0.245 & -0.014 & 0.754 & 0.350 & 0.232 & 28,525 & 1.000 \\
+OPSD & Channel fixed-DP & 3849.1 & 0.270 & -0.010 & 0.666 & 0.321 & 0.245 & 33,511 & 0.948 \\
+OPSD & AoX-aware fixed-DP & 3986.9 & 0.247 & -0.015 & 0.752 & 0.316 & 0.209 & 33,038 & 0.999 \\
+OPSD & Joint full packet & 982.5 & 0.259 & -0.022 & 0.153 & 0.075 & 0.246 & 33,366 & 0.976 \\
+OPSD & MAP-XAI-only (ours) & 106.2 & 0.302 & 0.183 & 0.071 & 0.033 & 0.401 & 8,449 & 0.990 \\
+OPSD & PRISM-XAI (ours) & 105.6 & 0.317 & 0.198 & 0.071 & 0.032 & 0.379 & 8,649 & 0.990 \\
+\midrule
+UCI & Periodic fixed-DP & 5299.3 & 0.260 & 0.009 & 0.011 & 0.006 & 0.219 & 1,385,471 & 0.999 \\
+UCI & Channel fixed-DP & 5298.5 & 0.257 & 0.001 & 0.001 & 0.000 & 0.133 & 4,967,504 & 0.526 \\
+UCI & AoX-aware fixed-DP & 5300.2 & 0.262 & 0.001 & 0.997 & 0.456 & 0.361 & 14,107 & 0.999 \\
+UCI & Joint full packet & 2328.3 & 0.260 & 0.012 & 0.344 & 0.158 & 0.382 & 17,629 & 0.954 \\
+UCI & MAP-XAI-only (ours) & 381.3 & 0.229 & 0.056 & 0.085 & 0.042 & 0.675 & 11,472 & 0.992 \\
+UCI & PRISM-XAI (ours) & 379.4 & 0.240 & 0.012 & 0.086 & 0.042 & 0.640 & 11,325 & 0.992 \\
+\bottomrule
+\end{tabular}}
+\end{table}

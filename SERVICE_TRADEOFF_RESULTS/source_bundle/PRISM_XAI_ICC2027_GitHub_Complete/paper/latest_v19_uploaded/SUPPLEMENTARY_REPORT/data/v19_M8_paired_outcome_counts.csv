@@ -1,0 +1,51 @@
+baseline,baseline_label,metric,n,PRISM_better,tie,PRISM_worse
+aox_fixed_dp,AoX-aware fixed-DP,transmitted_kbits,12,12,0,0
+aox_fixed_dp,AoX-aware fixed-DP,bits_per_correct_intervention,12,10,2,0
+aox_fixed_dp,AoX-aware fixed-DP,energy_mj,12,12,0,0
+aox_fixed_dp,AoX-aware fixed-DP,deadline_miss_rate,12,1,11,0
+aox_fixed_dp,AoX-aware fixed-DP,topk_overlap,12,2,9,1
+aox_fixed_dp,AoX-aware fixed-DP,cosine_similarity,12,7,5,0
+aox_fixed_dp,AoX-aware fixed-DP,critical_event_recall,12,0,0,12
+aox_fixed_dp,AoX-aware fixed-DP,intervention_precision,12,11,1,0
+aox_fixed_dp,AoX-aware fixed-DP,intervention_coverage,12,0,0,12
+aox_fixed_dp,AoX-aware fixed-DP,jain_delivery_fairness,12,0,0,12
+channel_fixed_dp,Channel fixed-DP,transmitted_kbits,12,12,0,0
+channel_fixed_dp,Channel fixed-DP,bits_per_correct_intervention,12,12,0,0
+channel_fixed_dp,Channel fixed-DP,energy_mj,12,12,0,0
+channel_fixed_dp,Channel fixed-DP,deadline_miss_rate,12,0,12,0
+channel_fixed_dp,Channel fixed-DP,topk_overlap,12,2,10,0
+channel_fixed_dp,Channel fixed-DP,cosine_similarity,12,7,5,0
+channel_fixed_dp,Channel fixed-DP,critical_event_recall,12,6,0,6
+channel_fixed_dp,Channel fixed-DP,intervention_precision,12,8,4,0
+channel_fixed_dp,Channel fixed-DP,intervention_coverage,12,6,0,6
+channel_fixed_dp,Channel fixed-DP,jain_delivery_fairness,12,8,2,2
+joint_no_compression,Joint full packet,transmitted_kbits,12,12,0,0
+joint_no_compression,Joint full packet,bits_per_correct_intervention,12,11,1,0
+joint_no_compression,Joint full packet,energy_mj,12,12,0,0
+joint_no_compression,Joint full packet,deadline_miss_rate,12,0,12,0
+joint_no_compression,Joint full packet,topk_overlap,12,2,9,1
+joint_no_compression,Joint full packet,cosine_similarity,12,4,8,0
+joint_no_compression,Joint full packet,critical_event_recall,12,0,2,10
+joint_no_compression,Joint full packet,intervention_precision,12,8,4,0
+joint_no_compression,Joint full packet,intervention_coverage,12,0,0,12
+joint_no_compression,Joint full packet,jain_delivery_fairness,12,10,2,0
+periodic_fixed_dp,Periodic fixed-DP,transmitted_kbits,12,12,0,0
+periodic_fixed_dp,Periodic fixed-DP,bits_per_correct_intervention,12,12,0,0
+periodic_fixed_dp,Periodic fixed-DP,energy_mj,12,12,0,0
+periodic_fixed_dp,Periodic fixed-DP,deadline_miss_rate,12,0,12,0
+periodic_fixed_dp,Periodic fixed-DP,topk_overlap,12,2,9,1
+periodic_fixed_dp,Periodic fixed-DP,cosine_similarity,12,7,5,0
+periodic_fixed_dp,Periodic fixed-DP,critical_event_recall,12,6,0,6
+periodic_fixed_dp,Periodic fixed-DP,intervention_precision,12,11,1,0
+periodic_fixed_dp,Periodic fixed-DP,intervention_coverage,12,6,0,6
+periodic_fixed_dp,Periodic fixed-DP,jain_delivery_fairness,12,0,0,12
+repaired_mapxai,MAP-XAI-only (ours),transmitted_kbits,12,5,7,0
+repaired_mapxai,MAP-XAI-only (ours),bits_per_correct_intervention,12,0,12,0
+repaired_mapxai,MAP-XAI-only (ours),energy_mj,12,4,8,0
+repaired_mapxai,MAP-XAI-only (ours),deadline_miss_rate,12,0,12,0
+repaired_mapxai,MAP-XAI-only (ours),topk_overlap,12,1,11,0
+repaired_mapxai,MAP-XAI-only (ours),cosine_similarity,12,4,2,6
+repaired_mapxai,MAP-XAI-only (ours),critical_event_recall,12,0,12,0
+repaired_mapxai,MAP-XAI-only (ours),intervention_precision,12,0,10,2
+repaired_mapxai,MAP-XAI-only (ours),intervention_coverage,12,0,12,0
+repaired_mapxai,MAP-XAI-only (ours),jain_delivery_fairness,12,0,12,0

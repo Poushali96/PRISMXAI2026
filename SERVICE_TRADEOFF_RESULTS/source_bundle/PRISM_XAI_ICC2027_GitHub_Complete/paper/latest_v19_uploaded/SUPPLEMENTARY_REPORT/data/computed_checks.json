@@ -1,0 +1,9 @@
+{
+  "n_raw_runs": 720,
+  "n_prism_runs": 120,
+  "privacy_violations": 0,
+  "min_prism_critical_coverage": 0.0598086124401913,
+  "min_prism_jain_fairness": 0.9718875502008032,
+  "mean_prism_critical_coverage": 0.07821038742332066,
+  "mean_prism_critical_recall": 0.03700446481548978
+}

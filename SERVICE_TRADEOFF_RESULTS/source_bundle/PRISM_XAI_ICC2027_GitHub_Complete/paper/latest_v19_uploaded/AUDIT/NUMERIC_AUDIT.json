@@ -1,0 +1,139 @@
+{
+  "v19_only": true,
+  "v18_results_imported": false,
+  "v19_M8": {
+    "total_rows": 720,
+    "prism_rows": 120,
+    "privacy_budget_violations": 0,
+    "min_critical_coverage": 0.0598086124401913,
+    "min_jain_fairness": 0.9718875502008032,
+    "mean_critical_coverage": 0.07821038742332066,
+    "mean_critical_event_recall": 0.03700446481548978,
+    "paired_external_conditions": 48,
+    "paired_internal_map_conditions": 12,
+    "traffic_outcomes_external": {
+      "win": 48,
+      "tie": 0,
+      "loss": 0
+    },
+    "bits_per_correct_outcomes_external": {
+      "win": 45,
+      "tie": 3,
+      "loss": 0
+    },
+    "topk_outcomes_external": {
+      "win": 8,
+      "tie": 37,
+      "loss": 3
+    },
+    "precision_outcomes_external": {
+      "win": 38,
+      "tie": 10,
+      "loss": 0
+    },
+    "map_internal_traffic_outcomes": {
+      "win": 5,
+      "tie": 7,
+      "loss": 0
+    },
+    "map_internal_topk_outcomes": {
+      "win": 1,
+      "tie": 11,
+      "loss": 0
+    },
+    "mean_pairwise_traffic_reduction_percent": {
+      "periodic_fixed_dp": 94.62345353395843,
+      "channel_fixed_dp": 94.5914867666657,
+      "aox_fixed_dp": 94.62322703592184,
+      "joint_no_compression": 79.38291548861149
+    }
+  },
+  "v19_M4_sensitivity": {
+    "total_rows": 720,
+    "prism_rows": 120,
+    "privacy_budget_violations": 0,
+    "mean_traffic_kbits": 120.52095,
+    "mean_critical_coverage": 0.04242426182591307,
+    "min_critical_coverage": 0.0296465222348916,
+    "runs_below_5pct_critical_coverage": 100,
+    "mean_recall": 0.022457539384146845,
+    "mean_topk": 0.30985197844328705,
+    "mean_precision": 0.7119765822448341,
+    "min_jain_fairness": 0.9326047358834244
+  },
+  "feasibility_ladder": {
+    "rows": 12,
+    "OPSD": {
+      "oracle_topk": 1.0,
+      "clipped_topk": 0.989945023148148,
+      "private_full_topk": 0.2408130787037037,
+      "private_compressed_topk": 0.251808449074074,
+      "map_topk": 0.2838541666666667,
+      "prism_topk": 0.24609375
+    },
+    "UCI": {
+      "oracle_topk": 1.0,
+      "clipped_topk": 0.99267578125,
+      "private_full_topk": 0.2817925347222221,
+      "private_compressed_topk": 0.2951388888888888,
+      "map_topk": 0.2596028645833333,
+      "prism_topk": 0.2216254340277777
+    }
+  },
+  "release_sweep_eps32": {
+    "OPSD": {
+      "4": {
+        "coverage": 0.0842822348330304,
+        "recall": 0.0529551503847709,
+        "topk": 0.3767361111111111
+      },
+      "8": {
+        "coverage": 0.158157020458122,
+        "recall": 0.092531716889122,
+        "topk": 0.3253761574074074
+      },
+      "16": {
+        "coverage": 0.3106245176012618,
+        "recall": 0.1936062849159544,
+        "topk": 0.375
+      },
+      "32": {
+        "coverage": 0.5512279642022605,
+        "recall": 0.206497745420634,
+        "topk": 0.2663483796296296
+      },
+      "64": {
+        "coverage": 0.8303669674538708,
+        "recall": 0.4686478352329026,
+        "topk": 0.2866753472222222
+      }
+    },
+    "UCI": {
+      "4": {
+        "coverage": 0.103217022073252,
+        "recall": 0.0598692143647178,
+        "topk": 0.4877387152777777
+      },
+      "8": {
+        "coverage": 0.1822255022716507,
+        "recall": 0.0914268855465316,
+        "topk": 0.4567057291666666
+      },
+      "16": {
+        "coverage": 0.2664727756896019,
+        "recall": 0.12801337846462,
+        "topk": 0.3124457465277777
+      },
+      "32": {
+        "coverage": 0.350800770410049,
+        "recall": 0.166233925143545,
+        "topk": 0.2252061631944444
+      },
+      "64": {
+        "coverage": 0.5354986220086974,
+        "recall": 0.2316982261143593,
+        "topk": 0.2842881944444444
+      }
+    }
+  }
+}

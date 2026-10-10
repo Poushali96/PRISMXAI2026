@@ -1,0 +1,31 @@
+
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{longtable}{llrrrrrrr}
+\caption{Complete feasibility-ladder summary at $\epsilon_{\max}=4$ (three seeds).}\label{tab:ladderfull}\\
+\toprule
+Data & Stage & Cosine & Top-K & Recall & Coverage & kbit & eps spent & Rand.Top-K \\
+\midrule
+\endfirsthead
+\toprule
+Data & Stage & Cosine & Top-K & Recall & Coverage & kbit & eps spent & Rand.Top-K \\
+\midrule
+\endhead
+\midrule
+\multicolumn{9}{r}{Continued on next page} \\
+\endfoot
+\bottomrule
+\endlastfoot
+OPSD & A Oracle & 1.000 & 1.000 & 1.000 & 1.000 & 0.000 & 0.000 & 0.250 \\
+OPSD & B Clipped & 0.993 & 0.990 & 0.969 & 1.000 & 5,879.8 & 0.000 & 0.250 \\
+OPSD & C Private full & 0.025 & 0.241 & 0.368 & 0.830 & 735.0 & 4.000 & 0.250 \\
+OPSD & D Private compressed & 0.023 & 0.252 & 0.357 & 0.830 & 687.2 & 4.000 & 0.250 \\
+OPSD & E MAP-XAI-only & 0.003 & 0.284 & 0.012 & 0.034 & 36.85 & 3.703 & 0.250 \\
+OPSD & F PRISM-XAI & 0.000 & 0.246 & 0.020 & 0.034 & 34.90 & 3.703 & 0.250 \\
+UCI & A Oracle & 1.000 & 1.000 & 1.000 & 1.000 & 0.000 & 0.000 & 0.250 \\
+UCI & B Clipped & 0.999 & 0.993 & 0.988 & 1.000 & 20,906 & 0.000 & 0.250 \\
+UCI & C Private full & -0.020 & 0.282 & 0.241 & 0.535 & 2,613.2 & 4.000 & 0.250 \\
+UCI & D Private compressed & -0.017 & 0.295 & 0.234 & 0.535 & 2,443.3 & 4.000 & 0.250 \\
+UCI & E MAP-XAI-only & 0.023 & 0.260 & 0.008 & 0.018 & 115.8 & 3.703 & 0.250 \\
+UCI & F PRISM-XAI & 0.030 & 0.222 & 0.009 & 0.018 & 114.0 & 3.703 & 0.250 \\
+\end{longtable}

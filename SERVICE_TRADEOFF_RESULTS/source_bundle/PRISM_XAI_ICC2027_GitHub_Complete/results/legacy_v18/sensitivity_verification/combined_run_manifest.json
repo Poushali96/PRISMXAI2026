@@ -1,0 +1,100 @@
+{
+  "created_utc": "2026-08-28T14:50:26.462193+00:00",
+  "elapsed_seconds": 115.01999187469482,
+  "validation": {
+    "mode": "verification",
+    "datasets": [
+      "opsd",
+      "uci"
+    ],
+    "all_dataset_validations_passed": true,
+    "combined_run_keys_unique": true,
+    "combined_trace_provenance_complete": true,
+    "combined_trace_keys_unique": true,
+    "combined_ablation_control_present": true,
+    "note": "Engineering verification only; do not use as a statistical paper result.",
+    "passed": true
+  },
+  "files": {
+    "DATA_SOURCES.md": {
+      "bytes": 263,
+      "sha256": "cfba4cfe286ea0c6773339cc424eb88427824a9beafd1e6fd42fa28ac5b9ebd0"
+    },
+    "WIRELESS_ASSUMPTIONS.md": {
+      "bytes": 1043,
+      "sha256": "8166813a72fa632ed7174ba3d2fa9ae75fbdaa4b11434680bd60470fdc2cb871"
+    },
+    "appendix_condition_means.csv": {
+      "bytes": 1521,
+      "sha256": "ca4ceafeae2e2bf8b4e195207f22127b1d70e51b6e87d3054dee5442eba6ebce"
+    },
+    "appendix_condition_table.tex": {
+      "bytes": 2060,
+      "sha256": "fb3d41366ba9b81ed5534f5f321d1796ef78b4689287c83d7119a147334a99d8"
+    },
+    "combined_ablation_metrics.csv": {
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    "combined_raw_run_metrics.csv": {
+      "bytes": 9429,
+      "sha256": "93439fd580a42d09dcc07baa24753e088c9397434ca4d86ecf42e5d561b6f6c8"
+    },
+    "combined_representative_trace.csv": {
+      "bytes": 62225,
+      "sha256": "a5237166caa4c3be9a586179ad157293929a48702f0d0ea94f86bab33a478960"
+    },
+    "combined_summary_ci.csv": {
+      "bytes": 18829,
+      "sha256": "62a4292b134829cd74ed41616a75fe76f83f0b1f48bf689d112ffac8471b33c4"
+    },
+    "combined_validation_report.json": {
+      "bytes": 382,
+      "sha256": "3c0b232abb01f2f022d0642aa545d75c5b68f494103ab6351f39bcb0e1bd9200"
+    },
+    "fairness_reliability.pdf": {
+      "bytes": 23260,
+      "sha256": "fba2ad326f344af5e2f43775702fee7af302ba20ecd5b742cacae46605ba9109"
+    },
+    "fairness_reliability.png": {
+      "bytes": 220001,
+      "sha256": "2411c36dd868af0129dc1fb74079a2500256d8cbd40fe45bacaaf1d5dd3f7017"
+    },
+    "main_results_table.tex": {
+      "bytes": 3726,
+      "sha256": "c7c5e19a8bd63628808e312a167d55c58b5957a63326a7e08abbda30d74b0765"
+    },
+    "paired_prism_minus_baselines.csv": {
+      "bytes": 3925,
+      "sha256": "20510f425adb3d08707b9a76762d5babb9b0c0cb7d49dde70cd0c730c33d90ef"
+    },
+    "paired_prism_minus_baselines_table.tex": {
+      "bytes": 1574,
+      "sha256": "b5674492e631b9f4bc246c77f6e4a05a111654de915f20e9425369afef9dde71"
+    },
+    "pareto_bits_fidelity.pdf": {
+      "bytes": 22469,
+      "sha256": "1e6d8e0bee25fcaea00f56440725952a7e6f8d81d5734e8a9db87063f5e53fb4"
+    },
+    "pareto_bits_fidelity.png": {
+      "bytes": 232149,
+      "sha256": "fdc8b43eb27286e682f7f6ae4537f5fec2e7040f4db9f59eb81ce21b334b59b2"
+    },
+    "privacy_fidelity.pdf": {
+      "bytes": 25198,
+      "sha256": "f9fcda9a237a43d99c9eecce813f59fe7733d692436f1c8e6cd794661e9988c3"
+    },
+    "privacy_fidelity.png": {
+      "bytes": 221599,
+      "sha256": "490ef578e39cb689cfc65a1ca0ceef1a60dd6eb6a55e1e3e87c97a319f3278df"
+    },
+    "regime_trace.pdf": {
+      "bytes": 26204,
+      "sha256": "6747ddae325b68fa7dbfd3a7fcd2b2da433a489d72d196883fe703c3b7a085df"
+    },
+    "regime_trace.png": {
+      "bytes": 539609,
+      "sha256": "f5d95460a33f6e47fed11c69f6a43bf4da46e8ab33ee5025248dbf654cd40dd0"
+    }
+  }
+}

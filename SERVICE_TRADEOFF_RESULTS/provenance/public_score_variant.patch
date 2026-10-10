@@ -1,0 +1,17 @@
+--- prism_xai_icc2027_v1_9_selective_release.py
++++ prism_xai_public_score_tradeoff_variant.py
+@@ -1715,7 +1715,13 @@
+         else:
+             residual_buffer = outputs.phi_eval[t] - recon
+         previous_oracle_phi = outputs.phi_eval[t].copy()
+-        residual_norm = np.linalg.norm(residual_buffer, axis=1)
++        # EXPERIMENTAL public-score variant; do not label as original v1.9.
++        # Assumes forecast_novelty and calibration parameters are public.
++        residual_norm = np.maximum(forecast_novelty, 0.0) * np.array(
++            [PACKET_MODES[0].sigma * sensitivity_multiplier(config)
++             * float(calibration["clip_norms"][j]) * math.sqrt(d)
++             for j in range(n)]
++        ) * 2.0
+         noise_floor = np.array(
+             [
+                 PACKET_MODES[0].sigma

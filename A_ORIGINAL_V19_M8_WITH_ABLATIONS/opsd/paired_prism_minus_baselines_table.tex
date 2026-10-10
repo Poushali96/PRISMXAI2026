@@ -1,0 +1,44 @@
+% Paired PRISM-XAI minus baseline differences; negative kbit is better.
+\begin{table*}[t]
+\caption{Paired differences for PRISM-XAI minus each baseline at $\epsilon_{\max}=4$ with the tree model.}
+\label{tab:paired-differences}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{llcccc}
+\toprule
+Dataset & Baseline & Delta kbit & Delta Top-$K$ & Delta recall & Delta fairness \\
+\midrule
+OPSD & AoX-aware fixed-DP & -1455.709 $\pm$ 0.523 & 0.025 $\pm$ 0.066 & -0.090 $\pm$ 0.030 & -0.009 $\pm$ 0.005 \\
+OPSD & AoX-aware fixed-DP & -4993.615 $\pm$ 5.490 & 0.031 $\pm$ 0.072 & -0.371 $\pm$ 0.077 & -0.010 $\pm$ 0.006 \\
+OPSD & AoX-aware fixed-DP & -5194.029 $\pm$ 0.324 & 0.160 $\pm$ 0.055 & -0.374 $\pm$ 0.079 & -0.009 $\pm$ 0.006 \\
+OPSD & AoX-aware fixed-DP & -1456.280 $\pm$ 0.547 & 0.016 $\pm$ 0.054 & -0.093 $\pm$ 0.026 & -0.009 $\pm$ 0.006 \\
+OPSD & AoX-aware fixed-DP & -4993.807 $\pm$ 5.522 & 0.020 $\pm$ 0.062 & -0.387 $\pm$ 0.057 & -0.010 $\pm$ 0.006 \\
+OPSD & AoX-aware fixed-DP & -5194.314 $\pm$ 0.313 & 0.166 $\pm$ 0.044 & -0.386 $\pm$ 0.061 & -0.009 $\pm$ 0.006 \\
+OPSD & Channel-aware fixed-DP & -1455.709 $\pm$ 0.523 & -0.033 $\pm$ 0.061 & -0.078 $\pm$ 0.027 & -0.009 $\pm$ 0.006 \\
+OPSD & Channel-aware fixed-DP & -4580.311 $\pm$ 13.040 & 0.023 $\pm$ 0.058 & -0.371 $\pm$ 0.090 & 0.053 $\pm$ 0.007 \\
+OPSD & Channel-aware fixed-DP & -5194.029 $\pm$ 0.324 & 0.155 $\pm$ 0.048 & -0.396 $\pm$ 0.099 & 0.084 $\pm$ 0.008 \\
+OPSD & Channel-aware fixed-DP & -1456.280 $\pm$ 0.547 & -0.038 $\pm$ 0.073 & -0.084 $\pm$ 0.023 & -0.009 $\pm$ 0.006 \\
+OPSD & Channel-aware fixed-DP & -4580.504 $\pm$ 13.007 & 0.014 $\pm$ 0.057 & -0.391 $\pm$ 0.087 & 0.053 $\pm$ 0.007 \\
+OPSD & Channel-aware fixed-DP & -5194.314 $\pm$ 0.313 & 0.161 $\pm$ 0.052 & -0.417 $\pm$ 0.092 & 0.084 $\pm$ 0.008 \\
+OPSD & Joint, no compression & -347.095 $\pm$ 10.843 & 0.003 $\pm$ 0.082 & -0.012 $\pm$ 0.014 & 0.025 $\pm$ 0.014 \\
+OPSD & Joint, no compression & -724.552 $\pm$ 27.510 & 0.014 $\pm$ 0.053 & -0.040 $\pm$ 0.011 & 0.014 $\pm$ 0.009 \\
+OPSD & Joint, no compression & -1695.455 $\pm$ 10.271 & 0.127 $\pm$ 0.075 & -0.089 $\pm$ 0.025 & -0.006 $\pm$ 0.006 \\
+OPSD & Joint, no compression & -326.516 $\pm$ 14.295 & 0.007 $\pm$ 0.081 & -0.013 $\pm$ 0.006 & 0.029 $\pm$ 0.020 \\
+OPSD & Joint, no compression & -669.544 $\pm$ 15.752 & 0.002 $\pm$ 0.052 & -0.039 $\pm$ 0.013 & 0.023 $\pm$ 0.007 \\
+OPSD & Joint, no compression & -1498.340 $\pm$ 19.362 & 0.195 $\pm$ 0.086 & -0.062 $\pm$ 0.019 & 0.000 $\pm$ 0.005 \\
+OPSD & Periodic fixed-DP & -1455.709 $\pm$ 0.523 & 0.018 $\pm$ 0.060 & -0.096 $\pm$ 0.021 & -0.009 $\pm$ 0.006 \\
+OPSD & Periodic fixed-DP & -5006.296 $\pm$ 0.291 & 0.035 $\pm$ 0.052 & -0.420 $\pm$ 0.064 & -0.009 $\pm$ 0.006 \\
+OPSD & Periodic fixed-DP & -5193.641 $\pm$ 0.680 & 0.163 $\pm$ 0.043 & -0.419 $\pm$ 0.067 & -0.009 $\pm$ 0.006 \\
+OPSD & Periodic fixed-DP & -1456.280 $\pm$ 0.547 & 0.013 $\pm$ 0.047 & -0.108 $\pm$ 0.015 & -0.009 $\pm$ 0.006 \\
+OPSD & Periodic fixed-DP & -5006.489 $\pm$ 0.317 & 0.029 $\pm$ 0.052 & -0.435 $\pm$ 0.046 & -0.010 $\pm$ 0.006 \\
+OPSD & Periodic fixed-DP & -5193.926 $\pm$ 0.645 & 0.174 $\pm$ 0.051 & -0.432 $\pm$ 0.050 & -0.010 $\pm$ 0.006 \\
+OPSD & MAP-XAI fallback & -1.443 $\pm$ 0.497 & -0.027 $\pm$ 0.053 & 0.001 $\pm$ 0.003 & 0.000 $\pm$ 0.000 \\
+OPSD & MAP-XAI fallback & 0.000 $\pm$ 0.000 & -0.012 $\pm$ 0.035 & 0.001 $\pm$ 0.004 & 0.000 $\pm$ 0.000 \\
+OPSD & MAP-XAI fallback & 0.000 $\pm$ 0.000 & 0.028 $\pm$ 0.035 & -0.003 $\pm$ 0.006 & 0.000 $\pm$ 0.000 \\
+OPSD & MAP-XAI fallback & -1.873 $\pm$ 0.590 & 0.022 $\pm$ 0.027 & -0.001 $\pm$ 0.005 & 0.000 $\pm$ 0.000 \\
+OPSD & MAP-XAI fallback & -0.031 $\pm$ 0.069 & 0.017 $\pm$ 0.037 & -0.001 $\pm$ 0.002 & 0.000 $\pm$ 0.000 \\
+OPSD & MAP-XAI fallback & 0.082 $\pm$ 0.103 & 0.063 $\pm$ 0.033 & -0.003 $\pm$ 0.003 & 0.000 $\pm$ 0.000 \\
+\bottomrule
+\end{tabular}
+\end{table*}

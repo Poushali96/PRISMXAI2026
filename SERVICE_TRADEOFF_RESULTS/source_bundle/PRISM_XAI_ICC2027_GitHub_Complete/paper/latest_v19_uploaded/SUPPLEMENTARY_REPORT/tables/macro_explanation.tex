@@ -1,0 +1,71 @@
+% In the preamble:
+% \usepackage{adjustbox}
+% \usepackage{booktabs}
+
+\begin{table*}[t]
+\centering
+\caption{Macro-average explanation-quality metrics over all v19 M8 conditions.}
+\label{tab:macroexp}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.08}
+
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lrrrrrrrrr}
+\toprule
+Method
+& Cosine
+& Spearman
+& Top-K
+& Sign agr.
+& Hier. dist.
+& Collapse
+& Max collapse
+& Attack AUC
+& Rand. Top-K \\
+\midrule
+
+Periodic fixed-DP
+& -0.003 & -0.015 & 0.252 & 0.502
+& 263.0 & 1.000 & 505.2 & 0.690 & 0.250 \\
+
+Channel fixed-DP
+& -0.005 & 0.001 & 0.264 & 0.505
+& 241.2 & 0.999 & 506.7 & 0.670 & 0.250 \\
+
+AoX fixed-DP
+& -0.007 & -0.015 & 0.255 & 0.500
+& 263.2 & 1.000 & 510.1 & 0.664 & 0.250 \\
+
+Joint full packet
+& -0.005 & -0.002 & 0.260 & 0.510
+& 131.1 & 1.000 & 506.1 & 0.661 & 0.250 \\
+
+\midrule
+
+MAP-XAI-only (ours)
+& \textbf{0.119}
+& \textbf{0.084}
+& 0.265
+& \textbf{0.573}
+& \textbf{11.17}
+& 0.961
+& \textbf{434.3}
+& 0.712
+& 0.250 \\
+
+PRISM-XAI (ours)
+& 0.105
+& 0.072
+& \textbf{0.279}
+& 0.565
+& 12.07
+& \textbf{0.954}
+& 435.9
+& 0.711
+& 0.250 \\
+
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table*}

@@ -1,0 +1,25 @@
+name                                 type              encoding         emb sub uni object ID
+------------------------------------ ----------------- ---------------- --- --- --- ---------
+FLOUNJ+SFRM1728                      Type 1            Custom           yes yes yes    174  0
+YIYXXZ+SFRM1200                      Type 1            Custom           yes yes yes    175  0
+OJIYDZ+SFBX1000                      Type 1            Custom           yes yes yes    176  0
+ODFIIA+SFRM1000                      Type 1            Custom           yes yes yes    177  0
+OCCGWJ+SFBX1440                      Type 1            Custom           yes yes yes    179  0
+UXTVAW+SFBX1095                      Type 1            Custom           yes yes yes    180  0
+AWTEIZ+SFRM1095                      Type 1            Custom           yes yes yes    181  0
+UGBENU+CMMI10                        Type 1            Builtin          yes yes yes    182  0
+FQGWCH+CMR8                          Type 1            Builtin          yes yes yes    183  0
+DMHCVE+SFBX1200                      Type 1            Custom           yes yes yes    214  0
+AWTEIZ+SFRM1095                      Type 1            Custom           yes yes yes    215  0
+DVCMRV+CMSY10                        Type 1            Builtin          yes yes yes    216  0
+RWLGLA+SFRM0800                      Type 1            Custom           yes yes yes    222  0
+CHRCGW+SFTI0800                      Type 1            Custom           yes yes yes    243  0
+IZVOVE+CMMI8                         Type 1            Builtin          yes yes yes    245  0
+WKWYHT+CMMI12                        Type 1            Builtin          yes yes yes    284  0
+JOWSPI+CMR10                         Type 1            Builtin          yes yes yes    285  0
+IWVGGF+CMR6                          Type 1            Builtin          yes yes yes    286  0
+EXEWMO+CMR7                          Type 1            Builtin          yes yes yes    296  0
+PUDXGP+CMSY8                         Type 1            Builtin          yes yes yes    415  0
+HCKNCR+SFRM0600                      Type 1            Custom           yes yes yes    480  0
+BTOIXI+CMMI6                         Type 1            Builtin          yes yes yes    481  0
+KOWCSI+CMSY6                         Type 1            Builtin          yes yes yes    496  0

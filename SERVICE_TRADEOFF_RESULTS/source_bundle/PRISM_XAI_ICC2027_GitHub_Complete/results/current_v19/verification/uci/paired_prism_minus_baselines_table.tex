@@ -1,0 +1,19 @@
+% Paired PRISM-XAI minus baseline differences; negative kbit is better.
+\begin{table*}[t]
+\caption{Paired differences for PRISM-XAI minus each baseline at $\epsilon_{\max}=4$ with the tree model.}
+\label{tab:paired-differences}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{llcccc}
+\toprule
+Dataset & Baseline & Delta kbit & Delta Top-$K$ & Delta recall & Delta fairness \\
+\midrule
+UCI & AoX-aware fixed-DP & -403.457 $\pm$ 0.000 & 0.109 $\pm$ 0.000 & -0.232 $\pm$ 0.000 & -0.037 $\pm$ 0.000 \\
+UCI & Channel-aware fixed-DP & -403.457 $\pm$ 0.000 & 0.203 $\pm$ 0.000 & 0.095 $\pm$ 0.000 & 0.590 $\pm$ 0.000 \\
+UCI & Joint, no compression & -310.061 $\pm$ 0.000 & 0.245 $\pm$ 0.000 & -0.021 $\pm$ 0.000 & -0.030 $\pm$ 0.000 \\
+UCI & Periodic fixed-DP & -403.457 $\pm$ 0.000 & 0.179 $\pm$ 0.000 & 0.042 $\pm$ 0.000 & 0.032 $\pm$ 0.000 \\
+UCI & MAP-XAI fallback & 0.000 $\pm$ 0.000 & 0.045 $\pm$ 0.000 & 0.021 $\pm$ 0.000 & 0.008 $\pm$ 0.000 \\
+\bottomrule
+\end{tabular}
+\end{table*}

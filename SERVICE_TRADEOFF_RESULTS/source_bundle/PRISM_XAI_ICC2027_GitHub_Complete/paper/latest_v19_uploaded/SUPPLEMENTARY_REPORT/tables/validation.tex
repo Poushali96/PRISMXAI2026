@@ -1,0 +1,59 @@
+
+
+% In the preamble:
+% \usepackage{adjustbox}
+% \usepackage{booktabs}
+
+\begin{table*}[t]
+\centering
+\caption{v19 result-bundle validation metadata. The statistical M4/M8 bundles have a false aggregate flag only because the optional ablation-control file is absent; all dataset validation, key uniqueness, and trace provenance checks pass. The engineering verification is explicitly not used as a statistical paper result.}
+\label{tab:validation}
+
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.08}
+
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{llccccc p{7.0cm}}
+\toprule
+Bundle
+& Mode
+& Data valid
+& Keys unique
+& Trace prov.
+& Ablation ctl.
+& Overall
+& Note \\
+\midrule
+
+M8 statistical matrix
+& full
+& True
+& True
+& True
+& False
+& False
+& Full paired real-data experiment matrix. \\
+
+M4 sensitivity matrix
+& full
+& True
+& True
+& True
+& False
+& False
+& Full paired real-data experiment matrix. \\
+
+Engineering verification
+& verification
+& True
+& True
+& True
+& True
+& True
+& Engineering verification only; not used as a statistical paper result. \\
+
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table*}

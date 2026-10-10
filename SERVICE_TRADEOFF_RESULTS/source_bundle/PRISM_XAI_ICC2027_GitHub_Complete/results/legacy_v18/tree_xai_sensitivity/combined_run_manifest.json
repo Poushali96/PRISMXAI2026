@@ -1,0 +1,108 @@
+{
+  "created_utc": "2026-08-28T15:48:28.033920+00:00",
+  "elapsed_seconds": 3474.7544717788696,
+  "validation": {
+    "mode": "full",
+    "datasets": [
+      "opsd",
+      "uci"
+    ],
+    "all_dataset_validations_passed": true,
+    "combined_run_keys_unique": true,
+    "combined_trace_provenance_complete": true,
+    "combined_trace_keys_unique": true,
+    "combined_ablation_control_present": true,
+    "note": "Full paired real-data experiment matrix.",
+    "passed": true
+  },
+  "files": {
+    "DATA_SOURCES.md": {
+      "bytes": 263,
+      "sha256": "cfba4cfe286ea0c6773339cc424eb88427824a9beafd1e6fd42fa28ac5b9ebd0"
+    },
+    "WIRELESS_ASSUMPTIONS.md": {
+      "bytes": 1043,
+      "sha256": "8166813a72fa632ed7174ba3d2fa9ae75fbdaa4b11434680bd60470fdc2cb871"
+    },
+    "ablation_results.pdf": {
+      "bytes": 22538,
+      "sha256": "d0fbb729a8260594afac1db656b034e7cd215c184e96299aaef67ef3854d498c"
+    },
+    "ablation_results.png": {
+      "bytes": 325130,
+      "sha256": "87ae375c43c0e234cd8136b6263df8584e927e1102753d71eff9640edfccd829"
+    },
+    "appendix_condition_means.csv": {
+      "bytes": 8406,
+      "sha256": "203c190e070ee2c892374554f42f569e5bedec73d9c8c3cc8abcd2d232b0ba15"
+    },
+    "appendix_condition_table.tex": {
+      "bytes": 9855,
+      "sha256": "0d51ed2927210c6bda451251d6335d7a94bdb43ff01bde863105c834c9087909"
+    },
+    "combined_ablation_metrics.csv": {
+      "bytes": 196656,
+      "sha256": "0330a3ad9afcfe9e1e194bdbfbd4581ff25e3cccad0f28b700068c8d723ac4a3"
+    },
+    "combined_raw_run_metrics.csv": {
+      "bytes": 497697,
+      "sha256": "b891a094931416dfdcb317b361461d7871b018da06b9a1ba8435dc1a0f653275"
+    },
+    "combined_representative_trace.csv": {
+      "bytes": 1241963,
+      "sha256": "766883312be51994ea01a8111a435fb0c635bab3f3d79a12da4ef41db37b7212"
+    },
+    "combined_summary_ci.csv": {
+      "bytes": 192776,
+      "sha256": "0be0882d861dee7ff16a5ba98d07359c57a6038bbe9f179234b510fe9119c33d"
+    },
+    "combined_validation_report.json": {
+      "bytes": 342,
+      "sha256": "55fe1322d692f324c2535b75ba464953e3832a1f2b9e1653974e64005300d968"
+    },
+    "fairness_reliability.pdf": {
+      "bytes": 26152,
+      "sha256": "2b806b0d3803b9ea423452d9250d951859997c5b7937e8bc79bd799cf1132621"
+    },
+    "fairness_reliability.png": {
+      "bytes": 313190,
+      "sha256": "b995ac39d80905d954429683405bc8d583aa6ad74761a7396f21d6edb995cdbe"
+    },
+    "main_results_table.tex": {
+      "bytes": 7251,
+      "sha256": "b574b483625a772702e48bb05f3a73eaddfef416c9bcf00deb9f1453efbb5a8c"
+    },
+    "paired_prism_minus_baselines.csv": {
+      "bytes": 28606,
+      "sha256": "8ede827abf8b1c35d8e72194dd656b0924beb9bcea1d69325b37ceaa8e65d8aa"
+    },
+    "paired_prism_minus_baselines_table.tex": {
+      "bytes": 2734,
+      "sha256": "b7f921d633ac022cb68f25729c03b10d1db3e7470c00e7ea142fb4e7258855d2"
+    },
+    "pareto_bits_fidelity.pdf": {
+      "bytes": 26373,
+      "sha256": "3ed3335a641b4584eb122d23bcd7fbef3a33e4f644f525e6c5c0cb5819d87b4d"
+    },
+    "pareto_bits_fidelity.png": {
+      "bytes": 328475,
+      "sha256": "0788764e709eb54b347be00c09a9a861b43c6d47225a92e41451af1bbc290d95"
+    },
+    "privacy_fidelity.pdf": {
+      "bytes": 27821,
+      "sha256": "653163fcc74abcffa2bed935ef0224b61f32c55f37162a02e56c4c4eae659048"
+    },
+    "privacy_fidelity.png": {
+      "bytes": 370160,
+      "sha256": "651cd3e171a71491a2d4630e6e9bf391064bf5ff9a95e6e16d67b7ff456f2d0e"
+    },
+    "regime_trace.pdf": {
+      "bytes": 94367,
+      "sha256": "05872b0037aa6dff641942a772654e97da645a538df61f8335a48561a036dd60"
+    },
+    "regime_trace.png": {
+      "bytes": 820062,
+      "sha256": "9ee1b2320bb817cbc22177604fee1250954919d2f79e558782b2a9810802cd21"
+    }
+  }
+}

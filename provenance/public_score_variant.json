@@ -1,0 +1,10 @@
+{
+  "base_file": "source_bundle/PRISM_XAI_ICC2027_GitHub_Complete/code/prism_xai_icc2027_v1_9_selective_release.py",
+  "base_sha256": "1b903dcf971010ef35d70b65c97ec532cf9e7010b4f12f57c57c989c0c51c598",
+  "created_utc": "2026-10-10T01:59:01.908453+00:00",
+  "patch_file": "provenance/public_score_variant.patch",
+  "patch_sha256": "f69939c14f3332c5b1738397c2ef9fc57f26cf52e3b8f5c625490e8ecd137707",
+  "privacy_status": "experimental; not a full-transcript DP certificate",
+  "variant_file": "source_bundle/PRISM_XAI_ICC2027_GitHub_Complete/code/prism_xai_icc2027_v2_0_public_score_experimental.py",
+  "variant_sha256": "dc16f19721c7a2a48db99589ca23fe548bf657bcd07d30e9d5df8dcb86b0b629"
+}

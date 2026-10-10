@@ -1,0 +1,679 @@
+\documentclass[10pt,conference]{IEEEtran}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,array,multirow}
+\usepackage{placeins}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,calc}
+\usepackage[hidelinks]{hyperref}
+\newcommand{\prism}{PRISM-XAI}
+\newcommand{\mapx}{MAP-XAI}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\begin{document}
+
+\title{Supplementary Material for\\``PRISM-XAI: Privacy-Accounted Semantic Explanation Scheduling for Smart-Grid Edge Intelligence''}
+\author{Author information available in the submission system}
+\maketitle
+
+\begin{abstract}
+This supplement provides the complete technical and experimental details that
+support the main paper. It expands the packet mechanism, privacy accountant,
+scheduler, evaluation protocol, matched-service analysis, sensitivity tests,
+and explanation-fidelity results. It also reports the complete nine-point
+public-score service--communication sweep, including every generated table and
+vector figure at aggregate, OPSD, and UCI scope. Labels are descriptive and
+identify scheduler score, release cap, and dataset scope.
+\end{abstract}
+
+\section{System Architecture and Notation}
+
+Figure~\ref{fig:architecture} shows the division between trusted household
+processing and communication scheduling. Raw features and unperturbed
+attributions remain at the endpoint. The scheduler receives public operating
+state and metadata for privacy-admissible packet modes, but not the raw
+attribution residual used to construct those packets.
+
+\begin{figure*}[htbp]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+  >=Latex,node distance=8mm and 8mm,
+  block/.style={draw,rounded corners=1.5mm,align=center,minimum height=12mm,
+    minimum width=31mm,font=\small,inner sep=4pt},
+  main/.style={block,minimum width=38mm,line width=.7pt},
+  note/.style={draw,rounded corners=1mm,align=center,font=\scriptsize,
+    inner sep=3pt,fill=gray!7},
+  region/.style={draw,dashed,rounded corners=2mm,inner sep=5mm},
+  arr/.style={->,line width=.75pt}
+]
+\node[block] (endpoint) {Household/DER endpoint\\forecast and local attribution};
+\node[main,right=of endpoint,fill=blue!7,draw=blue!65!black] (map)
+  {\textbf{MAP-XAI}\\clip $\rightarrow$ Gaussian DP\\Top-$k$ $\rightarrow$ quantize};
+\node[main,right=18mm of map,fill=orange!9,draw=orange!70!black] (prism)
+  {\textbf{PRISM-XAI}\\select endpoint and mode,\\or abstain};
+\node[block,right=of prism] (edge) {Edge server/operator\\reconstructed private\\explanation};
+\node[note,below=8mm of map] (accountant) {RDP accountant\\remaining privacy budget};
+\node[note,above=8mm of prism] (public) {Public scheduling state\\channel, AoX, criticality,\\fairness, forecast novelty};
+\node[note,below=8mm of prism] (radio) {Radio constraints\\resource blocks, latency, deadline};
+\draw[arr] (endpoint) -- node[above=2.6mm,font=\scriptsize,fill=white,inner sep=1pt]
+  {attribution change} (map);
+\draw[arr] (map) -- node[above=2.6mm,font=\scriptsize,fill=white,inner sep=1pt]
+  {admissible packet modes} (prism);
+\draw[arr] (prism) -- node[above=2.6mm,font=\scriptsize,fill=white,inner sep=1pt]
+  {scheduled transmission} (edge);
+\draw[arr,gray!75] (accountant) -- (map);
+\draw[arr,gray!75] (public) -- (prism);
+\draw[arr,gray!75] (radio) -- (prism);
+\draw[arr] (prism.south) -- ++(0,-17mm)
+  node[below,font=\scriptsize,align=center]{abstain: no packet and\\no additional content release};
+\node[region,fit=(endpoint)(map)(accountant),label={[font=\scriptsize\bfseries]below:Trusted endpoint processing}] {};
+\node[region,fit=(prism)(public)(radio),label={[font=\scriptsize\bfseries]above:Communication scheduler}] {};
+\end{tikzpicture}}
+\caption{Two-layer communication architecture. MAP-XAI constructs
+privacy-accounted packet modes locally. PRISM-XAI assigns a feasible mode to a
+shared uplink opportunity using declared public signals.}
+\label{fig:architecture}
+\end{figure*}
+
+\begin{table}[b]
+\caption{Core notation.}
+\label{tab:notation}
+\centering\small
+\begin{tabular}{p{.18\columnwidth}p{.72\columnwidth}}
+\toprule
+Symbol & Meaning\\ \midrule
+$\vec\phi_{i,t}$ & Attribution vector for endpoint $i$ in slot $t$\\
+$\Delta\vec\phi_{i,t}$ & Change from the last successfully delivered explanation\\
+$C_i$ & Endpoint-specific $\ell_2$ clipping radius\\
+$m=(k,q,\sigma)$ & Packet mode: retained coordinates, quantization bits, noise multiplier\\
+$S_i(m)$ & Encoded packet length in bits\\
+$A_{i,t}$ & Age of Explanation (AoX)\\
+$G_{i,t}(m)$ & Public estimate of explanation-loss reduction\\
+$\Gamma_{i,t}(m)$ & Gain per transmitted bit, $G_{i,t}(m)/S_i(m)$\\
+$a_{i,t}$ & Indicator that a private packet is exposed outside the trusted endpoint\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{MAP-XAI Packet Construction and Accounting}
+
+The endpoint computes the attribution change relative to its last successfully
+delivered explanation and clips it as
+\begin{equation}
+\overline{\Delta\vec\phi}_{i,t}=
+\frac{\Delta\vec\phi_{i,t}}
+{\max\{1,\|\Delta\vec\phi_{i,t}\|_2/C_i\}}.
+\end{equation}
+It then applies a Gaussian mechanism,
+\begin{equation}
+\widetilde{\Delta\vec\phi}_{i,t}=
+\overline{\Delta\vec\phi}_{i,t}+\vec n_{i,t},\qquad
+\vec n_{i,t}\sim\mathcal N(0,\sigma_{i,t}^2\Delta_i^2 I_d),
+\end{equation}
+before Top-$k$ selection and quantization. Because these two compression steps
+operate on the perturbed vector, they are post-processing. For $d$ attribution
+coordinates, header size $S_0$, and $q$ magnitude bits, the packet length is
+\begin{equation}
+S_i(m)=S_0+k\bigl(\lceil\log_2d\rceil+q+1\bigr),
+\end{equation}
+where one additional bit stores the sign.
+
+At RDP order $\alpha$, an admitted Gaussian release costs
+$\rho_{i,t}(\alpha)=\alpha/(2\sigma_{i,t}^2)$. Composition and conversion at
+the end of the protected horizon give
+\begin{equation}
+\epsilon_i(\delta_i)=\min_{\alpha}
+\left[\sum_t a_{i,t}\rho_{i,t}(\alpha)
++\frac{\log(1/\delta_i)}{\alpha-1}\right].
+\end{equation}
+The accountant rejects a candidate whose projected expenditure exceeds the
+declared horizon budget. A rejected candidate and an explicit abstention add
+no content release. An admitted packet is charged when exposed outside the
+trusted endpoint, even if its later radio delivery fails.
+
+\begin{table}[b]
+\caption{Scope of the packet-content privacy statement.}
+\label{tab:privacy}
+\centering\small
+\begin{tabular}{p{.29\columnwidth}p{.61\columnwidth}}
+\toprule
+Element & Assumption or treatment\\ \midrule
+Adjacency & Add/remove clipped household contribution; absent contribution is zero\\
+Sensitivity & At most $C_i$ when the reference is public, fixed, or derived only from prior private releases\\
+Composition & Adaptive RDP costs are added for every exposed Gaussian release\\
+Post-processing & Top-$k$, quantization, reconstruction, and decisions based on public state or prior private outputs\\
+Accounted output & Released explanation-packet contents over the protected horizon\\
+System metadata & Timing, silence, endpoint identity, and mode are communication metadata and require a separate deployment mechanism if sensitive\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{PRISM-XAI Scheduling Procedure}
+
+For each slot, MAP-XAI first enumerates packet modes that fit the remaining
+privacy budget. PRISM-XAI filters these modes using resource-block and deadline
+constraints, scores the survivors from public state, and selects at most one
+mode per endpoint. The multiple-choice knapsack core has complexity
+$O(NMB)$ for $N$ endpoints, $M$ candidate modes, and integer radio budget $B$.
+
+\begin{table*}[htbp]
+\caption{Slot-level procedure and state transition.}
+\label{tab:procedure}
+\centering\small
+\begin{tabular}{p{.06\textwidth}p{.25\textwidth}p{.29\textwidth}p{.29\textwidth}}
+\toprule
+Step & Operation & Information used & State update\\ \midrule
+1 & Update public state & AoX, channel, forecast-based criticality and novelty, fairness counters & No privacy charge\\
+2 & Enumerate MAP-XAI modes & Local clipped-and-perturbed attribution; packet parameters; accountant state & Remove modes that exceed remaining RDP allowance\\
+3 & Check radio feasibility & Packet size, resource blocks, channel-dependent latency, deadline & Remove infeasible modes\\
+4 & Score candidates & Public state, packet metadata, remaining allowance; no raw attribution residual & Compute $\Gamma_{i,t}(m)=G_{i,t}(m)/S_i(m)$\\
+5 & Allocate the shared uplink & Feasible candidate scores and slot resource budget & Select at most one mode per endpoint, or abstain\\
+6 & Account and transmit & Selected protected packet & Charge exposed release; reset AoX only after successful delivery\\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\section{Formal Results and Proofs}
+
+\begin{proposition}[Sensitivity of the clipped household contribution]
+Let
+$g(\vec x)=\Delta\vec\phi(\vec x)/
+\max\{1,\|\Delta\vec\phi(\vec x)\|_2/C_i\}$ and represent an absent
+household by the zero contribution. Under add/remove contribution adjacency,
+$g$ has $\ell_2$ sensitivity at most $C_i$.
+\end{proposition}
+
+\begin{proof}
+The clipping map projects every contribution into the closed $\ell_2$ ball
+$\mathcal B_2(C_i)=\{v:\|v\|_2\leq C_i\}$. Under the stated add/remove
+adjacency, one dataset contains endpoint $i$'s clipped contribution $g(\vec x)$
+and its neighbor contains the zero contribution. Therefore
+\begin{equation}
+\|g(\vec x)-g(\varnothing)\|_2
+=\|g(\vec x)-0\|_2\leq C_i.
+\end{equation}
+Taking the supremum over adjacent inputs gives sensitivity at most $C_i$.
+This is not a replacement-adjacency bound: if one household record could be
+replaced by an arbitrary second record, the triangle inequality would give
+the looser bound $2C_i$. The theorem below consequently uses the add/remove
+model stated in the main paper.
+\end{proof}
+
+\begin{theorem}[Packet-content privacy over the protected horizon]
+Fix endpoint $i$ and assume add/remove contribution adjacency, an $\ell_2$
+sensitivity bound $\Delta_i$ for every conditionally generated clipped delta,
+and Gaussian noise with standard deviation $\sigma_{i,t}\Delta_i$ at each
+exposed release. If the accountant admits only sequences satisfying
+\begin{equation}
+\min_{\alpha>1}\left\{\sum_t a_{i,t}
+\frac{\alpha}{2\sigma_{i,t}^{2}}+
+\frac{\log(1/\delta_i)}{\alpha-1}\right\}\leq\epsilon_i,
+\end{equation}
+then the released explanation-packet contents for endpoint $i$ satisfy
+$(\epsilon_i,\delta_i)$-differential privacy over the protected horizon.
+The statement remains valid when future noise levels and release decisions
+adapt to public state and previously released private outputs.
+\end{theorem}
+
+\begin{proof}
+Condition on an arbitrary realized public-state history and on all previously
+released private outputs. By the sensitivity assumption, the next clipped
+delta differs by at most $\Delta_i$ between adjacent inputs. The Gaussian
+mechanism with noise standard deviation $\sigma_{i,t}\Delta_i$ is therefore
+$(\alpha,\rho_{i,t}(\alpha))$-RDP with
+$\rho_{i,t}(\alpha)=\alpha/(2\sigma_{i,t}^{2})$. Adaptive composition of RDP
+mechanisms adds their conditional RDP parameters, so the complete sequence of
+exposed noisy deltas is
+$(\alpha,\sum_ta_{i,t}\rho_{i,t}(\alpha))$-RDP for every tracked order
+$\alpha>1$. Converting RDP to approximate DP gives
+\begin{equation}
+\epsilon_i(\delta_i)=\min_{\alpha>1}\left\{
+\sum_ta_{i,t}\rho_{i,t}(\alpha)+
+\frac{\log(1/\delta_i)}{\alpha-1}\right\}.
+\end{equation}
+The admission rule ensures this value never exceeds $\epsilon_i$. Finally,
+packet construction after perturbation---including Top-$k$ selection,
+quantization, encoding, and reconstruction---is post-processing and cannot
+increase privacy loss. Thus the released packet contents satisfy the claimed
+horizon guarantee. The proof concerns packet contents; any additional
+data-dependent observable must be included in the mechanism before the same
+claim can be extended to it.
+\end{proof}
+
+\begin{proposition}[Privacy preservation of packet formation and public-state
+scheduling]
+Assume a noisy attribution delta has already been released by a mechanism with
+RDP parameter $\rho(\alpha)$. Any randomized Top-$k$ selection, quantization,
+encoding, reconstruction, or scheduling transformation whose additional
+inputs are public state and previously released private outputs remains
+$(\alpha,\rho(\alpha))$-RDP with respect to the protected contribution.
+\end{proposition}
+
+\begin{proof}
+Let $P$ and $Q$ be the distributions of the noisy delta under adjacent inputs,
+and let $K$ denote the Markov kernel implementing all subsequent packet and
+scheduling transformations. Because $K$ receives no additional unprotected
+function of the current private contribution, the output distributions are
+$PK$ and $QK$. R\'enyi divergence obeys the data-processing inequality,
+\begin{equation}
+D_\alpha(PK\|QK)\leq D_\alpha(P\|Q)\leq\rho(\alpha).
+\end{equation}
+Thus the transformations cannot increase the RDP parameter. Randomized
+transformations are included because a Markov kernel may contain independent
+randomness. Adaptive use of earlier private outputs is also included by
+conditioning on the realized history at each step and then applying adaptive
+composition. The condition on additional inputs is essential: a scheduler
+that directly reads an unprivatized current attribution residual is not
+covered by this post-processing argument.
+\end{proof}
+
+\begin{proposition}[Zero additional content expenditure under abstention]
+If no new protected packet is exposed in slot $t$, then slot $t$ contributes
+zero to the packet-content RDP sum.
+\end{proposition}
+
+\begin{proof}
+When $a_{i,t}=0$, the slot emits no new packet content. Its contribution in the
+composition expression is
+$a_{i,t}\rho_{i,t}(\alpha)=0$ for every $\alpha$. Updating public controller
+state or retaining a previously released explanation is either independent of
+the current private delta or post-processing of already released information,
+so it creates no additional packet-content mechanism. This does not assert
+that silence itself is private if silence is an observable, data-dependent
+event; that question belongs to a transcript-level model.
+\end{proof}
+
+\begin{proposition}[Complexity of the slot-level allocation]
+For $N$ endpoints, at most $M$ feasible modes per endpoint (including the
+zero-transmission choice), and integer resource budget $B$, the
+multiple-choice knapsack core is solvable in $O(NMB)$ time and $O(B)$ memory.
+\end{proposition}
+
+\begin{proof}
+Let $V_i(b)$ be the maximum accumulated utility after processing endpoints
+$1,\ldots,i$ with at most $b$ resource units. For endpoint $i$, mode $m$ has
+integer cost $c_{i,m}$ and utility $u_{i,m}$. The recurrence is
+\begin{equation}
+V_i(b)=\max_{m:\,c_{i,m}\leq b}
+\{V_{i-1}(b-c_{i,m})+u_{i,m}\}.
+\end{equation}
+There are $N(B+1)$ states and at most $M$ transitions per state, yielding
+$O(NMB)$ time. Only the preceding row is required to compute the next row, so
+two length-$(B+1)$ arrays---or one array with suitable buffering---give
+$O(B)$ memory. Feasibility filtering and score construction occur before this
+core and are not included in the bound, exactly as stated in the main paper.
+\end{proof}
+
+\FloatBarrier
+\section{Complete Experimental Protocol}
+
+The evaluation was designed as a paired component study. Every PRISM-XAI
+observation is compared with the MAP-XAI-only layer under the same dataset,
+explainer, privacy budget, seed, and stochastic communication trace. This
+pairing removes between-trace variability from the incremental scheduler
+comparison. External fixed-DP policies are retained to show broader operating
+regions, but are not used for matched-service claims unless they satisfy the
+predeclared overlap rule in Table~\ref{tab:protocol}.
+
+\begin{table*}[htbp]
+\caption{Evaluation matrix and communication setting.}
+\label{tab:protocol}
+\centering\small
+\begin{tabular}{p{.21\textwidth}p{.70\textwidth}}
+\toprule
+Item & Setting\\ \midrule
+Datasets & OPSD household electricity data; UCI ElectricityLoadDiagrams20112014\\
+Endpoints and zones & OPSD: 9 endpoints in 3 synthetic zones; UCI: 32 endpoints in 4 synthetic zones\\
+Forecast inputs & 12 lag, rolling-statistic, and calendar features\\
+Forecast error & OPSD RMSE/MAE $0.926/0.545$; UCI RMSE/MAE $1.289/0.221$\\
+Explanation methods & TreeSHAP and feature ablation\\
+Privacy settings & $\epsilon_{\max}\in\{8,16,32\}$; $\delta=10^{-5}$; cumulative RDP accounting\\
+Horizon & 96 calibration slots followed by 512 evaluation slots\\
+Wireless abstraction & Eight 180-kHz resource blocks, 1-ms slots, 5-ms deadlines, 3.5-GHz carrier, path loss, correlated shadowing, small-scale fading, edge delay, and bursty failures\\
+Service guardrails & 5\% coverage target and minimum Jain fairness of 0.88\\
+Primary matrix & $2$ datasets $\times2$ explainers $\times3$ privacy budgets $\times6$ schedulers $\times10$ paired seeds $=720$ runs\\
+Sensitivity matrices & Residual-score $M=8$ and residual-score $M=4$ repeat the 720-run matrix; 2,160 runs overall\\
+Pairing unit & Same dataset, explanation method, privacy budget, and random seed\\
+Matched region & Absolute coverage and recall gaps $\leq0.02$; relative spent-$\epsilon$ gap $\leq5\%$\\
+Inference & Paired mean difference and 95\% CI half-width; paired $t$ and Wilcoxon tests; Benjamini--Hochberg adjustment within comparison family\\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{table}[htbp]
+\caption{Primary metric definitions.}
+\label{tab:metrics}
+\centering\small
+\begin{tabular}{p{.29\columnwidth}p{.61\columnwidth}}
+\toprule
+Metric & Definition\\ \midrule
+Traffic & Total transmitted packet bits divided by $10^3$\\
+Coverage & Critical events meeting both AoX and public-quality thresholds\\
+Critical recall & Correct dominant feature group divided by all critical events\\
+Top-$K$ overlap & Fraction of selected private features shared with the non-private reference\\
+Privacy spent & Maximum recorded endpoint expenditure after RDP conversion\\
+Fairness & Jain index over endpoint service\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\FloatBarrier
+\section{Expanded Results}
+
+\begin{table*}[htbp]
+\caption{Complete method means for all three reported configurations. Each row
+aggregates 120 runs.}
+\label{tab:completemeans}
+\centering\scriptsize
+\begin{tabular}{llrrrrr}
+\toprule
+Configuration & Method & Traffic (kbit) & Top-$K$ & Coverage & Critical recall & Max. $\epsilon$\\ \midrule
+\multirow{6}{*}{Residual $M=8$}
+& Periodic fixed-DP & 4645.158 & .2522 & .3828 & .1779 & 10.619\\
+& Channel fixed-DP & 4573.837 & .2635 & .3337 & .1610 & 13.850\\
+& AoX fixed-DP & 4643.562 & .2545 & .8747 & .3857 & 10.820\\
+& Joint full packet & 1655.413 & .2596 & .2484 & .1166 & 18.665\\
+& MAP-XAI-only & 243.707 & .2653 & .0780 & .0374 & 18.206\\
+& PRISM-XAI & 242.521 & .2785 & .0782 & .0370 & 18.206\\ \midrule
+\multirow{6}{*}{Residual $M=4$}
+& Periodic fixed-DP & 4645.158 & .2522 & .3828 & .1779 & 10.619\\
+& Channel fixed-DP & 4573.837 & .2635 & .3337 & .1610 & 13.850\\
+& AoX fixed-DP & 4643.562 & .2545 & .8747 & .3857 & 10.820\\
+& Joint full packet & 1655.413 & .2596 & .2484 & .1166 & 18.665\\
+& MAP-XAI-only & 120.543 & .3135 & .0424 & .0238 & 18.206\\
+& PRISM-XAI & 120.521 & .3099 & .0424 & .0225 & 18.206\\ \midrule
+\multirow{6}{*}{Public $M=8$}
+& Periodic fixed-DP & 4645.158 & .2522 & .3828 & .1779 & 10.619\\
+& Channel fixed-DP & 4573.837 & .2635 & .3337 & .1610 & 13.850\\
+& AoX fixed-DP & 4643.562 & .2545 & .8747 & .3857 & 10.820\\
+& Joint full packet & 1354.988 & .2466 & .1960 & .0852 & 18.662\\
+& MAP-XAI-only & 243.707 & .2653 & .0780 & .0374 & 18.206\\
+& PRISM-XAI & \textbf{207.309} & .2693 & .0779 & .0366 & 18.206\\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\subsection{Primary matched component comparison}
+
+\begin{table*}[htbp]
+\caption{Public-score $M=8$ operating points, averaged over 120 runs per method.
+Only MAP-XAI-only satisfies the declared matched-region rule in all conditions.}
+\label{tab:allmethods}
+\centering\small
+\begin{tabular}{lrrrrr}
+\toprule
+Method & Traffic (kbit) & Top-$K$ overlap & Coverage & Critical recall & Max. $\epsilon$ spent\\ \midrule
+Periodic fixed-DP & 4645.16 & 0.252 & 0.383 & 0.178 & 10.62\\
+Channel fixed-DP & 4573.84 & 0.264 & 0.334 & 0.161 & 13.85\\
+AoX fixed-DP & 4643.56 & 0.255 & 0.875 & 0.386 & 10.82\\
+Joint full packet & 1354.99 & 0.247 & 0.196 & 0.085 & 18.66\\ \midrule
+MAP-XAI-only (proposed packet layer) & 243.71 & 0.265 & 0.078 & 0.037 & 18.21\\
+PRISM-XAI (complete design) & \textbf{207.31} & \textbf{0.269} & 0.078 & 0.037 & 18.21\\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{table}[htbp]
+\caption{Primary results by dataset (60 runs per row).}
+\label{tab:dataset}
+\centering\small
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{llrrrrr}
+\toprule
+Data & Method & kbit & Top-$K$ & Coverage & Recall & $\epsilon_{\max}$\\ \midrule
+OPSD & MAP-only & 106.15 & .302 & .0708 & .0330 & 18.21\\
+OPSD & PRISM & \textbf{87.98} & .294 & .0710 & .0324 & 18.21\\
+UCI & MAP-only & 381.26 & .229 & .0851 & .0417 & 18.21\\
+UCI & PRISM & \textbf{326.63} & .245 & .0848 & .0407 & 18.21\\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{table}[htbp]
+\caption{Paired PRISM-XAI minus MAP-XAI-only results for public-score $M=8$
+($n=120$). CI denotes the 95\% half-width.}
+\label{tab:primarypaired}
+\centering\small
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lrrrr}
+\toprule
+Metric & Mean $\Delta$ & CI & $q_t$ & $q_W$\\ \midrule
+Traffic (kbit) & $-36.3979$ & 3.3207 & $3.11\!\times\!10^{-42}$ & $1.76\!\times\!10^{-20}$\\
+Top-$K$ overlap & $+0.0040$ & 0.0155 & 0.832 & 0.653\\
+Critical recall & $-0.0008$ & 0.0016 & 0.533 & 0.489\\
+Intervention precision & $-0.0170$ & 0.0188 & 0.227 & 0.235\\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{figure*}[htbp]
+\centering
+\begin{tikzpicture}[font=\small,x=1cm,y=1cm]
+\node[font=\bfseries] at (2.1,4.1) {(a) Mean traffic};
+\draw[->] (0,0) -- (4.5,0); \draw[->] (0,0) -- (0,3.6) node[above,rotate=90,anchor=south]{kbit};
+\foreach \y/\lab in {0/0,1/100,2/200,3/300}{\draw (-.05,\y)--(.05,\y) node[left]{\lab};}
+\foreach \x/\lab in {.8/{Residual-8},2.2/{Residual-4},3.6/{Public-8}}{\node[rotate=20,anchor=east] at (\x,-.2){\lab};}
+\fill[blue!65] (.45,0) rectangle (.75,2.38); \fill[orange!80] (.78,0) rectangle (1.08,2.40);
+\fill[blue!65] (1.85,0) rectangle (2.15,.73); \fill[orange!80] (2.18,0) rectangle (2.48,.73);
+\fill[blue!65] (3.25,0) rectangle (3.55,2.07); \fill[orange!80] (3.58,0) rectangle (3.88,2.44);
+\begin{scope}[xshift=5.5cm]
+\node[font=\bfseries] at (2.1,4.1) {(b) Traffic reduction};
+\draw[->] (0,0) -- (4.5,0); \draw[->] (0,0) -- (0,3.6) node[above,rotate=90,anchor=south]{Percent};
+\foreach \y/\lab in {0/0,.8/4,1.6/8,2.4/12,3.2/16}{\draw (-.05,\y)--(.05,\y) node[left]{\lab};}
+\foreach \x/\lab/\h in {.8/{Residual-8}/.10,2.2/{Residual-4}/.005,3.6/{Public-8}/3.144}{\fill[teal!70] (\x-.25,0) rectangle (\x+.25,\h); \node[rotate=20,anchor=east] at (\x,-.2){\lab};}
+\node[above] at (.8,.1){0.50}; \node[above] at (2.2,.08){0.00}; \node[above] at (3.6,3.144){15.72};
+\end{scope}
+\begin{scope}[xshift=11cm]
+\node[font=\bfseries] at (2.1,4.1) {(c) Service change};
+\draw[->] (0,1.7) -- (4.5,1.7); \draw[->] (0,0) -- (0,3.6) node[above,rotate=90,anchor=south]{Percentage points};
+\foreach \y/\lab in {.2/-.15,1.7/0,3.2/.15}{\draw (-.05,\y)--(.05,\y) node[left]{\lab};}
+\foreach \x/\lab in {.8/{Residual-8},2.2/{Residual-4},3.6/{Public-8}}{\node[rotate=20,anchor=east] at (\x,-.2){\lab};}
+\fill[blue!65] (.5,1.7) rectangle (.75,1.91); \fill[orange!80] (.78,1.31) rectangle (1.03,1.7);
+\fill[blue!65] (1.9,1.7) rectangle (2.15,1.72); \fill[orange!80] (2.18,.34) rectangle (2.43,1.7);
+\fill[blue!65] (3.3,1.60) rectangle (3.55,1.7); \fill[orange!80] (3.58,.87) rectangle (3.83,1.7);
+\end{scope}
+\fill[blue!65] (5.2,4.55) rectangle (5.5,4.75); \node[anchor=west] at (5.58,4.65){PRISM-XAI};
+\fill[orange!80] (7.1,4.55) rectangle (7.4,4.75); \node[anchor=west] at (7.48,4.65){MAP-XAI-only / recall change};
+\end{tikzpicture}
+\caption{Matched component comparison across scheduler configurations. Panel
+(a) compares mean traffic; panel (b) gives relative traffic reduction; panel
+(c) shows PRISM-minus-MAP coverage (blue) and recall (orange) changes.}
+\label{fig:matched}
+\end{figure*}
+
+\subsection{Scheduler sensitivity and ablations}
+
+The sensitivity analysis separates two design choices: the candidate score
+and the maximum number of private releases. The residual-score configurations
+show the behavior of the earlier scoring rule at two release caps. The primary
+public-score configuration replaces the private residual norm with declared
+forecast and communication state while retaining $M=8$. The adaptive-mode
+ablation then compares the full mode choice with a fixed-resolution version of
+the same scheduler.
+
+\begin{table*}[htbp]
+\caption{Paired PRISM-XAI minus MAP-XAI-only sensitivity ($n=120$ per
+configuration). Coverage and recall changes are percentage points.}
+\label{tab:sensitivity}
+\centering\small
+\begin{tabular}{llrrrr}
+\toprule
+Score & Release cap & $\Delta$ traffic (kbit) & Relative change & $\Delta$ coverage & $\Delta$ critical recall\\ \midrule
+Residual & $M=8$ & $-1.185\pm0.411$ & $-0.50\%$ & $+0.021$ & $-0.039$\\
+Residual & $M=4$ & $-0.022\pm0.028$ & $-0.00\%$ & $+0.002$ & $-0.136$\\
+Public & $M=8$ & $\mathbf{-36.398\pm3.321}$ & $\mathbf{-15.72\%}$ & $-0.010$ & $-0.083$\\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{table*}[htbp]
+\caption{Adaptive-mode ablation: PRISM-XAI minus fixed-resolution PRISM
+($n=40$ per configuration). $q_t$ and $q_W$ are BH-adjusted paired-test values.}
+\label{tab:ablation}
+\centering\small
+\begin{tabular}{llrrrrr}
+\toprule
+Score/cap & Metric & Mean $\Delta$ & 95\% CI half-width & Relative traffic change & $q_t$ & $q_W$\\ \midrule
+Residual $M=8$ & Traffic (kbit) & $-3.4384$ & 0.8996 & $-1.464\%$ & $3.91\times10^{-8}$ & $6.42\times10^{-7}$\\
+Residual $M=4$ & Traffic (kbit) & $-0.0384$ & 0.0329 & $-0.052\%$ & 0.252 & 0.371\\
+Public $M=8$ & Traffic (kbit) & $-35.3336$ & 5.6256 & $-15.427\%$ & $1.05\times10^{-13}$ & $9.14\times10^{-7}$\\ \midrule
+Public $M=8$ & Top-$K$ overlap & $-0.0085$ & 0.0268 & -- & 1.000 & 0.907\\
+Public $M=8$ & Critical recall & $-0.0013$ & 0.0029 & -- & 1.000 & 0.907\\
+Public $M=8$ & Intervention precision & $-0.0119$ & 0.0281 & -- & 1.000 & 1.000\\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\subsection{Matched-region eligibility of external operating points}
+
+\begin{table}[htbp]
+\caption{Conditions satisfying the matched-region rule (out of 12).}
+\label{tab:eligibility}
+\centering\small
+\begin{tabular}{lccc}
+\toprule
+Comparator & Res.-8 & Res.-4 & Public-8\\ \midrule
+Periodic fixed-DP & 0 & 0 & 0\\
+Channel fixed-DP & 0 & 0 & 0\\
+AoX fixed-DP & 0 & 0 & 0\\
+Joint full packet & 2 & 0 & 2\\
+MAP-XAI-only & 12 & 12 & 12\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The fixed-DP policies and the joint full-packet scheduler therefore describe
+different communication--service operating points. Their traffic totals are
+not used as matched-service evidence for the headline reduction.
+
+\subsection{Explanation-fidelity diagnostic}
+
+\begin{table*}[htbp]
+\caption{Top-$K$ overlap above the random-overlap reference. Positive values
+indicate greater overlap than random; $q_t$ and $q_W$ are BH adjusted.}
+\label{tab:topk}
+\centering\small
+\begin{tabular}{llrrrrr}
+\toprule
+Configuration & Scope & $n$ & Mean difference & 95\% CI half-width & $q_t$ & $q_W$\\ \midrule
+Residual $M=8$ & Combined & 120 & 0.02855 & 0.01875 & 0.00471 & 0.02416\\
+ & OPSD & 60 & 0.06681 & 0.02647 & $1.36\times10^{-5}$ & $1.01\times10^{-4}$\\
+ & UCI & 60 & $-0.00971$ & 0.02343 & 0.410 & 0.236\\ \midrule
+Residual $M=4$ & Combined & 120 & 0.05985 & 0.02034 & $7.44\times10^{-8}$ & $9.88\times10^{-7}$\\
+ & OPSD & 60 & 0.09997 & 0.03045 & $4.31\times10^{-8}$ & $9.88\times10^{-7}$\\
+ & UCI & 60 & 0.01973 & 0.02366 & 0.100 & 0.143\\ \midrule
+Public $M=8$ & Combined & 120 & 0.01929 & 0.01660 & 0.03475 & 0.08929\\
+ & OPSD & 60 & 0.04354 & 0.02429 & 0.00205 & 0.00892\\
+ & UCI & 60 & $-0.00496$ & 0.02158 & 0.648 & 0.669\\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[font=\small,x=1cm,y=1cm]
+\draw[->] (0,0) -- (7.3,0); \draw[->] (.5,-1.5) -- (.5,2.7)
+ node[above,rotate=90,anchor=south]{Top-$K$ minus random};
+\foreach \y/\lab in {-1/-.05,0/0,1/.05,2/.10}{\draw (.45,\y)--(.55,\y) node[left]{\lab};}
+\foreach \x/\lab in {1.2/{Res.-8},3.2/{Res.-4},5.2/{Public-8}}{\node at (\x,-1.7){\lab};}
+\foreach \x/\m/\e in {1/.06681/.02647,3/.09997/.03045,5/.04354/.02429}{
+  \pgfmathsetmacro{\yy}{20*\m}\pgfmathsetmacro{\ee}{20*\e}
+  \fill[blue!70] (\x-.18,0) rectangle (\x+.18,\yy);
+  \draw (\x,\yy-\ee)--(\x,\yy+\ee); \draw (\x-.12,\yy-\ee)--(\x+.12,\yy-\ee); \draw (\x-.12,\yy+\ee)--(\x+.12,\yy+\ee);
+}
+\foreach \x/\m/\e in {1.4/-.00971/.02343,3.4/.01973/.02366,5.4/-.00496/.02158}{
+  \pgfmathsetmacro{\yy}{20*\m}\pgfmathsetmacro{\ee}{20*\e}
+  \fill[orange!80] (\x-.18,0) rectangle (\x+.18,\yy);
+  \draw (\x,\yy-\ee)--(\x,\yy+\ee); \draw (\x-.12,\yy-\ee)--(\x+.12,\yy-\ee); \draw (\x-.12,\yy+\ee)--(\x+.12,\yy+\ee);
+}
+\fill[blue!70] (1.2,2.35) rectangle (1.5,2.55); \node[anchor=west] at (1.58,2.45){OPSD};
+\fill[orange!80] (3,2.35) rectangle (3.3,2.55); \node[anchor=west] at (3.38,2.45){UCI};
+\end{tikzpicture}
+\caption{Dataset-specific explanation-fidelity diagnostic. Bars show mean
+Top-$K$ overlap above random; whiskers show 95\% confidence intervals.}
+\label{fig:topk}
+\end{figure}
+
+\FloatBarrier
+\input{service_tradeoff_results.tex}
+
+\FloatBarrier
+\section{Complete Result-Figure Atlas}
+
+This section reproduces every vector result figure generated by the three
+validated experimental matrices. For each configuration, it includes the
+combined-dataset, OPSD, and UCI versions of the representative regime trace,
+fairness--reliability analysis, privacy--fidelity analysis, traffic--fidelity
+Pareto analysis, and scheduler ablation results. The corresponding PNG files
+are duplicate raster exports and remain in the reproducibility package; the
+vector PDF versions are used here for print quality. Thus the atlas contains
+$3$ configurations $\times$ $3$ scopes $\times$ $5$ figure families $=45$
+generated result figures.
+
+\subsection{How the five figure families should be read}
+
+\paragraph{Representative regime trace.}
+These panels show the temporal mechanism behind the aggregate metrics:
+prediction or explanation-quality variation, cumulative traffic, remaining
+privacy allowance, and transmission activity over the evaluation horizon.
+They reveal whether a policy communicates steadily, exhausts its allowance
+early, or uses sparse opportunities. A single trace is illustrative and is
+not used for statistical inference; the paired aggregate tables provide that
+evidence.
+
+\paragraph{Fairness--reliability plane.}
+These plots place explanation fidelity or service reliability against Jain
+delivery fairness. A point near the right boundary serves endpoints evenly,
+but fairness alone does not establish adequate coverage or explanation
+quality. The relevant question is therefore whether traffic savings move the
+proposed method into a worse fairness--reliability region, not simply which
+point is farthest right.
+
+\paragraph{Privacy--fidelity plane.}
+These plots compare maximum composed privacy expenditure with agreement-based
+explanation fidelity. They test whether a larger privacy allowance visibly
+improves the measured proxy. Flat or noisy trends indicate that clipping,
+Gaussian perturbation, compression, or the dataset may dominate the available
+budget increase; they do not establish semantic usefulness by themselves.
+
+\paragraph{Traffic--fidelity Pareto plane.}
+These plots expose the communication cost of each operating point. Policies
+with much larger traffic can also occupy different coverage and recall
+regions, so geometric dominance in this plane is not sufficient for the
+paper's matched-service claim. Only the paired PRISM-XAI versus MAP-XAI-only
+contrast is interpreted as an incremental scheduler comparison.
+
+\paragraph{Ablation panels.}
+The ablations remove one design element at a time and report the resulting
+metric changes. They identify whether savings arise from packet compression,
+adaptive mode choice, the release cap, or the candidate score. Because several
+metrics and ablations are tested, the numerical tables and BH-adjusted tests
+remain the inferential reference.
+
+\input{all_result_figures.tex}
+
+\FloatBarrier
+\section{Interpretation of the Extended Evidence}
+
+The complete results support three focused conclusions. First, public-score
+PRISM-XAI reduces traffic relative to the MAP-XAI-only component while meeting
+the declared matched-service and recorded-privacy rule. Second, the stronger
+reduction is specific to the public-score formulation: the residual-score
+configuration yields only a small saving, and the stricter $M=4$ cap alone
+does not produce a detectable traffic difference. Third, explanation fidelity
+is dataset dependent. OPSD exceeds the random Top-$K$ reference, whereas UCI
+does not. The communication result therefore does not imply universal
+explanation usefulness.
+
+All 720 runs in each matrix pass the recorded validation checks, with no
+duplicate experimental keys and no observed accountant overspend. The study
+remains a scheduler-level evaluation with synthetic zones and a reproducible
+radio trace. A field deployment should predefine required service and fidelity
+levels, evaluate real interference and retransmissions, and add a
+transcript-level mechanism when communication metadata is considered private.
+
+\end{document}

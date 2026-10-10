@@ -1,0 +1,6 @@
+PDF: /mnt/data/PRISM_XAI_ICC2027_V19_READER_REPORT_FINAL/MAIN_PAPER/PRISM_XAI_ICC2027_MAIN_V19_FINAL.pdf
+Pages: 6
+Encrypted: False
+Openable (PyMuPDF): True
+Likely scanned: False
+XFA present: False
