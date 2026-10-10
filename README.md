@@ -16,7 +16,7 @@ directs the reader to Supplementary Sec. VIII. The supplementary material
 contains the full numerical interpretation, proofs, paired statistics,
 condition tables, and aggregate/OPSD/UCI figures.
 
-## New service-tradeoff evidence
+## New Service-Tradeoff Evidence
 
 `SERVICE_TRADEOFF_RESULTS/` preserves the uploaded archive in full:
 
