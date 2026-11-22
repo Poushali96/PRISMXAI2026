@@ -1,0 +1,46 @@
+{
+  "rule": "PRISM event_paced only. Eligible if mean coverage on each dataset >= control coverage (same cap) - 0.02. Score = mean over datasets of mean dp Cohen kappa. GO if chosen kappa >= 0.1 on OPSD and >= 0.05 on UCI.",
+  "chosen": {
+    "mechanism": "level12_g0.1",
+    "cap": 8,
+    "eligible": true,
+    "score": 0.010086523678102043,
+    "kappa_opsd": -0.006276330695961745,
+    "kappa_uci": 0.026449378052165833,
+    "coverage_opsd": 0.1811613247353761,
+    "coverage_uci": 0.12220753973426245,
+    "control_kappa_opsd": 0.0015722126619860941,
+    "control_kappa_uci": -0.01854110803376678,
+    "control_coverage_opsd": 0.1811613247353761,
+    "control_coverage_uci": 0.12107104425698625
+  },
+  "go": false,
+  "tuning_seeds": [
+    11,
+    22,
+    33
+  ],
+  "confirm_seeds": [
+    3001,
+    3002,
+    3003,
+    3004,
+    3005,
+    3006,
+    3007,
+    3008,
+    3009,
+    3010
+  ],
+  "tune_file_sha256": "3497dc0d7a62fe6f2ce54cb3f156cb8c5cc655a10ffc1126fc7abad1a3c80ac4",
+  "sim_sha256": "dc16f19721c7a2a48db99589ca23fe548bf657bcd07d30e9d5df8dcb86b0b629",
+  "rc_sha256": "ca3e6f34631f371403711bdb78d595607533e2e8bb30f042e1eb6143e390ea79",
+  "cell_version": "v3-mech-1",
+  "created": "2026-11-22T20:50:48",
+  "hypotheses": [
+    "H1 kappa(locked)-kappa(control)>0",
+    "H2 kappa(locked)>0",
+    "H3 coverage diff lower 95% bound > -0.02"
+  ],
+  "alpha": 0.05
+}

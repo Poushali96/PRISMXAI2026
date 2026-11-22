@@ -1,0 +1,181 @@
+dataset,xai_method,epsilon_budget,scheduler,variant,prism_setting,baseline_setting,status,n_pairs,traffic_p_kbit,traffic_b_kbit,saved_kbit,relative_reduction_pct,p_traffic,coverage_diff,coverage_lower95,recall_diff,recall_lower95,eps_rel_gap_mean,cohen_kappa_p,cohen_kappa_b,balanced_acc_p,balanced_acc_b,topk_p,topk_b,p_traffic_holm,claim_supported
+opsd,TreeSHAP,8.0,aox_fixed_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,TreeSHAP,8.0,aox_fixed_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,TreeSHAP,8.0,aox_fixed_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,TreeSHAP,8.0,channel_fixed_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,TreeSHAP,8.0,channel_fixed_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,TreeSHAP,8.0,channel_fixed_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,TreeSHAP,8.0,joint_no_compression,orig,PRISM_orig_cap8_threshold5,BASELINE_duty1,tested,10.0,87.1854,190.65,103.46459999999999,54.26939417781274,3.0937413066883422e-18,0.08746602378605975,0.0813789914926814,0.04434920232391214,0.0294755781852725,0.020934886037192908,0.007875891892332443,0.005978165758241472,0.32206426309286224,0.30947110693317753,0.2957899305555556,0.22703993055555557,3.0937413066883422e-18,True
+opsd,TreeSHAP,8.0,joint_no_compression,paced,PRISM_paced_cap8_threshold5,BASELINE_duty1,tested,10.0,87.1547,190.65,103.4953,54.2854969840021,4.2944639600818803e-19,0.11826661382136036,0.10539539140099224,0.0445695527977988,0.026817196299168476,0.020934886037192908,-0.003546299411355361,0.005978165758241472,0.31267418056350027,0.30947110693317753,0.2675564236111111,0.22703993055555557,1.2883391880245641e-18,True
+opsd,TreeSHAP,8.0,joint_no_compression,event_paced,PRISM_event_paced_cap8_threshold1,BASELINE_duty1,tested,10.0,87.8608,190.65,102.78920000000001,53.915132441646996,3.1938934846771053e-19,0.13479712522645396,0.1229575381661679,0.05729433562500437,0.041575335539539446,0.020934886037192908,-0.00485991428116408,0.005978165758241472,0.29045650273098333,0.30947110693317753,0.26026475694444445,0.22703993055555557,1.2775573938708421e-18,True
+opsd,TreeSHAP,8.0,periodic_fixed_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,TreeSHAP,8.0,periodic_fixed_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,TreeSHAP,8.0,periodic_fixed_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,TreeSHAP,8.0,periodic_rr_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,TreeSHAP,8.0,periodic_rr_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,TreeSHAP,8.0,periodic_rr_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,TreeSHAP,16.0,aox_fixed_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,TreeSHAP,16.0,aox_fixed_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,TreeSHAP,16.0,aox_fixed_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,TreeSHAP,16.0,channel_fixed_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,TreeSHAP,16.0,channel_fixed_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,TreeSHAP,16.0,channel_fixed_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,TreeSHAP,16.0,joint_no_compression,orig,PRISM_orig_cap8_threshold5,BASELINE_duty1,tested,10.0,87.1854,459.75,372.5646,81.03634584013051,3.2586417672977507e-25,0.042441835105723864,0.037050708808021984,0.01925111241469059,0.004342540102132159,0.02356017800861527,0.0021480038008806898,-0.00044446374543969893,0.31995838988967856,0.32518478793998346,0.3087456597222222,0.24377170138888887,8.472468594974152e-24,True
+opsd,TreeSHAP,16.0,joint_no_compression,paced,PRISM_paced_cap8_threshold5,BASELINE_duty1,tested,10.0,87.1547,459.75,372.59530000000007,81.04302338227299,3.808998167032913e-24,0.07324242514102448,0.06005790172957197,0.03438607736027989,0.015488314789354762,0.02356017800861527,-0.00782367180552357,-0.00044446374543969893,0.3136153252097899,0.32518478793998346,0.2993272569444444,0.24377170138888887,8.7606957841757e-23,True
+opsd,TreeSHAP,16.0,joint_no_compression,event_paced,PRISM_event_paced_cap8_threshold1,BASELINE_duty1,tested,10.0,87.83009999999999,459.75,371.91990000000004,80.89611745513868,1.5704069442880484e-24,0.08977293654611805,0.07779315902835794,0.042183053644726756,0.01825421439541713,0.02356017800861527,-0.005531999229157571,-0.00044446374543969893,0.28862086882387905,0.32518478793998346,0.2868272569444444,0.24377170138888887,3.768976666291316e-23,True
+opsd,TreeSHAP,16.0,periodic_fixed_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,TreeSHAP,16.0,periodic_fixed_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,TreeSHAP,16.0,periodic_fixed_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,TreeSHAP,16.0,periodic_rr_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,TreeSHAP,16.0,periodic_rr_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,TreeSHAP,16.0,periodic_rr_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,TreeSHAP,32.0,aox_fixed_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,TreeSHAP,32.0,aox_fixed_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,TreeSHAP,32.0,aox_fixed_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,TreeSHAP,32.0,channel_fixed_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,TreeSHAP,32.0,channel_fixed_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,TreeSHAP,32.0,channel_fixed_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,TreeSHAP,32.0,joint_no_compression,orig,PRISM_orig_cap16_threshold5,BASELINE_duty1,tested,10.0,174.27870000000001,1136.25,961.9712999999999,84.6619405940594,6.309448199611934e-21,0.12388987176319044,0.11731493171304273,0.08374365088593698,0.061136958765297615,0.025756770356431397,0.01249922151092529,-0.0024920659474620003,0.34940454300339924,0.2773618392380533,0.32013888888888886,0.2713541666666667,7.571337839534321e-20,True
+opsd,TreeSHAP,32.0,joint_no_compression,paced,PRISM_paced_cap8_threshold5,BASELINE_duty1,tested,10.0,87.124,1136.25,1049.126,92.3323212321232,2.1682501843594428e-21,0.0039144910966309844,-0.009192966206243939,0.01941853941378884,-0.0012779761761759559,0.025756770356431286,-0.0009747259461851301,-0.0024920659474620003,0.3433460536566121,0.2773618392380533,0.3592881944444445,0.2713541666666667,3.03555025810322e-20,True
+opsd,TreeSHAP,32.0,joint_no_compression,event_paced,PRISM_event_paced_cap8_threshold1,BASELINE_duty1,tested,10.0,87.79939999999999,1136.25,1048.4506000000001,92.27288008800882,1.930865317788526e-21,0.02044500250172455,0.008949241834872237,0.03513869326345835,0.0105487365221099,0.025756770356431286,0.014394242061787762,-0.0024920659474620003,0.34929155572926185,0.2773618392380533,0.3414279513888889,0.2713541666666667,2.896297976682789e-20,True
+opsd,TreeSHAP,32.0,periodic_fixed_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,TreeSHAP,32.0,periodic_fixed_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,TreeSHAP,32.0,periodic_fixed_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,TreeSHAP,32.0,periodic_rr_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,TreeSHAP,32.0,periodic_rr_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,TreeSHAP,32.0,periodic_rr_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,8.0,aox_fixed_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,8.0,aox_fixed_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,8.0,aox_fixed_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,8.0,channel_fixed_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,8.0,channel_fixed_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,8.0,channel_fixed_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,8.0,joint_no_compression,orig,PRISM_orig_cap8_threshold5,BASELINE_duty1,tested,10.0,87.1854,190.2,103.0146,54.161198738170356,7.201422840315304e-19,0.08675647321903276,0.08058584009688505,0.04588390624835557,0.03255551557694045,0.020934886037192908,0.0021908751686158775,0.00349019090236706,0.29771694003324345,0.3213233775903816,0.2494791666666667,0.2166232638888889,1.4402845680630609e-18,True
+opsd,feature_ablation,8.0,joint_no_compression,paced,PRISM_paced_cap8_threshold5,BASELINE_duty1,tested,10.0,87.124,190.2,103.076,54.19348054679285,1.8862461130862632e-19,0.11755706325433338,0.10474221610978982,0.045508406773063635,0.024581008710235826,0.020934886037192908,-0.0013626898813735703,0.00349019090236706,0.29891949879645807,0.3213233775903816,0.24292534722222223,0.2166232638888889,1.1317476678517579e-18,True
+opsd,feature_ablation,8.0,joint_no_compression,event_paced,PRISM_event_paced_cap8_threshold1,BASELINE_duty1,tested,10.0,87.79939999999999,190.2,102.40060000000001,53.83838065194533,5.168778463573262e-20,0.13408757465942694,0.12220328935937139,0.04665426255435504,0.027758146453135502,0.020934886037192908,-0.0016505783200111105,0.00349019090236706,0.314481374290891,0.3213233775903816,0.24357638888888883,0.2166232638888889,4.651900617215936e-19,True
+opsd,feature_ablation,8.0,periodic_fixed_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,8.0,periodic_fixed_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,8.0,periodic_fixed_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,8.0,periodic_rr_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,8.0,periodic_rr_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,8.0,periodic_rr_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,16.0,aox_fixed_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,16.0,aox_fixed_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,16.0,aox_fixed_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,16.0,channel_fixed_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,16.0,channel_fixed_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,16.0,channel_fixed_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,16.0,joint_no_compression,orig,PRISM_orig_cap8_threshold5,BASELINE_duty1,tested,10.0,87.1854,459.6,372.41459999999995,81.03015665796343,3.5971264684184235e-26,0.04339740767675157,0.03754592253901871,0.02448979300033654,0.009129622632948982,0.02356017800861527,-0.0017134255618537302,0.0019039372952859908,0.3135339858565136,0.3455044125017312,0.26814236111111106,0.2292317708333333,1.0071954111571585e-24,True
+opsd,feature_ablation,16.0,joint_no_compression,paced,PRISM_paced_cap8_threshold5,BASELINE_duty1,tested,10.0,87.0933,459.6,372.5067,81.05019582245431,4.048016538015609e-25,0.07419799771205218,0.06123877870580666,0.035521149413512046,0.012112403427223268,0.02356017800861527,-0.0014693702649202494,0.0019039372952859908,0.3015103389291725,0.3455044125017312,0.26013454861111107,0.2292317708333333,1.0120041345039023e-23,True
+opsd,feature_ablation,16.0,joint_no_compression,event_paced,PRISM_event_paced_cap8_threshold1,BASELINE_duty1,tested,10.0,87.7687,459.6,371.8313,80.90324194952132,5.612572710190673e-26,0.09072850911714575,0.07873276545838716,0.03887832244422062,0.015246956968808331,0.02356017800861527,-0.0006927892416193203,0.0019039372952859908,0.3221276898896928,0.3455044125017312,0.2614149305555556,0.2292317708333333,1.5153946317514815e-24,True
+opsd,feature_ablation,16.0,periodic_fixed_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,16.0,periodic_fixed_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,16.0,periodic_fixed_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,16.0,periodic_rr_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,16.0,periodic_rr_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,16.0,periodic_rr_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,32.0,aox_fixed_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,32.0,aox_fixed_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,32.0,aox_fixed_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,32.0,channel_fixed_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,32.0,channel_fixed_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,32.0,channel_fixed_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,32.0,joint_no_compression,orig,PRISM_orig_cap16_threshold5,BASELINE_duty1,tested,10.0,174.27870000000001,1141.05,966.7713,84.72646246877876,2.1165219080017614e-19,0.1234304586590544,0.11644583006438285,0.06861515193403522,0.047633237248193024,0.025756770356431397,0.0129107790755584,-0.0026525563302598,0.3396881720305917,0.285276868468385,0.31037326388888886,0.23912760416666665,1.1317476678517579e-18,True
+opsd,feature_ablation,32.0,joint_no_compression,paced,PRISM_paced_cap8_threshold5,BASELINE_duty1,tested,10.0,87.0933,1141.05,1053.9567,92.36726699092941,1.0036595418585138e-19,0.003455077992494937,-0.009856062177752267,0.016155381577053478,-0.007019701578278123,0.025756770356431286,0.006352688306822859,-0.0026525563302598,0.3368050487189535,0.285276868468385,0.3123697916666667,0.23912760416666665,7.025616793009597e-19,True
+opsd,feature_ablation,32.0,joint_no_compression,event_paced,PRISM_event_paced_cap8_threshold1,BASELINE_duty1,tested,10.0,87.7687,1141.05,1053.2813,92.308075895009,8.262841752762305e-20,0.019985589397588505,0.008631724491596066,0.03608043498416437,0.010952655718204227,0.025756770356431286,0.01257310837554905,-0.0026525563302598,0.35903384835645574,0.285276868468385,0.3291015625,0.23912760416666665,6.610273402209844e-19,True
+opsd,feature_ablation,32.0,periodic_fixed_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,32.0,periodic_fixed_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,32.0,periodic_fixed_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,32.0,periodic_rr_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,32.0,periodic_rr_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+opsd,feature_ablation,32.0,periodic_rr_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,TreeSHAP,8.0,aox_fixed_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,TreeSHAP,8.0,aox_fixed_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,TreeSHAP,8.0,aox_fixed_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,TreeSHAP,8.0,channel_fixed_dp,orig,PRISM_orig_cap8_threshold5,BASELINE_duty1,tested,10.0,311.91600000000005,5294.1422,4982.2262,94.10828065781837,3.9533955833374684e-28,0.07082870747925409,0.06663000296553659,0.03104322584253936,0.02740578823348315,0.020934886037192908,0.004563719221234321,-0.001150732725233051,0.3127596883541809,0.31272371028157264,0.30930989583333324,0.2456217447916666,1.3214210002765984e-26,True
+uci,TreeSHAP,8.0,channel_fixed_dp,paced,PRISM_paced_cap8_threshold5,BASELINE_duty1,tested,10.0,311.2099,5294.1422,4982.9322999999995,94.12161804040699,3.886532353754701e-28,0.08934240735103115,0.08392602877772583,0.037796091085337276,0.03421864084352936,0.020934886037192908,-0.026956910291168833,-0.001150732725233051,0.3346521046636986,0.31272371028157264,0.26197916666666665,0.2456217447916666,1.3214210002765984e-26,True
+uci,TreeSHAP,8.0,channel_fixed_dp,event_paced,PRISM_event_paced_cap8_threshold5,BASELINE_duty1,tested,10.0,311.14850000000007,5294.1422,4982.9937,94.122777812806,2.4261845163286e-28,0.10654653250743198,0.09907758641970832,0.048093887003626525,0.03889743204826572,0.020934886037192908,-0.006414699803075149,-0.001150732725233051,0.3374826855228043,0.31272371028157264,0.28004557291666665,0.2456217447916666,8.734264258782961e-27,True
+uci,TreeSHAP,8.0,joint_no_compression,orig,PRISM_orig_cap8_threshold5,BASELINE_duty0.25,tested,10.0,311.91600000000005,673.65,361.734,53.6976174571365,8.590806935063082e-21,-0.0036508686536468695,-0.011933636695882766,-0.0026771732676902403,-0.008463077430566637,0.02102659019077277,0.004563719221234321,0.00934068661135221,0.3127596883541809,0.32045670542504645,0.30930989583333324,0.2337727864583333,9.44988762856939e-20,True
+uci,TreeSHAP,8.0,joint_no_compression,paced,PRISM_paced_cap8_threshold5,BASELINE_duty0.25,tested,10.0,311.2099,673.65,362.4401,53.80243449862688,1.7306784537613105e-21,0.014862831218130184,0.009270103336689326,0.004075691975107669,0.00024529830822613095,0.02102659019077277,-0.026956910291168833,0.00934068661135221,0.3346521046636986,0.32045670542504645,0.26197916666666665,0.2337727864583333,2.769085526018097e-20,True
+uci,TreeSHAP,8.0,joint_no_compression,event_paced,PRISM_event_paced_cap8_threshold5,BASELINE_duty0.25,tested,10.0,311.14850000000007,673.65,362.50149999999996,53.81154902397387,1.0568842121584115e-20,0.03206695637453101,0.024926048128955828,0.014373487893396916,0.004939717110854254,0.02102659019077277,-0.006414699803075149,0.00934068661135221,0.3374826855228043,0.32045670542504645,0.28004557291666665,0.2337727864583333,1.0568842121584115e-19,True
+uci,TreeSHAP,8.0,periodic_fixed_dp,orig,PRISM_orig_cap8_threshold5,BASELINE_duty1,tested,10.0,311.91600000000005,5299.965200000001,4988.0492,94.11475381008162,2.103636057481197e-33,0.06111896042931704,0.056932111104109034,0.0250077386150431,0.020776825037234062,0.004289781451031418,0.004563719221234321,0.02319133398407974,0.3127596883541809,0.3488474116734988,0.30930989583333324,0.24791666666666665,8.637077490660895e-32,True
+uci,TreeSHAP,8.0,periodic_fixed_dp,paced,PRISM_paced_cap8_threshold5,BASELINE_duty1,tested,10.0,311.2099,5299.965200000001,4988.7553,94.12807653906859,1.1308274723768302e-34,0.07963266030109409,0.07391985453439205,0.03176060385784101,0.02807178865005863,0.004289781451031418,-0.026956910291168833,0.02319133398407974,0.3346521046636986,0.3488474116734988,0.26197916666666665,0.24791666666666665,5.541054614646468e-33,True
+uci,TreeSHAP,8.0,periodic_fixed_dp,event_paced,PRISM_event_paced_cap8_threshold5,BASELINE_duty1,tested,10.0,311.14850000000007,5299.965200000001,4988.816700000001,94.12923503724139,1.1108072470328372e-33,0.09683678545749493,0.08925996459817778,0.042058399776130254,0.0326568520454752,0.004289781451031418,-0.006414699803075149,0.02319133398407974,0.3374826855228043,0.3488474116734988,0.28004557291666665,0.24791666666666665,4.887551886944483e-32,True
+uci,TreeSHAP,8.0,periodic_rr_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,TreeSHAP,8.0,periodic_rr_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,TreeSHAP,8.0,periodic_rr_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,TreeSHAP,16.0,aox_fixed_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,TreeSHAP,16.0,aox_fixed_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,TreeSHAP,16.0,aox_fixed_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,TreeSHAP,16.0,channel_fixed_dp,orig,PRISM_orig_cap8_threshold5,BASELINE_duty1,tested,10.0,311.7831,5300.224,4988.4409,94.11754861681317,2.0564470215859274e-33,0.06949974866859564,0.06490337475527923,0.03257699955956837,0.03055980341357871,0.02356017800861527,0.00012618568880324102,0.00895937800274226,0.3266660589606936,0.31547148353716514,0.3271809895833333,0.24422200520833331,8.637077490660895e-32,True
+uci,TreeSHAP,16.0,channel_fixed_dp,paced,PRISM_paced_cap8_threshold5,BASELINE_duty1,tested,10.0,311.1691,5300.224,4989.0549,94.12913303286804,9.950877827798064e-36,0.08836614182369472,0.08363045996994214,0.040975875521819596,0.03521239766867823,0.02356017800861527,-0.00720072438611886,0.00895937800274226,0.34700319114711037,0.31547148353716514,0.2923502604166666,0.24422200520833331,5.174456470454993e-34,True
+uci,TreeSHAP,16.0,channel_fixed_dp,event_paced,PRISM_event_paced_cap8_threshold5,BASELINE_duty1,tested,10.0,311.04630000000003,5300.224,4989.1777,94.13144991607902,3.261810959792509e-34,0.10607994204277474,0.09860090232646232,0.04971939487674255,0.04121842998081195,0.02356017800861527,0.006504345660695321,0.00895937800274226,0.36387838969308,0.31547148353716514,0.3342936197916666,0.24422200520833331,1.467814931906629e-32,True
+uci,TreeSHAP,16.0,joint_no_compression,orig,PRISM_orig_cap8_threshold3,BASELINE_duty0.25,tested,10.0,327.6603,1524.0,1196.3397,78.49998031496062,7.40680468738609e-28,-0.027556276399677282,-0.037271022361147696,-0.00861149945664216,-0.013928324618486473,0.02356017800861527,-0.0010049390821198691,-0.00970803801881727,0.29507194787654506,0.3123009789142467,0.2819173177083333,0.27421874999999996,2.222041406215827e-26,False
+uci,TreeSHAP,16.0,joint_no_compression,paced,PRISM_paced_cap8_threshold5,BASELINE_duty0.25,tested,10.0,311.1691,1524.0,1212.8309,79.58208005249344,3.356007476407314e-30,-0.023920988054232394,-0.03365281356386049,-0.00586076291266117,-0.01202763365790686,0.02356017800861527,-0.00720072438611886,-0.00970803801881727,0.34700319114711037,0.3123009789142467,0.2923502604166666,0.27421874999999996,1.3424029905629255e-28,False
+uci,TreeSHAP,16.0,joint_no_compression,event_paced,PRISM_event_paced_cap8_threshold5,BASELINE_duty0.25,tested,10.0,311.04630000000003,1524.0,1212.9537,79.59013779527558,1.0993093342051906e-28,-0.006207187835152381,-0.015094180681838432,0.0028827564422617786,-0.006923478580606694,0.02356017800861527,0.006504345660695321,-0.00970803801881727,0.36387838969308,0.3123009789142467,0.3342936197916666,0.27421874999999996,4.067444536559205e-27,True
+uci,TreeSHAP,16.0,periodic_fixed_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,TreeSHAP,16.0,periodic_fixed_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,TreeSHAP,16.0,periodic_fixed_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,TreeSHAP,16.0,periodic_rr_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,TreeSHAP,16.0,periodic_rr_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,TreeSHAP,16.0,periodic_rr_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,TreeSHAP,32.0,aox_fixed_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,TreeSHAP,32.0,aox_fixed_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,TreeSHAP,32.0,aox_fixed_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,TreeSHAP,32.0,channel_fixed_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,TreeSHAP,32.0,channel_fixed_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,TreeSHAP,32.0,channel_fixed_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,TreeSHAP,32.0,joint_no_compression,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,TreeSHAP,32.0,joint_no_compression,paced,PRISM_paced_cap32_threshold3,BASELINE_duty1,tested,10.0,1271.5446,4053.15,2781.6054000000004,68.62823729691722,2.0036276496235306e-22,0.04419806406827598,0.03513748376458804,0.02589433802571938,0.008243492169731435,0.025756770356431175,0.00913365363934813,0.0007483443248458496,0.3233189012138413,0.3221186389292853,0.35782877604166663,0.2499186197916666,4.007255299247061e-21,True
+uci,TreeSHAP,32.0,joint_no_compression,event_paced,PRISM_event_paced_cap32_threshold1,BASELINE_duty1,tested,10.0,1269.6718999999998,4053.15,2783.4780999999994,68.67444086697999,2.9786671143534127e-22,0.07646515038786014,0.06684056308728956,0.051066766057259086,0.028674109649557824,0.025756770356431175,0.003995175459238441,0.0007483443248458496,0.32672053401440615,0.3221186389292853,0.38185221354166665,0.2499186197916666,5.361600805836143e-21,True
+uci,TreeSHAP,32.0,periodic_fixed_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,TreeSHAP,32.0,periodic_fixed_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,TreeSHAP,32.0,periodic_fixed_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,TreeSHAP,32.0,periodic_rr_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,TreeSHAP,32.0,periodic_rr_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,TreeSHAP,32.0,periodic_rr_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,feature_ablation,8.0,aox_fixed_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,feature_ablation,8.0,aox_fixed_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,feature_ablation,8.0,aox_fixed_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,feature_ablation,8.0,channel_fixed_dp,orig,PRISM_orig_cap8_threshold5,BASELINE_duty1,tested,10.0,311.9572,5294.1422,4982.185,94.10750243920536,5.375741522210341e-28,0.06963718527308392,0.0654156541707198,0.03218652660255699,0.025187806432096376,0.020934886037192908,0.057335691691078196,0.00900098145525951,0.2928861742933462,0.2422396623142648,0.2733235677083333,0.25488281249999994,1.6664798718852057e-26,True
+uci,feature_ablation,8.0,channel_fixed_dp,paced,PRISM_paced_cap8_threshold5,BASELINE_duty1,tested,10.0,310.57570000000004,5294.1422,4983.5665,94.13359731818309,4.6347642406730245e-28,0.08730447435096458,0.0819359037954827,0.0371793426641561,0.03258247262034704,0.020934886037192908,-0.01450115605574705,0.00900098145525951,0.24034227452104853,0.2422396623142648,0.26770833333333327,0.25488281249999994,1.4831245570153678e-26,True
+uci,feature_ablation,8.0,channel_fixed_dp,event_paced,PRISM_event_paced_cap8_threshold5,BASELINE_duty1,tested,10.0,310.2994,5294.1422,4983.8428,94.13881629397865,3.6215132807603617e-28,0.10583181248807534,0.09840335152701805,0.046444864410230886,0.039256560587061715,0.020934886037192908,-0.021523198303773663,0.00900098145525951,0.2374727501612143,0.2422396623142648,0.27436523437499993,0.25488281249999994,1.2675296482661266e-26,True
+uci,feature_ablation,8.0,joint_no_compression,orig,PRISM_orig_cap8_threshold5,BASELINE_duty0.25,tested,10.0,311.9572,672.9,360.9428,53.639887056026154,3.859744719639912e-21,-0.005343385674434117,-0.01371261583584066,-0.0032615437644261695,-0.012085095640498839,0.020934886037192908,0.057335691691078196,0.00012770096040021008,0.2928861742933462,0.24935815021420157,0.2733235677083333,0.2434407552083333,5.017668135531885e-20,True
+uci,feature_ablation,8.0,joint_no_compression,paced,PRISM_paced_cap8_threshold5,BASELINE_duty0.25,tested,10.0,310.57570000000004,672.9,362.32429999999994,53.845192450587,2.705414984156324e-22,0.01232390340344655,0.006549067889492523,0.001731272297172939,-0.005227488900312569,0.020934886037192908,-0.01450115605574705,0.00012770096040021008,0.24034227452104853,0.24935815021420157,0.26770833333333327,0.2434407552083333,5.140288469897016e-21,True
+uci,feature_ablation,8.0,joint_no_compression,event_paced,PRISM_event_paced_cap8_threshold5,BASELINE_duty0.25,tested,10.0,310.2994,672.9,362.6006,53.88625352949918,7.187252801816583e-22,0.030851241540557284,0.02274065569255258,0.010996794043247729,-0.0002588251144906885,0.020934886037192908,-0.021523198303773663,0.00012770096040021008,0.2374727501612143,0.24935815021420157,0.27436523437499993,0.2434407552083333,1.2218329763088191e-20,True
+uci,feature_ablation,8.0,periodic_fixed_dp,orig,PRISM_orig_cap8_threshold5,BASELINE_duty1,tested,10.0,311.9572,5299.965200000001,4988.008000000001,94.11397644648686,1.9632304890521808e-33,0.059927438223146876,0.05577625326644661,0.027444134571297057,0.021001519745435487,0.004289781451031418,0.057335691691078196,-0.00349988923830883,0.2928861742933462,0.2601343285589806,0.2733235677083333,0.2462565104166666,8.441891102924378e-32,True
+uci,feature_ablation,8.0,periodic_fixed_dp,paced,PRISM_paced_cap8_threshold5,BASELINE_duty1,tested,10.0,310.57570000000004,5299.965200000001,4989.389499999999,94.1400426553744,1.6886632177838014e-34,0.07759472730102755,0.07182286560877235,0.032436950632896165,0.028256680531780355,0.004289781451031418,-0.01450115605574705,-0.00349988923830883,0.24034227452104853,0.2601343285589806,0.26770833333333327,0.2462565104166666,7.936717123583867e-33,True
+uci,feature_ablation,8.0,periodic_fixed_dp,event_paced,PRISM_event_paced_cap8_threshold5,BASELINE_duty1,tested,10.0,310.2994,5299.965200000001,4989.665800000001,94.14525589715193,2.494902863194972e-34,0.09612206543813828,0.08852394711892972,0.041702472378970956,0.03476684752415618,0.004289781451031418,-0.021523198303773663,-0.00349988923830883,0.2374727501612143,0.2601343285589806,0.27436523437499993,0.2462565104166666,1.1476553170696872e-32,True
+uci,feature_ablation,8.0,periodic_rr_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,feature_ablation,8.0,periodic_rr_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,feature_ablation,8.0,periodic_rr_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,feature_ablation,16.0,aox_fixed_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,feature_ablation,16.0,aox_fixed_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,feature_ablation,16.0,aox_fixed_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,feature_ablation,16.0,channel_fixed_dp,orig,PRISM_orig_cap8_threshold5,BASELINE_duty1,tested,10.0,311.773,5300.224,4988.451,94.11773917479714,1.557138480471736e-34,0.06775086889248802,0.06299161025006576,0.03159776493156267,0.024085060176580398,0.02356017800861527,0.010311748061080973,-0.01026253954402796,0.24995399871160334,0.23741310417456782,0.2949381510416666,0.25611979166666665,7.474264706264332e-33,True
+uci,feature_ablation,16.0,channel_fixed_dp,paced,PRISM_paced_cap8_threshold5,BASELINE_duty1,tested,10.0,310.26869999999997,5300.224,4989.9553,94.14612099413156,7.8600281941741e-35,0.08694264263688002,0.08060273335281719,0.03927159898313315,0.033357238210976206,0.02356017800861527,0.005216679533615901,-0.01026253954402796,0.2576336163325007,0.23741310417456782,0.28499348958333326,0.25611979166666665,3.93001409708705e-33,True
+uci,feature_ablation,16.0,channel_fixed_dp,event_paced,PRISM_event_paced_cap8_threshold5,BASELINE_duty1,tested,10.0,309.96169999999995,5300.224,4990.2623,94.15191320215901,3.513494946298837e-35,0.10558185809996914,0.09847387369257375,0.052825306407813744,0.045738222130537506,0.02356017800861527,0.01252600634604561,-0.01026253954402796,0.25503303201761257,0.23741310417456782,0.29658203124999993,0.25611979166666665,1.7918824226124068e-33,True
+uci,feature_ablation,16.0,joint_no_compression,orig,PRISM_orig_cap8_threshold3,BASELINE_duty0.25,tested,10.0,323.9193,1524.0,1200.0807,78.7454527559055,3.47326350669771e-27,-0.024867140264025797,-0.034066607230420994,-0.008596104766451729,-0.016471139619640737,0.02356017800861527,-0.011424828281333439,-0.020250201519706728,0.24249937498836913,0.2552315068702336,0.26459960937499993,0.2457845052083333,1.0072464169423359e-25,False
+uci,feature_ablation,16.0,joint_no_compression,paced,PRISM_paced_cap8_threshold5,BASELINE_duty0.25,tested,10.0,310.26869999999997,1524.0,1213.7313,79.64116141732283,2.6374841656137306e-29,-0.016216826470903837,-0.024028435360090004,-0.0035002012064434297,-0.014611997477301344,0.02356017800861527,0.005216679533615901,-0.020250201519706728,0.2576336163325007,0.2552315068702336,0.28499348958333326,0.2457845052083333,1.0022439829332176e-27,False
+uci,feature_ablation,16.0,joint_no_compression,event_paced,PRISM_event_paced_cap8_threshold5,BASELINE_duty0.25,tested,10.0,309.96169999999995,1524.0,1214.0383000000002,79.66130577427822,1.1769478631170983e-29,0.002422388992185284,-0.006117224707861477,0.010053506218237172,-0.004060947992812822,0.02356017800861527,0.01252600634604561,-0.020250201519706728,0.25503303201761257,0.2552315068702336,0.29658203124999993,0.2457845052083333,4.5900966661566835e-28,True
+uci,feature_ablation,16.0,periodic_fixed_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,feature_ablation,16.0,periodic_fixed_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,feature_ablation,16.0,periodic_fixed_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,feature_ablation,16.0,periodic_rr_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,feature_ablation,16.0,periodic_rr_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,feature_ablation,16.0,periodic_rr_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,feature_ablation,32.0,aox_fixed_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,feature_ablation,32.0,aox_fixed_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,feature_ablation,32.0,aox_fixed_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,feature_ablation,32.0,channel_fixed_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,feature_ablation,32.0,channel_fixed_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,feature_ablation,32.0,channel_fixed_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,feature_ablation,32.0,joint_no_compression,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,feature_ablation,32.0,joint_no_compression,paced,PRISM_paced_cap32_threshold3,BASELINE_duty1,tested,10.0,1264.6201,4050.75,2786.1299,68.78059371721287,9.078426519594694e-23,0.046799527794124975,0.03518403834270896,0.056644042179067156,0.016036922703055533,0.025756770356431175,-0.00417274523007512,-0.00428624473337041,0.24678247241911472,0.261828016162986,0.3403971354166666,0.2584798177083333,1.9064695691148856e-21,True
+uci,feature_ablation,32.0,joint_no_compression,event_paced,PRISM_event_paced_cap32_threshold1,BASELINE_duty1,tested,10.0,1262.072,4050.75,2788.6780000000003,68.84349811763255,5.543972761349581e-23,0.0805911903823352,0.0703172654875994,0.059381438998101235,0.02561470980146382,0.025756770356431175,0.0029589770947216426,-0.00428624473337041,0.28419128360249984,0.261828016162986,0.3470703125,0.2584798177083333,1.2196740074969076e-21,True
+uci,feature_ablation,32.0,periodic_fixed_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,feature_ablation,32.0,periodic_fixed_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,feature_ablation,32.0,periodic_fixed_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,feature_ablation,32.0,periodic_rr_dp,orig,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,feature_ablation,32.0,periodic_rr_dp,paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
+uci,feature_ablation,32.0,periodic_rr_dp,event_paced,,,not tested: no tuning match,,,,,,,,,,,,,,,,,,,
