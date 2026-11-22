@@ -1,0 +1,1724 @@
+{
+  "rule": "per cell, baseline scheduler and PRISM variant: among (PRISM setting, baseline duty) pairs whose tuning means satisfy coverage >= base - tol, recall >= base - tol, relative epsilon gap <= tol and positive traffic saving, pick the largest saving",
+  "tuning_seeds": [
+    11,
+    22,
+    33,
+    44,
+    55,
+    66,
+    77,
+    88,
+    99,
+    111
+  ],
+  "tolerances": {
+    "coverage": 0.02,
+    "recall": 0.02,
+    "eps_rel": 0.05
+  },
+  "ni_margin": 0.02,
+  "alpha": 0.05,
+  "sim_sha256": "dc16f19721c7a2a48db99589ca23fe548bf657bcd07d30e9d5df8dcb86b0b629",
+  "rc_sha256": "fb84ab5b37bc7f3040007ce1c3aac0764403565af5c1f961cd76cb20012fbc65",
+  "selections": [
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "joint_no_compression",
+      "variant": "orig",
+      "prism_setting": "PRISM_orig_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 102.68390000000001
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "joint_no_compression",
+      "variant": "paced",
+      "prism_setting": "PRISM_paced_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 102.68390000000001
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "joint_no_compression",
+      "variant": "event_paced",
+      "prism_setting": "PRISM_event_paced_cap8_threshold1",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 102.1006
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 16.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 16.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 16.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 16.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 16.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 16.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 16.0,
+      "scheduler": "joint_no_compression",
+      "variant": "orig",
+      "prism_setting": "PRISM_orig_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 372.6839
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 16.0,
+      "scheduler": "joint_no_compression",
+      "variant": "paced",
+      "prism_setting": "PRISM_paced_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 372.6839
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 16.0,
+      "scheduler": "joint_no_compression",
+      "variant": "event_paced",
+      "prism_setting": "PRISM_event_paced_cap8_threshold1",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 372.1313
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 16.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 16.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 16.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 16.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 16.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 16.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 32.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 32.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 32.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 32.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 32.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 32.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 32.0,
+      "scheduler": "joint_no_compression",
+      "variant": "orig",
+      "prism_setting": "PRISM_orig_cap16_threshold5",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 966.3757
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 32.0,
+      "scheduler": "joint_no_compression",
+      "variant": "paced",
+      "prism_setting": "PRISM_paced_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 1053.7146
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 32.0,
+      "scheduler": "joint_no_compression",
+      "variant": "event_paced",
+      "prism_setting": "PRISM_event_paced_cap8_threshold1",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 1053.162
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 32.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 32.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 32.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 32.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 32.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 32.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "joint_no_compression",
+      "variant": "orig",
+      "prism_setting": "PRISM_orig_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 102.5339
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "joint_no_compression",
+      "variant": "paced",
+      "prism_setting": "PRISM_paced_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 102.626
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "joint_no_compression",
+      "variant": "event_paced",
+      "prism_setting": "PRISM_event_paced_cap8_threshold1",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 102.0734
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 16.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 16.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 16.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 16.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 16.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 16.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 16.0,
+      "scheduler": "joint_no_compression",
+      "variant": "orig",
+      "prism_setting": "PRISM_orig_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 372.8339
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 16.0,
+      "scheduler": "joint_no_compression",
+      "variant": "paced",
+      "prism_setting": "PRISM_paced_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 372.92600000000004
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 16.0,
+      "scheduler": "joint_no_compression",
+      "variant": "event_paced",
+      "prism_setting": "PRISM_event_paced_cap8_threshold1",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 372.3734
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 16.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 16.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 16.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 16.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 16.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 16.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 32.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 32.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 32.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 32.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 32.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 32.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 32.0,
+      "scheduler": "joint_no_compression",
+      "variant": "orig",
+      "prism_setting": "PRISM_orig_cap16_threshold5",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 966.3757
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 32.0,
+      "scheduler": "joint_no_compression",
+      "variant": "paced",
+      "prism_setting": "PRISM_paced_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 1053.8067
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 32.0,
+      "scheduler": "joint_no_compression",
+      "variant": "event_paced",
+      "prism_setting": "PRISM_event_paced_cap8_threshold1",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 1053.3155000000002
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 32.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 32.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 32.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 32.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 32.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "opsd",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 32.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "orig",
+      "prism_setting": "PRISM_orig_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 4983.445600000001
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "paced",
+      "prism_setting": "PRISM_paced_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 4983.9368
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": "PRISM_event_paced_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 4983.9368
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "joint_no_compression",
+      "variant": "orig",
+      "prism_setting": "PRISM_orig_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty0.25",
+      "tuning_saved_kbit": 361.31819999999993
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "joint_no_compression",
+      "variant": "paced",
+      "prism_setting": "PRISM_paced_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty0.25",
+      "tuning_saved_kbit": 361.8094
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "joint_no_compression",
+      "variant": "event_paced",
+      "prism_setting": "PRISM_event_paced_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty0.25",
+      "tuning_saved_kbit": 361.8094
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "orig",
+      "prism_setting": "PRISM_orig_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 4987.5864
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "paced",
+      "prism_setting": "PRISM_paced_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 4988.0776
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": "PRISM_event_paced_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 4988.0776
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 8.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 16.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 16.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 16.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 16.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "orig",
+      "prism_setting": "PRISM_orig_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 4988.4615
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 16.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "paced",
+      "prism_setting": "PRISM_paced_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 4988.9220000000005
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 16.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": "PRISM_event_paced_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 4989.0141
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 16.0,
+      "scheduler": "joint_no_compression",
+      "variant": "orig",
+      "prism_setting": "PRISM_orig_cap8_threshold3",
+      "baseline_setting": "BASELINE_duty0.25",
+      "tuning_saved_kbit": 1196.0941
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 16.0,
+      "scheduler": "joint_no_compression",
+      "variant": "paced",
+      "prism_setting": "PRISM_paced_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty0.25",
+      "tuning_saved_kbit": 1212.6979999999999
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 16.0,
+      "scheduler": "joint_no_compression",
+      "variant": "event_paced",
+      "prism_setting": "PRISM_event_paced_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty0.25",
+      "tuning_saved_kbit": 1212.7901
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 16.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 16.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 16.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 16.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 16.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 16.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 32.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 32.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 32.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 32.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 32.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 32.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 32.0,
+      "scheduler": "joint_no_compression",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 32.0,
+      "scheduler": "joint_no_compression",
+      "variant": "paced",
+      "prism_setting": "PRISM_paced_cap32_threshold3",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 2759.7823000000003
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 32.0,
+      "scheduler": "joint_no_compression",
+      "variant": "event_paced",
+      "prism_setting": "PRISM_event_paced_cap32_threshold1",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 2763.7733000000003
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 32.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 32.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 32.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 32.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 32.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "TreeSHAP",
+      "epsilon_budget": 32.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "orig",
+      "prism_setting": "PRISM_orig_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 4983.568
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "paced",
+      "prism_setting": "PRISM_paced_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 4984.611800000001
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": "PRISM_event_paced_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 4984.796
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "joint_no_compression",
+      "variant": "orig",
+      "prism_setting": "PRISM_orig_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty0.25",
+      "tuning_saved_kbit": 361.59060000000005
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "joint_no_compression",
+      "variant": "paced",
+      "prism_setting": "PRISM_paced_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty0.25",
+      "tuning_saved_kbit": 362.6344
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "joint_no_compression",
+      "variant": "event_paced",
+      "prism_setting": "PRISM_event_paced_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty0.25",
+      "tuning_saved_kbit": 362.81860000000006
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "orig",
+      "prism_setting": "PRISM_orig_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 4987.708799999999
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "paced",
+      "prism_setting": "PRISM_paced_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 4988.7526
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": "PRISM_event_paced_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 4988.9367999999995
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 8.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 16.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 16.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 16.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 16.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "orig",
+      "prism_setting": "PRISM_orig_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 4988.7374
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 16.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "paced",
+      "prism_setting": "PRISM_paced_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 4989.5356
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 16.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": "PRISM_event_paced_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 4989.9347
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 16.0,
+      "scheduler": "joint_no_compression",
+      "variant": "orig",
+      "prism_setting": "PRISM_orig_cap8_threshold3",
+      "baseline_setting": "BASELINE_duty0.25",
+      "tuning_saved_kbit": 1199.3641
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 16.0,
+      "scheduler": "joint_no_compression",
+      "variant": "paced",
+      "prism_setting": "PRISM_paced_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty0.25",
+      "tuning_saved_kbit": 1213.3116
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 16.0,
+      "scheduler": "joint_no_compression",
+      "variant": "event_paced",
+      "prism_setting": "PRISM_event_paced_cap8_threshold5",
+      "baseline_setting": "BASELINE_duty0.25",
+      "tuning_saved_kbit": 1213.7107
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 16.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 16.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 16.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 16.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 16.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 16.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 32.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 32.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 32.0,
+      "scheduler": "aox_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 32.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 32.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 32.0,
+      "scheduler": "channel_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 32.0,
+      "scheduler": "joint_no_compression",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 32.0,
+      "scheduler": "joint_no_compression",
+      "variant": "paced",
+      "prism_setting": "PRISM_paced_cap32_threshold3",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 2766.8898
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 32.0,
+      "scheduler": "joint_no_compression",
+      "variant": "event_paced",
+      "prism_setting": "PRISM_event_paced_cap32_threshold1",
+      "baseline_setting": "BASELINE_duty1",
+      "tuning_saved_kbit": 2772.4158
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 32.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 32.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 32.0,
+      "scheduler": "periodic_fixed_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 32.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "orig",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 32.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    },
+    {
+      "dataset": "uci",
+      "xai_method": "feature_ablation",
+      "epsilon_budget": 32.0,
+      "scheduler": "periodic_rr_dp",
+      "variant": "event_paced",
+      "prism_setting": null,
+      "baseline_setting": null
+    }
+  ],
+  "heldout_seeds_v1_inspected": [
+    1001,
+    1002,
+    1003,
+    1004,
+    1005,
+    1006,
+    1007,
+    1008,
+    1009,
+    1010
+  ],
+  "heldout_seeds": [
+    2001,
+    2002,
+    2003,
+    2004,
+    2005,
+    2006,
+    2007,
+    2008,
+    2009,
+    2010
+  ],
+  "v1_lock_sha256": "d29141f25451b7a242aa5ba00815780428b8796f65c94669c5b18d2a73e26b83",
+  "note": "Selections copied unchanged from the v1 lock, which was written from tuning seeds before any held-out run. Confirmation in v2 uses fresh seeds."
+}

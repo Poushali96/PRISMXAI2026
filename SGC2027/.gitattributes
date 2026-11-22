@@ -1,0 +1,2 @@
+# Keep this folder's small PDFs as regular git files (LFS upload is not available from this session)
+*.pdf !filter !diff !merge binary

@@ -1,0 +1,62 @@
+{
+  "evaluation_version": "2.0",
+  "heldout_seeds": [
+    2001,
+    2002,
+    2003,
+    2004,
+    2005,
+    2006,
+    2007,
+    2008,
+    2009,
+    2010
+  ],
+  "full": true,
+  "sim_sha256": "dc16f19721c7a2a48db99589ca23fe548bf657bcd07d30e9d5df8dcb86b0b629",
+  "rc_sha256": "ca3e6f34631f371403711bdb78d595607533e2e8bb30f042e1eb6143e390ea79",
+  "datasets": [
+    "opsd",
+    "uci"
+  ],
+  "xai": [
+    "treeshap",
+    "feature_ablation"
+  ],
+  "eps": [
+    8.0,
+    16.0,
+    32.0
+  ],
+  "caps": [
+    8,
+    16,
+    32
+  ],
+  "thresholds": [
+    1.0,
+    3.0,
+    5.0
+  ],
+  "variants": [
+    "orig",
+    "paced",
+    "event_paced"
+  ],
+  "baselines": [
+    "periodic_fixed_dp",
+    "periodic_rr_dp",
+    "channel_fixed_dp",
+    "aox_fixed_dp",
+    "joint_no_compression"
+  ],
+  "duties": [
+    1.0,
+    0.5,
+    0.25,
+    0.125,
+    0.0625,
+    0.03125,
+    0.015625
+  ]
+}
